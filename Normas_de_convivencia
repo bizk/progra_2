@@ -1,0 +1,26 @@
+-No pelearse
+-Ser solidario
+-Saludar a la seño y a los compañeritos
+-Presentar a las hermanas (Y pasarme el numero si son menores)
+
+Y ahora en serio. Quiero que esto sea lo mas smooth sailing posible y confío en ustedes para que así sea. Para facilitarnos todo a todos,
+quiero establecer un par de "reglas" simples que creo que van a ayudar a que nadie haga doble trabajo y que no nos falte nada al momento
+de entregar:
+    1- ANTES de empezar a trabajar en algo, publicá en la pestaña "Proyectos/Projects" (board) qué punto del trabajo práctico vas a hacer -2da columna.
+    2- MIENTRAS estés programando, comentá lo que hagas (Funcionamiento de un algoritmo complicado, qué son las variables A, B, y Z por ejemplo,
+    pero en especial, modificaciones a código existente
+    3- NO BORRÉS código que funciona pero "Podría hacerlo mejor" o hay que modificar algo. Encerralo en un comentario. (si hay más de una revisión,
+    dejá la última o la que más te guste, pero por si las dudas, para que no cagués lo que funciona).
+    5- PARAMETRIZÁ tus métodos. Ahorranos el recorrer una y otra vez los métodos para ver qué parametros faltan. Agregate como autor al final
+    de los parámetros. Si estás modificando una funcion, agregate como "editor", "coautor", "modificador" o "vergalarga que le corrigió el trabajo
+    al boludo este".
+    6- Cuando subas archivos NO SUBAS AL MASTER. Creá tu propia rama. SOLO subí los archivos que modificaste, no todo el proyecto.
+    7- Documentá qué hiciste en el board una vez terminado: si te quedó algún inciso sin hacer, algo no te funciona o necesitás que te ayuden 
+    con algo, agregalo en el board en la primer columna. Lo que esté listo, en la tercera.
+    8- Si creás un método, ponelo en la wiki con su parametrización para que sea fácil ver cuáles son las funciones que disponemos. (In progress)
+    9- NUNCA pierdas los datos originales a menos que la consigna diga lo contrario. Ej: "Copiar pila" necesita 2 pilas, una original y una 
+    destino. Si, al terminar de usar el método, la pila donde estaban los datos está vacía, el método está mal.
+   
+   
+Otras reglas de convivencia que encuentren lógicas, son bienvenidas.
+PD: Falta la 4 y ni cuenta se dieron xd
