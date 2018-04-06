@@ -14,8 +14,8 @@ public class ColaPrioridadDA implements ColaPrioridadTDA {
 	}
 	
 	public void AcolarPrioridad(int x, int prioridad) {
-		int j = indice;
-		for(; prioridades[j-1] >= prioridad; j--) {
+		int j = indice;//Ultimo lugar, donde agregaría el elemento
+		for(; j>0 && prioridades[j-1] >= prioridad; j--) {//Mientras la prioridad del elemento del array sea mayor a la del elemento que quiero agregar, sigo el ciclo
 			elementos[j] = elementos[j-1];
 			prioridades[j] = prioridades[j-1];
 		}
