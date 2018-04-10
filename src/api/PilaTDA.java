@@ -1,31 +1,43 @@
 package api;
 
-/** @definicion **/
+/** @DEFINICION **/
 public interface PilaTDA {
-    /**@TAREA Inicializa la pila
-     * @PARAMETROS -
-     * @DEVUELVE -**/
+	
+	/** @TAREA iniciar_pila
+	* @PARAMETRO none
+	* @PRECONDICION none
+	* @DEVUELVE none
+	* @POSTCONDICION pila_iniciada.**/
     void InicializarPila();
 
-    /**@TAREA Agrega un valor a lo mas alto de la pila.
-     * @PARAMETROS un numero del tipo integer.
-     * @DEVUELVE -**/
+    /** @TAREA Agregar_valor_al_tope
+	* @PARAMETRO1 valor_entero_a_acolar
+	* @PRECONDICION pila_inicializada
+	* @DEVUELVE none
+	* @POSTCONDICION Nuevo_elemento_en_pila**/
     void Apilar(int x);
     
- 
-    /**@TAREA Elimina el ultimo valor de la pila.
-     * @PARAMETROS -
-     * @DEVUELVE -**/
+    /**@TAREA quitar_elemento_de_pila
+	* @PARAMETRO none
+	* @PRECONDICION Pila_inicializada
+	* @PRECONDICION Pila_no_vacia
+	* @DEVUELVE none
+	* @POSTCONDICION Tope_eliminado**/
     void Desapilar();
 
-    /**@TAREA verifica si la pila esta vacia o no.
-     * @PARAMETROS -
-     * @DEVUELVE TRUE: Si no tiene datos / FALSE: Si los tiene.**/
+    /**@TAREA Verificar_Pila_vacia
+ 	@PARAMETRO none
+ 	@PRECONDICION Pila_inicializada
+ 	@DEVUELVE V_vacia_F_hay_elementos
+ 	@POSTCONDICION none**/ 
     boolean PilaVacia();
 
-    /**@TAREA Devuelve el ultimo valor de la pila.
-     * @PARAMETROS -
-     * @DEVUELVE Valor numerico de tipo INTEGER**/
+   /** @TAREA obtener_tope_pila
+	* @PARAMETRO none
+	* @PRECONDICION Pila_inicializada
+	* @PRECONDICION Pila_no_vacia
+	* @DEVUELVE Ultimo_entero
+	* @POSTCONDICION none**/
     int Tope();
 }
 

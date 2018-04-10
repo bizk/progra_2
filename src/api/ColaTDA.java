@@ -1,30 +1,42 @@
 package api;
 
-/** @definicion **/
+/** @DEFINICION **/
 public interface ColaTDA {
-    /**@TAREA Inicializa la colla
-     * @PARAMETROS -
-     * @DEVUELVE -**/
-    void InicializarCola();
-
-    /**@TAREA Agrega un valor al final de la cola.
-     * @PARAMETROS un numero del tipo integer.
-     * @DEVUELVE -**/
+    
+	/** @TAREA iniciar_cola
+		* @PARAMETRO none
+		* @PRECONDICION none
+		* @DEVUELVE none
+		* @POSTCONDICION Cola_iniciada.**/
+	void InicializarCola();
+	
+	/** @TAREA Agregar_valor_al_principio
+	* @PARAMETRO1 valor_entero_a_acolar
+	* @PRECONDICION Cola_inicializada
+	* @DEVUELVE none
+	* @POSTCONDICION Nuevo_elemento_en_cola**/
     void Acolar(int x);
 
-    /**@TAREA Elimina el primer valor de la cola.
-     * @PARAMETROS -
-     * @DEVUELVE -**/
+    /**@TAREA quitar_elemento_de_cola
+	* @PARAMETRO none
+	* @PRECONDICION Cola_inicializada
+	* @PRECONDICION Cola_no_vacia
+	* @DEVUELVE none
+	* @POSTCONDICION Primer_elemento_eliminado**/
     void Desacolar();
 
-    /**@TAREA verifica si la cola esta vacia o no.
-     * @PARAMETROS -
-     * @DEVUELVE TRUE: Si no tiene datos / FALSE: Si los tiene.**/
+    /**@TAREA Verificar_cola_vacia
+ 	@PARAMETRO none
+ 	@PRECONDICION Cola_inicializada
+ 	@DEVUELVE V_vacia_F_hay_elementos
+ 	@POSTCONDICION none**/
     boolean ColaVacia();
 
-
-    /**@TAREA Devuelve el primer valor de la cola.
-     * @PARAMETROS -
-     * @DEVUELVE Valor numerico de tipo INTEGER**/
+    /** @TAREA obtener_primer_elemento_cola
+	* @PARAMETRO none
+	* @PRECONDICION Cola_inicializada
+	* @PRECONDICION Cola_no_vacia
+	* @DEVUELVE Primer_entero
+	* @POSTCONDICION none**/ 
     int Primero();
 }
