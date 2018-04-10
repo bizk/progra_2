@@ -1,6 +1,6 @@
 package api;
 /**@author Federico Parodi**/
-public interface ConjuntoTDA extends PilaTDA {
+public interface ConjuntoTDA {
 	/** @TAREA iniciar Conjunto
 	* @PARAMETRO none
 	* @PRECONDICION none
@@ -24,7 +24,7 @@ public interface ConjuntoTDA extends PilaTDA {
 	
 	/** @TAREA Obtener un elemento cualquiera del conjunto
 	* @PARAMETRO none
-	* @PRECONDICION Conjunto Inicializado, no vacío.
+	* @PRECONDICION Conjunto Inicializado, no vacÃ­o.
 	* @DEVUELVE Entero
 	* @POSTCONDICION none**/
 	int ElegirConjunto();
