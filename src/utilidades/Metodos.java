@@ -100,7 +100,7 @@ public class Metodos {
 		}
 	}
 	
-	class Colas {//Creo que deberiamos poner esto en otro archivo. No me acuerdo que dijo la profe -Fedejp
+	class Colas {	//Creo que deberiamos poner esto en otro archivo. No me acuerdo que dijo la profe -Fedejp
 		/**@TAREA Copiar una cola en otra
 		 * @PARAMETRO cola original
 		 * @PARAMETRO cola destino
@@ -119,6 +119,7 @@ public class Metodos {
 				aux.Desacolar(); 
 			}
 	    }
+		
 		/**@TAREA Invertir una Cola con pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
@@ -134,6 +135,7 @@ public class Metodos {
 	            p.Desapilar();
 	        }
 	    }
+
 	    /**@TAREA Contar elementos de una cola
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
@@ -149,6 +151,7 @@ public class Metodos {
 	    	CopiarCola(aux,origen);
 	    	return cont;
 	    }
+	  
 	    /**@TAREA Invertir una Cola SIN pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
@@ -264,6 +267,39 @@ public class Metodos {
 	        } else {
 	            System.out.println("No son inversas");
 	        }
+	    }
+	
+	    /* # # # # # # # # # # # # # # # # # # # # # # # # # 
+	     *					 BANDERA
+	     # # # # # # # # # # # # # # # # # # # # # # # # # */ 
+	    //Aca va lo del tp 3 punto 2, no se si tendria que ir en otro archivo, pero bueno, -BIZK
+	    /**@TAREA Eliminar de la cola la repeticion de elementos
+		 * @PARAMETRO cola nro1
+		 * @PRECONDICON Colas iniciadas
+		 * @POSTCONDICON La cola quedara sin elemento repetidos**/
+	    public void ColaEliminarRepeticiones(ColaTDA cp1) {
+	    	int x;	    	 
+	    	ColaTDA aux = new ColaPI();
+	    	ColaTDA aux2 = new ColaPI();
+	    	ColaTDA aux3 = new ColaPI();
+	    	CopiarCola(cp1, aux); //Copiamos los elementos de la cola 1 a aux para no perderla
+	    	while(!aux.ColaVacia()) {
+	    		CopiarCola(aux, aux2); 
+	    		//Copiamos aux a aux2 ya que vamos a ir moviendo de numero en numero
+	    		//Es decir como vamos a comparar al primero de l de aux y luego lo desacolamos para comparar 
+	    		//Al siguiente numero. 
+		    	while(!aux2.ColaVacia()) { //Hasta que no llegemos al final de aux 2 no paramos
+		    		aux3.Acolar(aux2.Primero());  //Acolamos el primero, ya que tecnicamente esle numero que vamos a comaprar
+		    		aux2.Desacolar(); //Y lo desacolamos de aux2 para no borrarlo.
+		    		if(aux.Primero() == aux2.Primero()) { //Cualquier otra repeticion la salteamos 
+		    			aux2.Desacolar();
+		    		} else { //Mientras que aca la vamos acolando
+		    			aux3.Acolar(aux2.Primero());
+		    		}
+		    	}
+		    	CopiarCola(aux3, aux); //Pasamos aux3 donde tiene los elementos repetidos de aux borrados como el nuevo aux
+		    	aux.Desacolar(); //Desacolamos aux para comparar el siguiente numero
+	    	}
 	    }
 	}
 	
