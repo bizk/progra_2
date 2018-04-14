@@ -436,7 +436,7 @@ public class Metodos {
 	}
 
 	class Diccionario {
-		//TP 3 - 5.A. -BIZK (14/04/2018)
+		//TP 3 - 5.A. Carlos Santiago YANZON -BIZK (14/04/2018)
 	    /**@TAREA Generar un dicconario multiple en base a ods diccionarios multiples D1 y D3
 		 * @PARAMETRO diccionario 1 y 2
 		 * @PRECONDICON Diccionarios iniciados.
@@ -495,7 +495,7 @@ public class Metodos {
 		 * ESTE NO LO ENTENDI BIEN.
 		**/
 		
-		//TP 3 - 5.C. -BIZK (14/04/2018)
+		//TP 3 - 5.C. -Carlos Santiago YANZON -BIZK (14/04/2018)
 	    /**@TAREA Generar un dicconario multiple en base a dos diccionarios multiples D1 y D3 el cual tendra
 	     * 		  todos los valores de las claves en comun
 		 * @PARAMETRO diccionario 1 y 2
@@ -537,7 +537,7 @@ public class Metodos {
 			}		
 		}
 	
-		//TP 3 - 5.C. -BIZK (14/04/2018)
+		//TP 3 - 5.C. Carlos Santiago YANZON -BIZK (14/04/2018)
 	    /**@TAREA Generar un dicconario multiple en base a dos diccionarios multiples D1 y D3 el cual tendra
 	     * 		  todos los valores de las claves en comun
 		 * @PARAMETRO diccionario 1 y 2
