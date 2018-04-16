@@ -1,4 +1,5 @@
 package api;
+
 /**@author Federico Parodi**/
 public interface ConjuntoTDA {
 	/** @TAREA iniciar Conjunto
@@ -24,14 +25,14 @@ public interface ConjuntoTDA {
 	
 	/** @TAREA Obtener un elemento cualquiera del conjunto
 	* @PARAMETRO none
-	* @PRECONDICION Conjunto Inicializado, no vacío.
+	* @PRECONDICION Conjunto Inicializado, no vacÃ­o.
 	* @DEVUELVE Entero
 	* @POSTCONDICION none**/
 	int ElegirConjunto();
 	
 	/** @TAREA Sacar un elemento dado del conjunto
 	* @PARAMETRO Entero
-	* @PRECONDICION Conjunto Inicializado, no vacio, Elemento pertenece al conjunto.
+	* @PRECONDICION Conjunto Inicializado, no vacio.
 	* @DEVUELVE none
 	* @POSTCONDICION Elemento indicado queda eliminado si es encontrado.**/
 	void SacarConjunto(int x);
@@ -41,5 +42,5 @@ public interface ConjuntoTDA {
 	* @PRECONDICION Conjunto Inicializado.
 	* @DEVUELVE V si encuentra, F si no encuentra.
 	* @POSTCONDICION none**/
-	boolean PerteneceConjunto(int x);
+	boolean PerteneceConjunto();
 }
