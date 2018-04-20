@@ -32,9 +32,10 @@ int indice;
 		while(vector[point]!=x) {
 			point++;
 		}
-		while(point<indice) {
-			vector[point]=vector[point+1];
-		}
+		if (point==(indice-1))
+			;//no hace nada pq solo es necesario decrementar el tamaño del vector
+		else
+			vector[point]=vector[indice-1];//reemplaza el valor a eliminar por el ultimo elemento agregado
 		indice--;
 	}
 	
