@@ -4,7 +4,7 @@ import api.DiccionarioMultipleTDA;
 import api.ConjuntoTDA;
 
 /**@author Carlos Santiago Yanzon (BIZK) 13/04/2018*/
-class DicMultipleA implements DiccionarioMultipleTDA {
+public class DicMultipleA implements DiccionarioMultipleTDA {
 
 	class Elemento {
 		int clave;
@@ -33,7 +33,7 @@ class DicMultipleA implements DiccionarioMultipleTDA {
 	
 	public void InicializarDiccionario() {
 		elementos = new Elemento[100];
-		int cantClaves = 0;
+		cantClaves = 0;
 	}
 
 	public void Agregar(int clave, int valor) {
@@ -78,15 +78,15 @@ class DicMultipleA implements DiccionarioMultipleTDA {
 		}
 	}
 
-	public ConjuntoTDA Recuperar(int clave) {
-		ConjuntoTDA c = new ConjuntoLD();
+	public ConjuntoTDA Recuperar(int clave) { //Todos los valores de una clave
+		ConjuntoTDA c = new ConjuntoTMA();
 		c.InicializarConjunto();
 		
-		int pos = Clave2Indice(clave);
-		if(pos != -1) {
-			Elemento e = elementos[pos];
-			for(int i = 0; i<e.cantClaves; i++) {
-				c.Agregar(elementos[i].clave);
+		int pos = Clave2Indice(clave); // recuperamos una clave
+		if(pos != -1) { //Si la clave existe 
+			Elemento e = elementos[pos]; //Recuperamos el conjunto de elementos
+			for(int i = 0; i<e.cantValores; i++) { //Recorremos todos los valores
+				c.AgregarConjunto(e.valores[i]);
 			}
 		}
 		
@@ -94,11 +94,11 @@ class DicMultipleA implements DiccionarioMultipleTDA {
 	}
 
 	public ConjuntoTDA claves() {
-		ConjuntoTDA c = new ConjuntoLD();
+		ConjuntoTDA c = new ConjuntoTMA();
 		c.InicializarConjunto();
 		
-		for(int i = 0; i<cantClaves; i++) {
-			c.Agregar(elementos[i].clave);
+		for(int i = 0; i < cantClaves; i++) {
+			c.AgregarConjunto(elementos[i].clave);
 		}
 		
 		return c;

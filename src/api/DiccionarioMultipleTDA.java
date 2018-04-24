@@ -42,7 +42,7 @@ public interface DiccionarioMultipleTDA {
 	* */
 	ConjuntoTDA Recuperar(int clave);
 	
-	/** @TAREA Elimina toda una clave.
+	/** @TAREA Devuelve todas las claves de un conjunto.
 	* @PARAMETRO NONE
 	* @PRECONDICION Diccionario Inicializado.
 	* @DEVUELVE Todas las claves.

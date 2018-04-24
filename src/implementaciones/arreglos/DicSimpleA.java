@@ -53,7 +53,7 @@ class DicSimpleA implements DiccionarioSimpleTDA {
 	}
 	
 	public ConjuntoTDA Claves() {
-		ConjuntoTDA c = new ConjuntoLD();
+		ConjuntoTDA c = new ConjuntoTMA();
 		c.InicializarConjunto();
 		
 		for(int i = 0; i < cant; i++) {

@@ -2,7 +2,6 @@ package utilidades;
 
 import api.*;
 import implementaciones.arreglos.*;
-import implementaciones.arreglos.DicMultipleA.Elemento;
 
 public class Metodos {
 	class Pilas_metodos extends implementaciones.arreglos.Pilas {		
@@ -124,7 +123,7 @@ public class Metodos {
 		/**@TAREA Invertir una Cola con pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
-		 * @POSTCONDICON La cola se devolverá invertida**/
+		 * @POSTCONDICON La cola se devolverï¿½ invertida**/
 	    public void InvertirColaPila(ColaTDA origen) { // usando pilas auxiliares
 	        PilaTDA p = new Pilas();
 	        while (!origen.ColaVacia()) {
@@ -156,7 +155,7 @@ public class Metodos {
 	    /**@TAREA Invertir una Cola SIN pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
-		 * @POSTCONDICON La cola se devolverá invertida**/
+		 * @POSTCONDICON La cola se devolverï¿½ invertida**/
 	    public void InvertirColaSola(ColaTDA origen) {
 	    	ColaTDA aux = new ColaPI();
 	    	ColaTDA aux2 =new ColaPI();
@@ -364,13 +363,31 @@ public class Metodos {
 	}
 	
 	class ColaPrioirdad {
+		public ColaPrioridadTDA CopiarColaPri(ColaPrioridadTDA origen) {
+			ColaPrioridadTDA aux = new ColaPrioridadDA();
+			ColaPrioridadTDA aux2 = new ColaPrioridadDA();
+			aux.InicializarCola();
+			aux2.InicializarCola();
+			while(!origen.ColaVacia()) {
+				aux.AcolarPrioridad(origen.Primero(), origen.Prioridad());
+				origen.Desacolar();
+			}
+			while(!aux.ColaVacia()) {
+				aux2.AcolarPrioridad(aux.Primero(), aux.Prioridad());
+				origen.AcolarPrioridad(aux.Primero(), aux.Prioridad());
+				aux.Desacolar();
+			}
+			
+			return aux2;
+			
+		}
 		
-		/**@TAREA Combinar colas con prioridad, donde los elementos de la primera tendrán más prioridad que los de la segunda
+		/**@TAREA Combinar colas con prioridad, donde los elementos de la primera tendrï¿½n mï¿½s prioridad que los de la segunda
 		 * @PARAMETRO cola nro1, de mayor prioridad
 		 * @PARAMETRO cola nro2
 		 * @PRECONDICON Colas iniciadas
 		 * @POSTCONDICON Checkear si la cola se pierde**/
-	    public void CombinarColasPropiedades (ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
+	    public void CombinarColasPrioridad (ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
 
 	        //Inicializamos ambas colas
 	        CP1.InicializarCola();
@@ -434,7 +451,94 @@ public class Metodos {
 	        }
 	    }
 	}
-
+	class Conjunto {
+		/**@PARAMETROS: Conjunto Origen, Conjunto destino
+		 * @precondicion: conjuntos inicializados
+		 * @POSTCONDICION: **/
+		public ConjuntoTDA CopiarConjunto(ConjuntoTDA origen, ConjuntoTDA destino) {
+			PilaTDA aux = new Pilas();
+			aux.InicializarPila();
+			while(!origen.ConjuntoVacio()) {
+				aux.Apilar(origen.ElegirConjunto());
+				origen.SacarConjunto(origen.ElegirConjunto());
+			}
+			while(!aux.PilaVacia()) {
+				destino.AgregarConjunto(aux.Tope());//de esta forma, los conjuntos son copias exactas en elementos y orden
+				origen.AgregarConjunto(aux.Tope());
+				aux.Desapilar();
+			}
+			return destino;
+		}
+		
+		//TP 2 - 6. Federico Parodi
+		/**@TAREA Encontrar la interseccion entre dos conjuntos.
+		 * @PARAMETRO Conjunto 1, Conjunto 2.
+		 * @PRECONDICION Conjuntos inicializados
+		 * @POSTCONDICION none
+		 * @DEVUELVE ConjuntoTDA con los elementos que estan en ambos conjuntos.**/
+		public ConjuntoTDA InterseccionConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
+			ConjuntoTDA aux1 = new ConjuntoUA();
+			ConjuntoTDA inter = new ConjuntoUA();
+			aux1.InicializarConjunto();
+			inter.InicializarConjunto();
+			CopiarConjunto(C1, aux1);
+			while(!aux1.ConjuntoVacio()) {
+				if(C2.PerteneceConjunto(aux1.ElegirConjunto())) {
+					inter.AgregarConjunto(aux1.ElegirConjunto());
+				}
+				aux1.SacarConjunto(aux1.ElegirConjunto());
+			}
+			return inter;
+		}
+		
+		/**@TAREA Encontrar la union entre dos conjuntos.
+		* @PARAMETRO Conjunto 1, Conjunto 2.
+		 * @PRECONDICION Conjuntos inicializados
+		 * @POSTCONDICION none
+		 * @DEVUELVE ConjuntoTDA con los elementos que estan en uno u otro conjunto.**/
+		public ConjuntoTDA UnionConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
+			ConjuntoTDA aux1 = new ConjuntoUA();
+			ConjuntoTDA aux2 = new ConjuntoUA();
+			ConjuntoTDA uni = new ConjuntoUA();
+			aux1.InicializarConjunto();
+			aux2.InicializarConjunto();
+			uni.InicializarConjunto();
+			CopiarConjunto(C1, aux1);
+			CopiarConjunto(C1, aux2);
+			while(!aux1.ConjuntoVacio()) {
+				uni.AgregarConjunto(aux1.ElegirConjunto());
+				aux1.SacarConjunto(aux1.ElegirConjunto());
+			}
+			while(!aux2.ConjuntoVacio()) {
+				if(!uni.PerteneceConjunto(aux2.ElegirConjunto())) {
+					uni.AgregarConjunto(aux2.ElegirConjunto());
+				}
+				aux2.SacarConjunto(aux2.ElegirConjunto());
+			}
+			return uni;
+		}
+		/**@TAREA Encontrar la diferencia entre dos conjuntos.
+		 * @PARAMETRO Conjunto 1(minuendo) , Conjunto 2(sustraendo).
+		 * @PRECONDICION Conjuntos inicializados
+		 * @POSTCONDICION none
+		 * @DEVUELVE ConjuntoTDA con los elementos que estan en C1 menos los que estï¿½n en C2.**/
+		public ConjuntoTDA DiferenciaConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
+			ConjuntoTDA aux1 = new ConjuntoUA();
+			ConjuntoTDA aux2 = new ConjuntoUA();
+			aux1.InicializarConjunto();
+			aux2.InicializarConjunto();
+			CopiarConjunto(C1, aux1);
+			CopiarConjunto(C1, aux2);
+			while(!aux2.ConjuntoVacio()) {
+				if(aux1.PerteneceConjunto(aux2.ElegirConjunto())) {
+					aux1.SacarConjunto(aux2.ElegirConjunto());
+				}
+				aux2.SacarConjunto(aux2.ElegirConjunto());
+			}
+			return aux1;
+			
+		}
+	}
 	class Diccionario {
 		//TP 3 - 5.A. Carlos Santiago YANZON -BIZK (14/04/2018)
 	    /**@TAREA Generar un dicconario multiple en base a ods diccionarios multiples D1 y D3
@@ -443,16 +547,16 @@ public class Metodos {
 		 * @POSTCONDICON 1 Diccionario multiple
 		**/
 		public void UnificarDicMultiples(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
-			DiccionarioMultipleTDA dic = new DiccionarioMultipleTDA();
+			DiccionarioMultipleTDA dic = new DicMultipleA();
 			dic.InicializarDiccionario();
 			
-			ConjuntoTDA clavesd01 = new ConjuntoLD();
-			ConjuntoTDA clavesd02 = new ConjuntoLD();
+			ConjuntoTDA clavesd01 = new ConjuntoTMA();
+			ConjuntoTDA clavesd02 = new ConjuntoTMA();
 			clavesd01.InicializarConjunto();
 			clavesd02.InicializarConjunto();
 			
-			ConjuntoTDA valoresd01 = new ConjuntoLD();
-			ConjuntoTDA valoresd02 = new ConjuntoLD();
+			ConjuntoTDA valoresd01 = new ConjuntoTMA();
+			ConjuntoTDA valoresd02 = new ConjuntoTMA();
 			valoresd01.InicializarConjunto();
 			valoresd02.InicializarConjunto();
 			
@@ -503,16 +607,16 @@ public class Metodos {
 		 * @POSTCONDICON 1 Diccionario multiple
 		**/
 		public void DicMultClavesComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
-			DiccionarioMultipleTDA dic = new DiccionarioMultipleTDA();
+			DiccionarioMultipleTDA dic = new DicMultipleA();
 			dic.InicializarDiccionario();
 			
-			ConjuntoTDA clavesd01 = new ConjuntoLD();
-			ConjuntoTDA clavesd02 = new ConjuntoLD();
+			ConjuntoTDA clavesd01 = new ConjuntoTMA();
+			ConjuntoTDA clavesd02 = new ConjuntoTMA();
 			clavesd01.InicializarConjunto();
 			clavesd02.InicializarConjunto();
 			
-			ConjuntoTDA valoresd01 = new ConjuntoLD();
-			ConjuntoTDA valoresd02 = new ConjuntoLD();
+			ConjuntoTDA valoresd01 = new ConjuntoTMA();
+			ConjuntoTDA valoresd02 = new ConjuntoTMA();
 			valoresd01.InicializarConjunto();
 			valoresd02.InicializarConjunto();
 			
@@ -520,6 +624,9 @@ public class Metodos {
 			clavesd01 = D01.claves();
 			
 			int clave1, clave2, valor1, valor2;
+			ConjuntoTDA valconj01 = new ConjuntoTMA();
+			ConjuntoTDA valconj02 = new ConjuntoTMA();
+			
 			//obtenemos los valores de dichas claves
 			while(!clavesd01.ConjuntoVacio()) {
 				clavesd02 = D02.claves(); //Reinicioamos las claves de claves02 para recorrerlas todas
@@ -527,8 +634,13 @@ public class Metodos {
 				while(!clavesd02.ConjuntoVacio()) { //Recorremos todas las claves de d02
 					clave2 = clavesd02.ElegirConjunto(); //Sacamos una clave de clavesd02
 					if(clave1 == clave2) { //Si son iguales procedemos a unificar todo
-						dic.Agregar(clave1, valor1);
-						dic.Agregar(clave1, valor2); //Agruegamos ambos valores
+						valconj01 = D01.Recuperar(clave1); //Obtenemos todos los valores de la clave
+						while(!valconj01.ConjuntoVacio()) { //REcorremos todos los valores
+							valor1 = valconj01.ElegirConjunto(); //Elegimos un valor al azar
+							valor2 = valconj02.ElegirConjunto();
+							dic.Agregar(clave1, valor1); //Agregamos el primer valor
+							dic.Agregar(clave2, valor2); //Agruegamos ambos valores
+						}
 					} //Si no, decidimos seguir comparando todas las claves2 con esa clave
 					clavesd02.SacarConjunto(clave2);
 				}//Volvemos a hacer lo mismo hasta quedarnos sin claves en clavd01
@@ -545,18 +657,18 @@ public class Metodos {
 		 * @POSTCONDICON 1 Diccionario multiple
 		**/
 		public void DicMultClavesYValComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
-			DiccionarioMultipleTDA dic = new DiccionarioMultipleTDA(); //Definimos el diccionario donde guardaremos todo
+			DiccionarioMultipleTDA dic = new DicMultipleA(); //Definimos el diccionario donde guardaremos todo
 			dic.InicializarDiccionario();
 			
 			//Obtenemos los conjuntos de claves
-			ConjuntoTDA clavesd01 = new ConjuntoLD();
-			ConjuntoTDA clavesd02 = new ConjuntoLD();
+			ConjuntoTDA clavesd01 = new ConjuntoTMA();
+			ConjuntoTDA clavesd02 = new ConjuntoTMA();
 			clavesd01.InicializarConjunto();
 			clavesd02.InicializarConjunto();
 			
 			//Obtenemos los conjuntos de valores
-			ConjuntoTDA valoresd01 = new ConjuntoLD();
-			ConjuntoTDA valoresd02 = new ConjuntoLD();
+			ConjuntoTDA valoresd01 = new ConjuntoTMA();
+			ConjuntoTDA valoresd02 = new ConjuntoTMA();
 			valoresd01.InicializarConjunto();
 			valoresd02.InicializarConjunto();
 			
