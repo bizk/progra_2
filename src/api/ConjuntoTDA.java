@@ -42,5 +42,5 @@ public interface ConjuntoTDA {
 	* @PRECONDICION Conjunto Inicializado.
 	* @DEVUELVE V si encuentra, F si no encuentra.
 	* @POSTCONDICION none**/
-	boolean PerteneceConjunto();
+	boolean PerteneceConjunto(int x);
 }
