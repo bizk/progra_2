@@ -123,7 +123,7 @@ public class Metodos {
 		/**@TAREA Invertir una Cola con pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
-		 * @POSTCONDICON La cola se devolver� invertida**/
+		 * @POSTCONDICON La cola se devolverï¿½ invertida**/
 	    public void InvertirColaPila(ColaTDA origen) { // usando pilas auxiliares
 	        PilaTDA p = new Pilas();
 	        while (!origen.ColaVacia()) {
@@ -155,7 +155,7 @@ public class Metodos {
 	    /**@TAREA Invertir una Cola SIN pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
-		 * @POSTCONDICON La cola se devolver� invertida**/
+		 * @POSTCONDICON La cola se devolverï¿½ invertida**/
 	    public void InvertirColaSola(ColaTDA origen) {
 	    	ColaTDA aux = new ColaPI();
 	    	ColaTDA aux2 =new ColaPI();
@@ -382,7 +382,7 @@ public class Metodos {
 			
 		}
 		
-		/**@TAREA Combinar colas con prioridad, donde los elementos de la primera tendr�n m�s prioridad que los de la segunda
+		/**@TAREA Combinar colas con prioridad, donde los elementos de la primera tendrï¿½n mï¿½s prioridad que los de la segunda
 		 * @PARAMETRO cola nro1, de mayor prioridad
 		 * @PARAMETRO cola nro2
 		 * @PRECONDICON Colas iniciadas
@@ -468,8 +468,7 @@ public class Metodos {
 				aux.Desapilar();
 			}
 			return destino;
-		}
-		
+    }
 		//TP 2 - 6. Federico Parodi
 		/**@TAREA Encontrar la interseccion entre dos conjuntos.
 		 * @PARAMETRO Conjunto 1, Conjunto 2.
@@ -521,7 +520,8 @@ public class Metodos {
 		 * @PARAMETRO Conjunto 1(minuendo) , Conjunto 2(sustraendo).
 		 * @PRECONDICION Conjuntos inicializados
 		 * @POSTCONDICION none
-		 * @DEVUELVE ConjuntoTDA con los elementos que estan en C1 menos los que est�n en C2.**/
+		 * @DEVUELVE ConjuntoTDA con los elementos que estan en C1 menos los que estï¿½n en C2.**/
+
 		public ConjuntoTDA DiferenciaConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
 			ConjuntoTDA aux1 = new ConjuntoUA();
 			ConjuntoTDA aux2 = new ConjuntoUA();
