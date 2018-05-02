@@ -2,7 +2,6 @@ package utilidades;
 
 import api.*;
 import implementaciones.arreglos.*;
-import implementaciones.arreglos.DicMultipleA.Elemento;
 
 public class Metodos {
 	class Pilas_metodos extends implementaciones.arreglos.Pilas {		
@@ -73,7 +72,7 @@ public class Metodos {
 	     * @PRECONDICION pila iniciada
 	     * @DEVUELVE integer que representa la suma de los elementos
 	     * @POSTCONDICION Se pierden los datos de la pila**/
-		    public int SumarElemPila(PilaTDA origen) {
+		    public int SumarElemPIla(PilaTDA origen) {
 		    int x = 0;
 		  //Agrego funcion para no perder pila original -Fedejp
 		    PilaTDA aux = new Pilas();
@@ -99,95 +98,6 @@ public class Metodos {
 		    int y = ContarElemPila(origen);
 	        return(x/y);
 		}
-		
-		//TP 3, PUNTO 1
-		
-		/**@TAREA verificar si una Pila es capicua
-	     * @PARAMETRO 
-	     * @PRECONDICION 
-	     * @DEVUELVE boolean que define si es capicua o no
-	     * @POSTCONDICION none**/
-		public boolean PilaCapicua (PilaTDA origen){
-			boolean capi = true;
-			PilaTDA aux_capiP = new Pilas();
-			aux_capiP.inicializarPila();
-			PilaTDA aux_capiP2 = new Pilas();
-			aux_capiP2.inicializarPila();
-			ColaTDA aux_capiC = new ColaPU();
-			aux_capiC.inicializarCola();
-			CopiarPila(origen, aux_capiP);
-			CopiarPila(origen, aux_capiP2);
-			while(!aux_capiP2.PilaVacia()){
-				aux_capiC.Acolar(aux_capiP2.Tope());
-				aux_capiP2.Desapilar();
-			}
-			while(!aux_capiP.PilaVacia() && capi == true){
-				if(aux_capiP.Tope() != aux_capiC.Primero()){
-					capi = false;
-				}
-			}
-			return capi;
-		}
-		
-		/**@TAREA Eliminar repetidos en una Pila
-		 * @PARAMETRO Pila original
-		 * @PRECONDICON Pila iniciada
-		 * @POSTCONDICON Pila original modificada sin elementos repetidos**/		
-		public void EliminaRepetidosPIL(PlilaTDA origen){
-			PilaTDA pil_aux= new Pilas();
-			PilaTDA pil2_aux= new Pilas();
-			boolean existe = false;
-			pil_aux.InicializarPila();
-			pil2_aux.InicializarPila();
-			while(!origen.PilaVacia()){
-				pil_aux.Apilar(origen.Tope());
-				origen.Desapilar();
-				CopiarPila(origen,pil2_aux);
-				while(!existe&&!pil2_aux.PilaVacia()){
-					if(pil_aux.Tope()==pil2_aux.Tope()){
-						existe=true;
-						pil_aux.Desapilar();
-					}
-					pil2_aux.Desapilar();
-				}
-			}
-			while(!pil_aux.PilaVacia()){
-				origen.Apilar(pil_aux.Tope());
-				pil_aux.Desapilar();
-			}	
-		}
-		
-		//TP 3, PUNTO C
-		
-		/**@TAREA 
-		 * @PARAMETRO 
-		 * @PRECONDICON 
-		 * @POSTCONDICON **/		
-		public void DividirPila(PilaTDA origen){ //PREGUNTAR SI TIENE QUE DEVOLVER LAS PILAS M1 Y M2
-			int cant_elementos_P, mitad, i;
-			PilaTDA M1 = new Pilas();
-			M1.inicializarPila();
-			PilaTDA M2 = new Pilas();
-			M2.inicializarPila();
-			PilaTDA aux_mitades = new Pilas();
-			aux_mitades.inicializarPila();
-			CopiarPila(origen, aux_mitades);
-			cant_elementos_P = ContarElemPila(aux_mitades);
-			mitad = cant_elementos_P / 2;
-			for(i = 0; i < mitad; i++){
-				M1.Apilar(aux_mitades.Tope());
-				aux_mitades.Desapilar();
-			}
-			InvertirPila(M1);
-			for(i = 0; i < mitad; i++){
-				M2.Apilar(aux_mitades.Tope());
-				aux_mitades.Desapilar();
-			}
-			InvertirPila(M2);
-		}
-		
-		
-		
 	}
 	
 	class Colas {	//Creo que deberiamos poner esto en otro archivo. No me acuerdo que dijo la profe -Fedejp
@@ -213,7 +123,7 @@ public class Metodos {
 		/**@TAREA Invertir una Cola con pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
-		 * @POSTCONDICON La cola se devolver� invertida**/
+		 * @POSTCONDICON La cola se devolverï¿½ invertida**/
 	    public void InvertirColaPila(ColaTDA origen) { // usando pilas auxiliares
 	        PilaTDA p = new Pilas();
 	        while (!origen.ColaVacia()) {
@@ -245,7 +155,7 @@ public class Metodos {
 	    /**@TAREA Invertir una Cola SIN pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
-		 * @POSTCONDICON La cola se devolver� invertida**/
+		 * @POSTCONDICON La cola se devolverï¿½ invertida**/
 	    public void InvertirColaSola(ColaTDA origen) {
 	    	ColaTDA aux = new ColaPI();
 	    	ColaTDA aux2 =new ColaPI();
@@ -452,7 +362,7 @@ public class Metodos {
 	 	}
 	}
 	
-	class ColaPrioirdad {
+	class ColaPrioridad {
 		public ColaPrioridadTDA CopiarColaPri(ColaPrioridadTDA origen) {
 			ColaPrioridadTDA aux = new ColaPrioridadDA();
 			ColaPrioridadTDA aux2 = new ColaPrioridadDA();
@@ -470,9 +380,10 @@ public class Metodos {
 			
 			return aux2;
 			
+			
 		}
 		
-		/**@TAREA Combinar colas con prioridad, donde los elementos de la primera tendr�n m�s prioridad que los de la segunda
+		/**@TAREA Combinar colas con prioridad, donde los elementos de la primera tendrï¿½n mï¿½s prioridad que los de la segunda
 		 * @PARAMETRO cola nro1, de mayor prioridad
 		 * @PARAMETRO cola nro2
 		 * @PRECONDICON Colas iniciadas
@@ -540,7 +451,25 @@ public class Metodos {
 	            }
 	        }
 	    }
+	    
+	    
+	    //TP3 punto 4-A 27/04/18 gonza
+	    /**@TAREA generar diccionario multiple que recupere todas las prioridades de un valor
+		 * @PARAMETRO cola prioridad c
+		 * @PRECONDICON Cola iniciada
+		 * @devuelve un diccionario multiple**/
+	    public DiccionarioMultipleTDA colaPrioridadDiccionario(ColaPrioridadTDA C) {
+	    	DiccionarioMultipleTDA dicAUX = new DicMultipleA();
+			dicAUX.InicializarDiccionario();
+			while(!c.ColaVacia()) {
+				dicAUX.agregar(C.Primero(),C.Prioridad());
+				C.Desacolar();
+			}
+			return dicAUX; 		  
+	    }	    
 	}
+	
+	
 	class Conjunto {
 		/**@PARAMETROS: Conjunto Origen, Conjunto destino
 		 * @precondicion: conjuntos inicializados
@@ -557,7 +486,8 @@ public class Metodos {
 				origen.AgregarConjunto(aux.Tope());
 				aux.Desapilar();
 			}
-		}
+			return destino;
+    }
 		//TP 2 - 6. Federico Parodi
 		/**@TAREA Encontrar la interseccion entre dos conjuntos.
 		 * @PARAMETRO Conjunto 1, Conjunto 2.
@@ -609,7 +539,8 @@ public class Metodos {
 		 * @PARAMETRO Conjunto 1(minuendo) , Conjunto 2(sustraendo).
 		 * @PRECONDICION Conjuntos inicializados
 		 * @POSTCONDICION none
-		 * @DEVUELVE ConjuntoTDA con los elementos que estan en C1 menos los que est�n en C2.**/
+		 * @DEVUELVE ConjuntoTDA con los elementos que estan en C1 menos los que estï¿½n en C2.**/
+
 		public ConjuntoTDA DiferenciaConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
 			ConjuntoTDA aux1 = new ConjuntoUA();
 			ConjuntoTDA aux2 = new ConjuntoUA();
@@ -624,9 +555,46 @@ public class Metodos {
 				aux2.SacarConjunto(aux2.ElegirConjunto());
 			}
 			return aux1;
-			
 		}
+		
+		/**@TAREA Calcular cardinalidad (cant de elementos) de un conjunto
+		 * @PARAMETRO Conjunto 
+		 * @PRECONDICION Conjuntos inicializados
+		 * @POSTCONDICION none
+		 * @DEVUELVE cantidad de elementos**/
+		public int ConjuntoTDA Cardinalidad(ConjuntoTDA conjunto) {//TPR PT E(GONZA)
+			int elementos=0;
+			while(!conjunto.ConjuntoVacio()) {
+				elementos++;
+				conjunto.SacarConjunto(ElegirConjunto());
+			}
+			return elementos;
+		}
+		
+		/**@TAREA generar conj de elementos que estan en una pila y una cola
+		 * @PARAMETRO pila
+		 * @PARAMENTRO cola
+		 * @PRECONDICION pila y cola inicializadas
+		 * @POSTCONDICION none
+		 * @DEVUELVE conjunto con los elementos de la pilay la cola**/
+		public ConjuntoTDA ConjPILCOL(ColaTDA cola,PilaTDA pila) {
+			ConjuntoTDA general= new ConjuntoUA();
+			general.InicializarConjunto();
+			ConjuntoTDA aux=new ConjuntoUA();
+			while(!cola.ColaVacia()) {
+				aux.AgregarConjunto(cola.Primero());
+				cola.Desacolar();
+			}
+			while(!pila.PilaVacia()) {
+				if(aux.PerteneceConjunto(pila.Tope()))
+					general.AgregarConjunto(pila.Tope());
+				pila.Desapilar();
+			}
+			return general;			
+		}	
 	}
+	
+	
 	class Diccionario {
 		//TP 3 - 5.A. Carlos Santiago YANZON -BIZK (14/04/2018)
 	    /**@TAREA Generar un dicconario multiple en base a ods diccionarios multiples D1 y D3
@@ -635,16 +603,16 @@ public class Metodos {
 		 * @POSTCONDICON 1 Diccionario multiple
 		**/
 		public void UnificarDicMultiples(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
-			DiccionarioMultipleTDA dic = new DiccionarioMultipleTDA();
+			DiccionarioMultipleTDA dic = new DicMultipleA();
 			dic.InicializarDiccionario();
 			
-			ConjuntoTDA clavesd01 = new ConjuntoLD();
-			ConjuntoTDA clavesd02 = new ConjuntoLD();
+			ConjuntoTDA clavesd01 = new ConjuntoTMA();
+			ConjuntoTDA clavesd02 = new ConjuntoTMA();
 			clavesd01.InicializarConjunto();
 			clavesd02.InicializarConjunto();
 			
-			ConjuntoTDA valoresd01 = new ConjuntoLD();
-			ConjuntoTDA valoresd02 = new ConjuntoLD();
+			ConjuntoTDA valoresd01 = new ConjuntoTMA();
+			ConjuntoTDA valoresd02 = new ConjuntoTMA();
 			valoresd01.InicializarConjunto();
 			valoresd02.InicializarConjunto();
 			
@@ -695,16 +663,16 @@ public class Metodos {
 		 * @POSTCONDICON 1 Diccionario multiple
 		**/
 		public void DicMultClavesComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
-			DiccionarioMultipleTDA dic = new DiccionarioMultipleTDA();
+			DiccionarioMultipleTDA dic = new DicMultipleA();
 			dic.InicializarDiccionario();
 			
-			ConjuntoTDA clavesd01 = new ConjuntoLD();
-			ConjuntoTDA clavesd02 = new ConjuntoLD();
+			ConjuntoTDA clavesd01 = new ConjuntoTMA();
+			ConjuntoTDA clavesd02 = new ConjuntoTMA();
 			clavesd01.InicializarConjunto();
 			clavesd02.InicializarConjunto();
 			
-			ConjuntoTDA valoresd01 = new ConjuntoLD();
-			ConjuntoTDA valoresd02 = new ConjuntoLD();
+			ConjuntoTDA valoresd01 = new ConjuntoTMA();
+			ConjuntoTDA valoresd02 = new ConjuntoTMA();
 			valoresd01.InicializarConjunto();
 			valoresd02.InicializarConjunto();
 			
@@ -712,6 +680,9 @@ public class Metodos {
 			clavesd01 = D01.claves();
 			
 			int clave1, clave2, valor1, valor2;
+			ConjuntoTDA valconj01 = new ConjuntoTMA();
+			ConjuntoTDA valconj02 = new ConjuntoTMA();
+			
 			//obtenemos los valores de dichas claves
 			while(!clavesd01.ConjuntoVacio()) {
 				clavesd02 = D02.claves(); //Reinicioamos las claves de claves02 para recorrerlas todas
@@ -719,8 +690,13 @@ public class Metodos {
 				while(!clavesd02.ConjuntoVacio()) { //Recorremos todas las claves de d02
 					clave2 = clavesd02.ElegirConjunto(); //Sacamos una clave de clavesd02
 					if(clave1 == clave2) { //Si son iguales procedemos a unificar todo
-						dic.Agregar(clave1, valor1);
-						dic.Agregar(clave1, valor2); //Agruegamos ambos valores
+						valconj01 = D01.Recuperar(clave1); //Obtenemos todos los valores de la clave
+						while(!valconj01.ConjuntoVacio()) { //REcorremos todos los valores
+							valor1 = valconj01.ElegirConjunto(); //Elegimos un valor al azar
+							valor2 = valconj02.ElegirConjunto();
+							dic.Agregar(clave1, valor1); //Agregamos el primer valor
+							dic.Agregar(clave2, valor2); //Agruegamos ambos valores
+						}
 					} //Si no, decidimos seguir comparando todas las claves2 con esa clave
 					clavesd02.SacarConjunto(clave2);
 				}//Volvemos a hacer lo mismo hasta quedarnos sin claves en clavd01
@@ -737,18 +713,18 @@ public class Metodos {
 		 * @POSTCONDICON 1 Diccionario multiple
 		**/
 		public void DicMultClavesYValComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
-			DiccionarioMultipleTDA dic = new DiccionarioMultipleTDA(); //Definimos el diccionario donde guardaremos todo
+			DiccionarioMultipleTDA dic = new DicMultipleA(); //Definimos el diccionario donde guardaremos todo
 			dic.InicializarDiccionario();
 			
 			//Obtenemos los conjuntos de claves
-			ConjuntoTDA clavesd01 = new ConjuntoLD();
-			ConjuntoTDA clavesd02 = new ConjuntoLD();
+			ConjuntoTDA clavesd01 = new ConjuntoTMA();
+			ConjuntoTDA clavesd02 = new ConjuntoTMA();
 			clavesd01.InicializarConjunto();
 			clavesd02.InicializarConjunto();
 			
 			//Obtenemos los conjuntos de valores
-			ConjuntoTDA valoresd01 = new ConjuntoLD();
-			ConjuntoTDA valoresd02 = new ConjuntoLD();
+			ConjuntoTDA valoresd01 = new ConjuntoTMA();
+			ConjuntoTDA valoresd02 = new ConjuntoTMA();
 			valoresd01.InicializarConjunto();
 			valoresd02.InicializarConjunto();
 			
