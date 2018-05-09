@@ -708,5 +708,106 @@ public class Metodos {
 			
 		}
 	}
+	//TP 3 - 3.a.b Salvioli (17/04/2018)
+    /**@TAREA calcular diferencias simetricas sin operaciones
+	 * @PARAMETRO conjunto
+	 * @PRECONDICON inicializar conjunto
+	 * @POSTCONDICON resultado diferencia simetrica
+	**/
+	public ConjuntoTDA DiferenciaSimetricaSinOperaciones(ConjuntoTDA c1,ConjuntoTDA c2){
+		api.ConjuntoTDA ResultadoDifSimetrica = new ConjuntoLD();
+	//	ResultadoDifSimetrica.InicializarConjunto();
+		
+		while (!c1. ConjuntoVacio()){
+			int elemento = c1.Elegir();
+			if (!c2. Pertenece(elemento)){
+			ResultadoDifSimetrica.Agregar(elemento);
+			}
+			else {
+			c2.Sacar(elemento);
+			}
+			c1. Sacar(elemento);
+			}
+		
+		while(!c2.ConjuntoVacio()){
+			int elemento = c2.Elegir();
+			ResultadoDifSimetrica.Agregar(elemento);
+			c1.SacarConjunto(elemento); //revisar
+			
+			
+		}
+		return ResultadoDifSimetrica;
+	
+	
+	}
+	
+	//TP 3 - 3.c Salvioli (17/04/2018)
+    /**@TAREA calcular diferencias simetricas con union, interceccion y diferencia
+	 * @PARAMETRO conjunto
+	 * @PRECONDICON iniciar conjunto
+	 * @POSTCONDICON devolver diferemcia simetrica
+	**/
+	public ConjuntoTDA DiferenciaSimetricaConOperaciones(ConjuntoTDA c1,ConjuntoTDA c2) {
+		
+		api.ConjuntoTDA ResDiferenciaSimetricaConOp =new ConjuntoLD;
+		ResDiferenciaSimetricaConOp.InicializarConjunto();
+	
+		while(!c1.ConjuntoVacio()) {
+			int elemento=c1.ElegirConjunto()
+			if (!c2. Pertenece(elemento)){
+				ResDiferenciaSimetricaConOp.UnionConjunto(elemento);
+				}
+			else {
+				c2.DiferenciaConjunto(elemento);
+				}
+				c1.DiferenciaConjunto(elemento);
+				}
+		}
+		while(!c2.ConjuntoVacio()){
+		int elemento = c2.ElegirConjunto();
+		ResDiferenciaSimetricaConOp.UnionConjunto(elemento);
+		c1.DiferenciaConjunto(elemento); //revisar
+		
+		
+		}
+	
+	
+	
+	
+	
+	
+	return ResDiferenciaSimetricaConOp;
+	}
+
+//TP 3 - 3.d Salvioli (17/04/2018)
+/**@TAREA verificar si dos conjuntos son iguales
+ * @PARAMETRO conjunto 1 y conjunto 2
+ * @PRECONDICON inicializar los conjuntos
+ * @POSTCONDICON true o false
+**/
+
+public boolean ConjuntoTDA VerificarIgualdadconjuntos(ConjuntoTDA c1,api.ConjuntoTDA c2){
+	api.ConjuntoTDA Conjunto1 =new ConjuntoLD;
+	api.ConjuntoTDA Conjunto2 =new ConjuntoLD;
+	Conjunto1.InicializarConjunto();
+	Conjunto2.InicializarConjunto();
+	
+	int x,y,a;
+	
+	
+	while(!c1.ConjuntoVacio()){
+	c1.SacarConjunto(x);
+	while(!c2.ConjuntoVacio()){
+		c2.SacarConjunto(y);
+		if(x!=y)
+		a=1;
+			}
+		}
+	if(a!=1){
+	return false;
+	}
+	return true;
+	}
+
 	
 }
