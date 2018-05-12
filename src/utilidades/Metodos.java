@@ -708,206 +708,125 @@ public class Metodos {
 			
 		}
 	}
-	//TP 3 - 3.a.b Salvioli (17/04/2018)
-    /**@TAREA calcular diferencias simetricas sin operaciones
-	 * @PARAMETRO conjunto
-	 * @PRECONDICON inicializar conjunto
-	 * @POSTCONDICON resultado diferencia simetrica
-	**/
-	public int ConjuntoTDA DiferenciaSimetricaSinOperaciones(ConjuntoTDA c1,ConjuntoTDA c2){
-		api.ConjuntoTDA ResultadoDifSimetrica = new ConjuntoLD();
-	//	ResultadoDifSimetrica.InicializarConjunto();
-		
-		while (!c1. ConjuntoVacio()){
-			int elemento = c1.Elegir();
-			if (!c2. Pertenece(elemento)){
-			ResultadoDifSimetrica.Agregar(elemento);
+	class ABB {	//ABB NO TIENE VALORES REPETIDOS
+		//TP4 3-A gonza 05/05/18
+		/**@TAREA determinar si un elemento esta o no en el AB
+		 * @PARAMETRO arbol 
+		 * @PRECONDICON arbol inicializado
+		 * @POSTCONDICON none
+		 * @DEVUELVE true or false**/
+		public boolean existeElementoABB(int elemen,ABBTDA arbol) {
+			if(arbol.ArbolVacio()) {
+				return false;
+			}
+			else if(arbol.Raiz()==elemen) {
+				return true;
+			}
+			else if(arbol.Raiz()>elemen) {
+				return existeElementoABB(elemen,arbol.HijoIzq());
 			}
 			else {
-			c2.Sacar(elemento);
-			}
-			c1. Sacar(elemento);
-			}
-		
-		while(!c2.ConjuntoVacio()){
-			int elemento = c2.Elegir();
-			ResultadoDifSimetrica.Agregar(elemento);
-			c1.SacarConjunto(elemento); //revisar
-			
-			
-		}
-		return ResultadoDifSimetrica;
-	
-	
-	}
-	
-	//TP 3 - 3.c Salvioli (17/04/2018)
-    /**@TAREA calcular diferencias simetricas con union, interceccion y diferencia
-	 * @PARAMETRO conjunto
-	 * @PRECONDICON iniciar conjunto
-	 * @POSTCONDICON devolver diferemcia simetrica
-	**/
-	public ConjuntoTDA DiferenciaSimetricaConOperaciones(ConjuntoTDA c1,ConjuntoTDA c2) {
-		
-		api.ConjuntoTDA ResDiferenciaSimetricaConOp =new ConjuntoLD;
-		ResDiferenciaSimetricaConOp.InicializarConjunto();
-	
-		while(!c1.ConjuntoVacio()) {
-			int elemento=c1.ElegirConjunto()
-			if (!c2. Pertenece(elemento)){
-				ResDiferenciaSimetricaConOp.UnionConjunto(elemento);
-				}
-			else {
-				c2.DiferenciaConjunto(elemento);
-				}
-				c1.DiferenciaConjunto(elemento);
-				}
-		}
-		while(!c2.ConjuntoVacio()){
-		int elemento = c2.ElegirConjunto();
-		ResDiferenciaSimetricaConOp.UnionConjunto(elemento);
-		c1.DiferenciaConjunto(elemento); //revisar
-		
-		
-		}
-	
-	
-	
-	
-	
-	
-	return ResDiferenciaSimetricaConOp;
-	}
-
-//TP 3 - 3.d Salvioli (17/04/2018)
-/**@TAREA verificar si dos conjuntos son iguales
- * @PARAMETRO conjunto 1 y conjunto 2
- * @PRECONDICON inicializar los conjuntos
- * @POSTCONDICON true o false
-**/
-
-public boolean ConjuntoTDA VerificarIgualdadconjuntos(ConjuntoTDA c1,api.ConjuntoTDA c2){
-	api.ConjuntoTDA Conjunto1 =new ConjuntoLD;
-	api.ConjuntoTDA Conjunto2 =new ConjuntoLD;
-	Conjunto1.InicializarConjunto();
-	Conjunto2.InicializarConjunto();
-	
-	int x,y,a;
-	
-	
-	while(!c1.ConjuntoVacio()){
-	c1.SacarConjunto(x);
-	while(!c2.ConjuntoVacio()){
-		c2.SacarConjunto(y);
-		if(x!=y)
-		a=1;
+				return existeElementoABB(elemen,arbol.HijoDer());
 			}
 		}
-	if(a!=1){
-	return false;
-	}
 	
-	return true;
-}
-
-//TP 4 - 3.g Salvioli (09/05/2018)
-/**@TAREA calcular cantidad de hojas de un arbol
-* @PARAMETRO arbol
-* @PRECONDICON inicializar el arbol
-* @POSTCONDICON valor cantidad de hojas
-**/
-
-public int ABB ContarCantidadDeHojas(ABBTDA a) {
-
-int b;
 	
-InicializarArbol(a);
-if(!a.ArbolVacio()) {
-	
-while(a.HijoIzq().ArbolVacio()&&a.HijoDer().ArbolVacio()){ //verifca que sean hoja
-
-b=(Contar(a.HijoIzq()) + Contar(a.HijoDer())); //va reemplazando en b el valor
-
-		
-}
-}
-return b;
-}
-
-//TP 4 - 3.h Salvioli (09/05/2018)
-/**@TAREA calcular altura arbol
-* @PARAMETRO arbol
-* @PRECONDICON inicializar el arbol
-* @POSTCONDICON valor altura arbol
-**/
-
-public int ABBTDA CalcularAlturaABB (ABBTDA a) {
-	InicializarArbol(a);
-	int a =0;
-	int b=0;
-	if (a.ArbolVacio()){
-		return 0;
+	//TP4 3-b gonza 05/05/18
+	/**@TAREA dado un elemento determinar si es una hoja del ABB
+	 * @PARAMETRO arbol 
+	 * @PRECONDICON arbol inicializado
+	 * @POSTCONDICON none
+	 * @DEVUELVE true or false**/
+	public boolean ElemenHoja(int elemen,ABBTDA arbol) {
+		if(arbol.ArbolVacio()) {
+			return false;
 		}
 		else {
-	a= Contar(a.HijoIzq()); 	//no se si esto esta bien pero cuenta izquierda
-	b= Contar(a.HijoDer());		//luego derecha
+			if(arbol.Raiz()==elemen){
+				if (arbol.HijoDer().ArbolVacio()&&arbol.HijoIzq().ArbolVacio()){
+					return true;					
+				}
+				else
+					return false;				
+			}
+			else {
+				if(arbol.Raiz()>elemen) {
+					return ElemenHoja(elemen,arbol.HijoIzq());
+				}
+					else
+						return ElemenHoja(elemen,arbol.HijoDer());			
+			}
 		}
-	if(a>=b) {				//devuelve el mas alto
-		return a;
-	}else {
-		return b;
 	}
-}
-
-//TP 4 - 3.l.i Salvioli (09/05/2018)
-/**@TAREA mostrar arbol por in order
-* @PARAMETRO arbol
-* @PRECONDICON 
-* @POSTCONDICON 
-**/
-public void inOrder(ABBTDA a){
 	
-if(!a.ArbolVacio()){
-inOrder(a.HijoIzq());
-System.out.println(a.raiz ());
-inOrder(a.HijoDer());
+	
+	//TP4 3-c gonza 05/05/18
+		/**@TAREA dado un elemento calcular su profundidad en el ABB
+		 * @PARAMETRO arbol 
+		 * @PRECONDICON arbol inicializado
+		 * @POSTCONDICON none
+		 * @DEVUELVE profundidad **/ // prof: cantidad de niveles del arbol empieza en 0
+	public int Profundidad(int elemen, ABBTDA arbol) {//preguntar si existe elemento como precondicion
+		if (arbol.ArbolVacio()) {
+			return 0;
+		}
+		else if(arbol.Raiz()==elemen) {
+			return 0;
+		}
+		else if(arbol.Raiz()>elemen) {
+			return (1 + Profundidad(elemen,arbol.HijoIzq()));
+		}
+		else {
+			return (1 + Profundidad(elemen,arbol.HijoDer()));
+		}
 	}
-}
-
-
-//TP 4 - 3.l.ii Salvioli (09/05/2018)
-/**@TAREA mostrar arbol por pre order
-* @PARAMETRO arbol
-* @PRECONDICON 
-* @POSTCONDICON 
-**/
-
-
-public void preOrder(ABBTDA a){
-
-
-if(!a.ArbolVacio()){
-System.out.println(a.raiz ());
-preOrder(a.HijoIzq());
-preOrder(a.HijoDer());
-
-}
-}
-//TP 4 - 3.l.iii Salvioli (09/05/2018)
-/**@TAREA mostrar arbol por post-order
-* @PARAMETRO arbol
-* @PRECONDICON 
-* @POSTCONDICON 
-**/
-public void postOrder(ABBTDA a){
-
-
-if(!a.ArbolVacio()){
-postOrder(a.HijoIzq());
-postOrder(a.HijoDer());
-System.out.println(a.raiz ());
-}
-}
-
-
+	
+	
+	
+	//TP4 3-d gonza 05/05/18 //Arreglado por Fede
+	/**@TAREA obtener el valor del menor elelemnto de un ABB
+	 * @PARAMETRO arbol 
+	 * @PRECONDICON arbol inicializado y no vacío
+	 * @POSTCONDICON none
+	 * @DEVUELVE valor**/
+	public int Menor(ABBTDA a) {//mirar la implementacio
+		if (a.HijoIzq().ArbolVacio()) { //si el hijo izquierdo esta vacío
+			return a.Raiz(); //es el valor mas bajo
+		}
+		else {
+			return Menor(a.HijoIzq()); //busca el valor mas bajo en el hijo izquierdo
+		}
+	}
+	}
+	
+	
+	//TP4 3-e gonza 08/05/18 
+	/**@TAREA calcular la cantidad de elementos que tiene un ABB
+	 * @PARAMETRO arbol 
+	 * @PRECONDICON arbol inicializado
+	 * @POSTCONDICON none
+	 * @DEVUELVE cant**/
+	public int CantElementos(ABBTDA arbol) {
+		if(arbol.ArbolVacio())
+			return 0;
+		else {
+			return (1 + CantElementos(arbol.HijoIzq()) + CantElementos(arbol.HijoDer()));
+		}
+	}
+	
+	
+	//TP4 3-f gonza 08/05/18 //segun el profesor va a asi
+		/**@TAREA calcular la suma de elementos que contiene un ABB
+		 * @PARAMETRO arbol 
+		 * @PRECONDICON arbol inicializado
+		 * @POSTCONDICON none
+		 * @DEVUELVE suma**/
+	public int SumaElementos (ABBTDA arbol){
+		if (arbol.ArbolVacio())
+			return 0;
+		else
+		{
+			return (arbol.Raiz() + SumaElementos(arbol.HijoIzq()) + SumaElementos(arbol.HijoDer()));
+		}
+	}
 }
