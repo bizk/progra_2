@@ -1044,8 +1044,8 @@ mayores que k
 		if(a.raiz () > k) {
 		r.Agregar(a.raiz());
 		}
-		ConjuntoTDA rI = nodosPares(a.HijoIzq() );
-		ConjuntoTDA rD = nodosPares(a.HijoDer() );
+		ConjuntoTDA rI = nodos(a.HijoIzq() );
+		ConjuntoTDA rD = nodos(a.HijoDer() );
 		while(! rI. ConjuntoVacio () ){
 		int x = rI.Elegir();
 		r.Agregar(x);
