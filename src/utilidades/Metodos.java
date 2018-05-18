@@ -898,6 +898,8 @@ class ABB {	//ABB NO TIENE VALORES REPETIDOS
 			return Menor(a.HijoIzq()); //busca el valor mas bajo en el hijo izquierdo
 		}
 	}
+	
+	// -Termina class abb-
 	}
 	
 	
@@ -1028,6 +1030,34 @@ class ABB {	//ABB NO TIENE VALORES REPETIDOS
 		System.out.println(a.raiz ());
 	}
 	}
+	//TP 4 - 3.m Salvioli (17/04/2018)
+    /**@TAREA Dado un valor k, arme un conjunto con todos los elementos del ABB que son
+mayores que k
+	 * @PARAMETRO arbol binario y k
+	 * @PRECONDICON iniciar conjunto
+	 * @POSTCONDICON devolver raiz
+	**/
+	public ABBTDA MayoresAk(ABBTDA a,int k) {
+		ConjuntoTDA r= new ConjuntoLD() ;
+		r.InicializarConjunto () ;
+		if(!a.ArbolVacio() ){
+		if(a.raiz () > k) {
+		r.Agregar(a.raiz());
+		}
+		ConjuntoTDA rI = nodos(a.HijoIzq() );
+		ConjuntoTDA rD = nodos(a.HijoDer() );
+		while(! rI. ConjuntoVacio () ){
+		int x = rI.Elegir();
+		r.Agregar(x);
+		rI.Sacar(x);
+		}
+		while(!rD.ConjuntoVacio () ){
+		int x = rD.Elegir();
+		r.Agregar(x);
+		rD.Sacar(x);
+		}
+		}
+		return r;
 
 
 	}

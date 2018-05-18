@@ -3,7 +3,7 @@ package implementaciones.arreglos;
 import api.ABBTDA;
 
 public class ABB implements ABBTDA {
-	nodoABB raiz;
+	NodoABB raiz;
 	@Override
 	public int Raiz() {
 		return raiz.info;
@@ -78,7 +78,7 @@ public class ABB implements ABBTDA {
 			return a.Raiz(); //es el valor mas alto
 		}
 		else { 
-			return mayor(a.hijoDer()); //busca el valor mas alto en el hijo derecho
+			return mayor(a.HijoDer()); //busca el valor mas alto en el hijo derecho
 		}
 	}
 	private int menor (ABBTDA a) {
