@@ -1,5 +1,4 @@
 package api;
-
 /**@author Federico Parodi**/
 public interface ConjuntoTDA {
 	/** @TAREA iniciar Conjunto
