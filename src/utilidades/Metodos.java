@@ -3,10 +3,8 @@ package utilidades;
 import api.*;
 import implementaciones.arreglos.*;
 
-public class Metodos {
-	class Pilas_metodos extends implementaciones.arreglos.Pilas {		
-		Pilas origen = new Pilas();
-		Pilas destino = new Pilas();
+public class Metodos {		
+
 		
 		/**@TAREA Pasar contenido de una pila a otra en orden inverso
 		 * @PARAMETRO pila original
@@ -98,9 +96,7 @@ public class Metodos {
 		    int y = ContarElemPila(origen);
 	        return(x/y);
 		}
-	}
-	
-	class Colas {	//Creo que deberiamos poner esto en otro archivo. No me acuerdo que dijo la profe -Fedejp
+
 		/**@TAREA Copiar una cola en otra
 		 * @PARAMETRO cola original
 		 * @PARAMETRO cola destino
@@ -360,9 +356,7 @@ public class Metodos {
 	 		   	aux.Desacolar(); //Desacolamos aux para comparar el siguiente numero
 	 	   	}
 	 	}
-	}
-	
-	class ColaPrioirdad {
+
 		public ColaPrioridadTDA CopiarColaPri(ColaPrioridadTDA origen) {
 			ColaPrioridadTDA aux = new ColaPrioridadDA();
 			ColaPrioridadTDA aux2 = new ColaPrioridadDA();
@@ -450,8 +444,6 @@ public class Metodos {
 	            }
 	        }
 	    }
-	}
-	class Conjunto {
 		/**@PARAMETROS: Conjunto Origen, Conjunto destino
 		 * @precondicion: conjuntos inicializados
 		 * @POSTCONDICION: **/
@@ -538,8 +530,6 @@ public class Metodos {
 			return aux1;
 			
 		}
-	}
-	class Diccionario {
 		//TP 3 - 5.A. Carlos Santiago YANZON -BIZK (14/04/2018)
 	    /**@TAREA Generar un dicconario multiple en base a ods diccionarios multiples D1 y D3
 		 * @PARAMETRO diccionario 1 y 2
@@ -714,8 +704,8 @@ public class Metodos {
 	 * @PRECONDICON inicializar conjunto
 	 * @POSTCONDICON resultado diferencia simetrica
 	**/
-	public int ConjuntoTDA DiferenciaSimetricaSinOperaciones(ConjuntoTDA c1,ConjuntoTDA c2){
-		api.ConjuntoTDA ResultadoDifSimetrica = new ConjuntoLD();
+	public ConjuntoTDA DiferenciaSimetricaSinOperaciones(ConjuntoTDA c1,ConjuntoTDA c2){
+		ConjuntoTDA ResultadoDifSimetrica = new ConjuntoLD();
 	//	ResultadoDifSimetrica.InicializarConjunto();
 		
 		while (!c1. ConjuntoVacio()){
@@ -762,7 +752,7 @@ public class Metodos {
 				}
 				c1.DiferenciaConjunto(elemento);
 				}
-		}
+		
 		while(!c2.ConjuntoVacio()){
 		int elemento = c2.ElegirConjunto();
 		ResDiferenciaSimetricaConOp.UnionConjunto(elemento);
@@ -786,7 +776,7 @@ public class Metodos {
  * @POSTCONDICON true o false
 **/
 
-public boolean ConjuntoTDA VerificarIgualdadconjuntos(ConjuntoTDA c1,api.ConjuntoTDA c2){
+public boolean VerificarIgualdadconjuntos(ConjuntoTDA c1,api.ConjuntoTDA c2){
 	api.ConjuntoTDA Conjunto1 =new ConjuntoLD;
 	api.ConjuntoTDA Conjunto2 =new ConjuntoLD;
 	Conjunto1.InicializarConjunto();
@@ -809,7 +799,6 @@ public boolean ConjuntoTDA VerificarIgualdadconjuntos(ConjuntoTDA c1,api.Conjunt
 	
 	return true;
 }
-class ABB {	//ABB NO TIENE VALORES REPETIDOS
 		//TP4 3-A gonza 05/05/18
 		/**@TAREA determinar si un elemento esta o no en el AB
 		 * @PARAMETRO arbol 
@@ -900,7 +889,7 @@ class ABB {	//ABB NO TIENE VALORES REPETIDOS
 	}
 	
 	// -Termina class abb-
-	}
+
 	
 	
 	//TP4 3-e gonza 08/05/18 
@@ -939,7 +928,7 @@ class ABB {	//ABB NO TIENE VALORES REPETIDOS
 	* @POSTCONDICON valor cantidad de hojas
 	**/
 
-	public int ABB ContarCantidadDeHojas(ABBTDA a) {
+	public int ContarCantidadDeHojas(ABBTDA a) {
 
 	int b;
 	
@@ -963,7 +952,7 @@ class ABB {	//ABB NO TIENE VALORES REPETIDOS
 	* @POSTCONDICON valor altura arbol
 	**/
 
-	public int ABBTDA CalcularAlturaABB (ABBTDA a) {
+	public int CalcularAlturaABB (ABBTDA a) {
 		InicializarArbol(a);
 		int a =0;
 		int b=0;
@@ -1061,4 +1050,4 @@ mayores que k
 
 
 	}
-}
+	}
