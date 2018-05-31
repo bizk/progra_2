@@ -21,14 +21,19 @@ public class Metodos {
 		 * @PARAMETRO pila original
 		 * @PARAMETRO pila destino
 		 * @PRECONDICION Ambas pilas iniciadas
-		 * @POSTCONDICION Se pierde la pila original**/
-	    public void CopiarPila(PilaTDA origen, PilaTDA destino) {
+		 * @POSTCONDICION  none**/
+	    public void CopiarPila(PilaTDA origen, PilaTDA destino) {//Fedejp corregido
 		        PilaTDA aux = new Pilas();
 		        aux.InicializarPila();
 		        PasarPila(origen, aux); 
-		        PasarPila(aux, destino);
-		       // destino =  aux; Lo saco pq esto no queda bien, cambie los parametros de las dos PasarPila para que la ultima quede en destino
-		        //OJO, creo que no se puede perder la pila original- Fedejp
+		        while(!aux.PilaVacia()) {
+		        	origen.Apilar(aux.Tope());
+		        	destino.Apilar(aux.Tope());
+		        	aux.Desapilar();
+		        }
+		        
+		        
+		     
 	    }
 	    /**@TAREA Invertir el contenido de una pila
 	     * @PARAMETRO pila original
@@ -42,6 +47,7 @@ public class Metodos {
 	        //origen = aux;
 		        CopiarPila(aux,origen);
 	    }
+		    
 		    /**@TAREA Contar la cantidad de elementos de una pila
 		     * @PARAMETRO pila a contar
 		     * @PRECONDICION pila iniciada
@@ -69,21 +75,21 @@ public class Metodos {
 	     * @PARAMETRO pila a sumar
 	     * @PRECONDICION pila iniciada
 	     * @DEVUELVE integer que representa la suma de los elementos
-	     * @POSTCONDICION Se pierden los datos de la pila**/
+	     * @POSTCONDICION none**/
 		    public int SumarElemPIla(PilaTDA origen) {
 		    int x = 0;
 		  //Agrego funcion para no perder pila original -Fedejp
 		    PilaTDA aux = new Pilas();
 	        aux.InicializarPila();
-	        while(!origen.PilaVacia()) {
-	            x += origen.Tope();
-	            aux.Apilar(origen.Tope());
-	            origen.Desapilar();
+	        while(!origen.PilaVacia()) { //mientras que la pila tenga elementos
+	            x += origen.Tope(); // se suma el valor del tope a x
+	            aux.Apilar(origen.Tope()); 	//se apila el tope en auxiliar
+	            origen.Desapilar(); //desapila en origen
 	        }
 	        while(!aux.PilaVacia()) {
 	        	origen.Apilar(aux.Tope());
 	        	aux.Desapilar();
-	        }
+	        } //se pasa la pila aux a origen
 	        return x;
 		}
 		    /**@TAREA Calcular promedio de los elementos de una pila
@@ -92,9 +98,9 @@ public class Metodos {
 		     * @DEVUELVE double que representa el promedio de los elementos
 		     * @POSTCONDICION none**/
 		public double PromedioElemPila(PilaTDA origen) {
-			int x = SumarElemPIla(origen);
-		    int y = ContarElemPila(origen);
-	        return(x/y);
+			int x = SumarElemPIla(origen); //x es la suma de elementos que devuelve el metodo
+		    int y = ContarElemPila(origen); //y es la cantidad de elementos que devuelve el metodo
+	        return(x/y); //se devuelve la divisi�n
 		}
 
 		/**@TAREA Copiar una cola en otra
@@ -115,11 +121,21 @@ public class Metodos {
 				aux.Desacolar(); 
 			}
 	    }
+		/**@TAREA Pasar una cola a otra
+		 * @PARAMETRO cola original, Cola destino
+		 * @PRECONDICON ambas Colas iniciadas
+		 * @POSTCONDICON Se pierde la cola original**/
+		public void PasarCola (ColaTDA origen, ColaTDA destino) {
+			while(!origen.ColaVacia()) {
+				destino.Acolar(origen.Primero());
+				origen.Desacolar();
+			}
+		}
 		
 		/**@TAREA Invertir una Cola con pilas auxiliares
 		 * @PARAMETRO cola original
 		 * @PRECONDICON Cola iniciada
-		 * @POSTCONDICON La cola se devolverï¿½ invertida**/
+		 * @POSTCONDICON La cola se devolvera invertida**/
 	    public void InvertirColaPila(ColaTDA origen) { // usando pilas auxiliares
 	        PilaTDA p = new Pilas();
 	        while (!origen.ColaVacia()) {
@@ -194,9 +210,35 @@ public class Metodos {
 		 * @PARAMETRO cola nro1
 		 * @PARAMETRO Cola nro2
 		 * @PRECONDICON Colas iniciadas
-		 * @POSTCONDICON none**/
-	    public void CompararFinal(ColaTDA ct1, ColaTDA ct2) {//editado para que no se pierdan las colas -Fedejp
-	        int y = 0, x = 0;
+		 * @POSTCONDICON none
+		 * @DEVUELVE Verdadero si los finales coinciden, Falso si no**/
+	    public boolean CompararFinal(ColaTDA c1, ColaTDA c2) {//editado para que no se pierdan las colas y se ajuste a la consigna -Fedejp
+	    	ColaTDA aux1 = new ColaPU();
+	    	ColaTDA aux2 = new ColaPU();
+	    	aux1.InicializarCola();
+	    	aux2.InicializarCola();
+	    	int x = ContarElemCola(c1);
+	    	int fin = ContarElemCola(c2);
+	    	boolean iguales=true;
+	    	CopiarCola(c1, aux1);
+	    	CopiarCola(c2, aux2);
+	    	while(x>fin) {//hasta que aux1 tenga la misma cantidad de elementos que aux2
+	    		aux1.Desacolar();//se desacola el primero
+	    		x--;
+	    	}
+	    	while(!aux1.ColaVacia()&&iguales) {//Mientras que las colas tengan elementos y sean iguales
+	    		if(aux1.Primero()!=aux2.Primero())//Si los primeros son distintos
+	    			iguales=false;//dejan de ser iguales
+	    		else {//si los primeros son iguales
+	    			aux1.Desacolar(); //paso al siguiente valor
+	    			aux2.Desacolar();
+	    		}
+	    	return iguales; //devuelvo segun corresponde
+	    	}
+	    }
+	    	
+	    	
+	    	/*int y = 0, x = 0;
 	        ColaTDA aux =new ColaPU();
 	        ColaTDA aux2 =new ColaPU();
 	        aux.InicializarCola();
@@ -217,7 +259,7 @@ public class Metodos {
 	            System.out.println("Son diferentes!");
 	        }
 	    }
-
+*/
 	    /**@TAREA Verificar si la cola es capicua
 		 * @PARAMETRO cola nro1
 		 * @PRECONDICON Cola iniciada
@@ -246,19 +288,25 @@ public class Metodos {
 		 * @PARAMETRO cola nro1
 		 * @PARAMETRO cola nro2
 		 * @PRECONDICON Colas iniciadas
-		 * @POSTCONDICON Las colas se perderan ARREGLAR ESTO**/
+		 * @POSTCONDICON none**/
 	    public void ColaCompararInverso(ColaTDA cp1, ColaTDA cp2) {
 	        int iguales = 1;
-	        InvertirColaPila(cp2);
-	        while (iguales == 1 && !cp1.ColaVacia() && !cp2.ColaVacia()) {
+	        ColaTDA aux1 = new ColaPU();
+	        ColaTDA aux2 = new ColaPU();
+	        aux1.InicializarCola();
+	        aux2.InicializarCola();
+	        CopiarCola(cp1,aux1);
+	        CopiarCola(cp2,aux2);
+	        InvertirColaPila(aux2);
+	        while (iguales == 1 && !aux1.ColaVacia() && !aux2.ColaVacia()) {
 	            iguales = 0;
-	            if (cp1.Primero() == cp2.Primero()) {
+	            if (aux1.Primero() == aux2.Primero()) {
 	                iguales = 1;
 	            }
-	            cp1.Desacolar();
-	            cp2.Desacolar();
+	            aux1.Desacolar();
+	            aux2.Desacolar();
 	        }
-	        if (cp1.ColaVacia() && cp2.ColaVacia() && iguales == 1) {
+	        if (aux1.ColaVacia() && aux2.ColaVacia() && iguales == 1) {
 	            System.out.println("Una cola es inversa de la otra");
 	        } else {
 	            System.out.println("No son inversas");
@@ -300,13 +348,28 @@ public class Metodos {
 	    	}
 	    }
 	
-	   //TP 3 - 2.B. -BIZK (11/04/2018)
+	   //TP 3 - 2.B. -BIZK (11/04/2018) -Corregido por Fedejp (21/05/18)
 	    /**@TAREA Partir una cola dos mitades M1 y M2 de elementos consecutivos
-		 * @PARAMETRO cola nro1
-		 * @PRECONDICON Colas iniciadas
-		 * @POSTCONDICON 2 Colas que seran las mitades de la cola 1**/
-	    public void ColaPartir(ColaTDA cp1) {
-	    	ColaTDA M1 = new ColaPU(); //Al ser los ultimos los que sacamos sera la primer parte
+		 * @PARAMETRO cola a partir, dos colas para guardar las mitades
+		 * @PRECONDICON Colas iniciadas, cantidad de elementos par
+		 * @POSTCONDICON La cola original se pierde, las dos mitades se llenan**/
+	    public void ColaPartir(ColaTDA cp1, ColaTDA M1, ColaTDA M2) {
+	    	int x= ContarElemCola(cp1);
+	    	int cont=0;
+	    	while(!cp1.ColaVacia()) {//mientras que la cola tenga elementos
+	    		if(cont<= (x/2))//Si se iteraron menos de la mitad de la cantidad de elementos de la cola
+	    			M1.Acolar(cp1.Primero()); //se agregan a la primer mitad
+	    		else
+	    			M2.Acolar(cp1.Primero()); //se agregan a la segunda
+	    		cp1.Desacolar();
+	    		cont++;
+	    	}
+	    		
+	    	
+	    }
+	    	
+	    	
+	    	/*ColaTDA M1 = new ColaPU(); //Al ser los ultimos los que sacamos sera la primer parte
 	    	ColaTDA M2 = new ColaPI(); //Al ser los primeros los que sacamos sera la segunda parte
 	    	
 	    	//Copiamos ambas colas
@@ -325,15 +388,15 @@ public class Metodos {
 		    		M2.Desacolar();
 		    	}
 	    	} else {
-	    		System.out.println("Lo sentimos no se poede partir por que no tenemos un numero par de elementos.");
+	    		System.out.println("Lo sentimos no se puede partir por que no tenemos un numero par de elementos.");
 	    	}
 	    }
-	
+	*/
 	    /**@TAREA Genera una cola con las repeticiones de elementos
-`		 * @PARAMETRO cola nro1
+`		 * @PARAMETRO cola origen, cola para mostrar los repetidos.
 	 	 * @PRECONDICON Colas iniciadas
-	 	 * @POSTCONDICON nueva cola con colas generadas**/
-	 	public void ColaGenerarRepetidos(ColaTDA cp1) {
+	 	 * @POSTCONDICON none**/
+	 	public void ColaGenerarRepetidos(ColaTDA cp1, ConjuntoTDA repeticiones) {
 	 		ColaTDA aux = new ColaPI();
 	 	   	ColaTDA aux2 = new ColaPI();
 	 	   	ColaTDA aux3 = new ColaPI();
@@ -355,78 +418,94 @@ public class Metodos {
 	 		   	}
 	 		   	aux.Desacolar(); //Desacolamos aux para comparar el siguiente numero
 	 	   	}
+	 	   	while(!aux3.ColaVacia()) {
+	 	   		repeticiones.AgregarConjunto(aux3.Primero());
+	 	   		aux3.Desacolar();
+	 	   	}
+	 	   	
 	 	}
-
-		public ColaPrioridadTDA CopiarColaPri(ColaPrioridadTDA origen) {
+	 	
+	 	/**@TAREA Copia una Cola prioridad en otra
+		 * @PARAMETRO cola origen, cola destino.
+	 	 * @PRECONDICON Colas iniciadas
+	 	 * @POSTCONDICON none**/
+		public ColaPrioridadTDA CopiarColaPri(ColaPrioridadTDA origen, ColaPrioridadTDA destino) {
 			ColaPrioridadTDA aux = new ColaPrioridadDA();
-			ColaPrioridadTDA aux2 = new ColaPrioridadDA();
 			aux.InicializarCola();
-			aux2.InicializarCola();
 			while(!origen.ColaVacia()) {
 				aux.AcolarPrioridad(origen.Primero(), origen.Prioridad());
 				origen.Desacolar();
 			}
 			while(!aux.ColaVacia()) {
-				aux2.AcolarPrioridad(aux.Primero(), aux.Prioridad());
+				destino.AcolarPrioridad(aux.Primero(), aux.Prioridad());
 				origen.AcolarPrioridad(aux.Primero(), aux.Prioridad());
 				aux.Desacolar();
 			}
-			
-			return aux2;
 			
 		}
 		
 		/**@TAREA Combinar colas con prioridad, donde los elementos de la primera tendrï¿½n mï¿½s prioridad que los de la segunda
 		 * @PARAMETRO cola nro1, de mayor prioridad
 		 * @PARAMETRO cola nro2
+		 * @PARAMETRO Cola destino
 		 * @PRECONDICON Colas iniciadas
-		 * @POSTCONDICON Checkear si la cola se pierde**/
-	    public void CombinarColasPrioridad (ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
+		 * @POSTCONDICON Las colas originales se pierden**/
+	    public void CombinarColasPrioridad (ColaPrioridadTDA CP1, ColaPrioridadTDA CP2, ColaPrioridadTDA destino) {
 
-	        //Inicializamos ambas colas
+	       /* //Inicializamos ambas colas
 	        CP1.InicializarCola();
 	        CP2.InicializarCola();
 
 	        //Creamos la cola auxiliar y la inicializamos
 	        ColaPrioridadTDA AUX = new ColaPrioridadDA();
-	        AUX.InicializarCola();
+	        AUX.InicializarCola();*/
 
 	        //Ya que la primer cola tiene prioridad realizamos el proceso hasta que esta se vacie
 	        while (!CP1.ColaVacia()) {
 	            if (CP1.Prioridad() >= CP2.Prioridad()) { //Si la cola 1 tiene mayor prioridad o es igual, la acolamos primero
-	                AUX.AcolarPrioridad(CP1.Primero(), CP1.Prioridad());
+	                destino.AcolarPrioridad(CP1.Primero(), CP1.Prioridad());
 	                CP1.Desacolar();
 	            } else { //Si no acolamos la cola 2
-	                AUX.AcolarPrioridad(CP2.Primero(), CP2.Prioridad());
+	                destino.AcolarPrioridad(CP2.Primero(), CP2.Prioridad());
 	                CP2.Desacolar();
 	            }
 	        }
 
 
-	        if (!CP2.ColaVacia()) { //Si salimos de la cola 1 pero nos quedo data en la segunda
+	        //if (!CP2.ColaVacia()) { //Si salimos de la cola 1 pero nos quedo data en la segunda
 	            while (!CP2.ColaVacia()) { //Cargamos el resto de la info hasta que nos quedemos sin la misma
-	                AUX.AcolarPrioridad(CP2.Primero(), CP2.Prioridad());
+	                destino.AcolarPrioridad(CP2.Primero(), CP2.Prioridad());
 	                CP2.Desacolar();
 	            }
-	        }
+	        //}
 	    }
 
-	    /**@TAREA Verificar que dos colas sean identicas
-		 * @PARAMETRO cola nro1
-		 * @PARAMETRO cola nro2
-		 * @PRECONDICON Colas iniciadas
+	    /**@TAREA Verificar que dos colas prioridad sean identicas
+		 * @PARAMETRO cola prioridad nro1
+		 * @PARAMETRO cola prioridad nro2
+		 * @PRECONDICON Colas prioridad iniciadas
 		 * @POSTCONDICON Las colas se pierden ARREGLAR ESTO**/
-	    public void ComprobarIdentidad (ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
-	      // ColaPrioridadDA AuxCP1 = new ColaPrioridadDA();
-	      // ColaPrioridadDA AuxCP2 = new ColaPrioridadDA();
-	       // Se pierden las colas ya que no tenemos el metodo de copiar
-	    	// Por lo tanto con el metodo copiar podriamos pasar las colas originalres a un auxuliar
+	    public boolean ComprobarIdentidad (ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
+	      ColaPrioridadDA aux1 = new ColaPrioridadDA();
+	      ColaPrioridadDA aux2 = new ColaPrioridadDA();
+	       CopiarColaPri(CP1, aux1);
+	       CopiarColaPri(CP2, aux2);
+	       boolean iguales=true;
 	       
-	        while (!CP1.ColaVacia() && !CP2.ColaVacia() && CP1.Primero() == CP2.Primero() && CP1.Prioridad() == CP2.Prioridad()) {
-	            CP1.Desacolar(); //Mientras ninguna termine antes que la otra, sus numeros y sus prioridades sean iguales
-	            CP2.Desacolar(); // vamos desacolando.
+	       while(iguales && !aux1.ColaVacia() && !aux2.ColaVacia())
+	       {
+	    	   if(aux1.Primero()!=aux2.Primero()||aux1.Prioridad()!=aux2.Prioridad())
+	    		   iguales=false;
+	    	   aux1.Desacolar();
+	    	   aux2.Desacolar();
+	       }
+	       return iguales;
+	       
+	        /*while (!aux1.ColaVacia() && !aux2.ColaVacia() && aux1.Primero() == aux2.Primero() && aux1.Prioridad() == aux2.Prioridad()) {
+	            aux1.Desacolar(); //Mientras ninguna termine antes que la otra, sus numeros y sus prioridades sean iguales
+	            aux2.Desacolar(); // vamos desacolando.
 	        }
-
+	        
 	        if (CP1.Primero() != CP2.Primero()) { //Chequeamos que no haya salido por numeros diferentes
 	            System.out.println("Son distintas");
 	        } else {
@@ -442,19 +521,20 @@ public class Metodos {
 	                    System.out.println("Son iguales!");
 	                }
 	            }
-	        }
+	        }*/
 	    }
-		/**@PARAMETROS: Conjunto Origen, Conjunto destino
+		/**@TAREA Copiar un conjunto en otro
+		 * @PARAMETROS: Conjunto Origen, Conjunto destino
 		 * @precondicion: conjuntos inicializados
 		 * @POSTCONDICION: **/
 		public ConjuntoTDA CopiarConjunto(ConjuntoTDA origen, ConjuntoTDA destino) {
 			PilaTDA aux = new Pilas();
 			aux.InicializarPila();
-			while(!origen.ConjuntoVacio()) {
+			while(!origen.ConjuntoVacio()) {//se pasan todos los elementos de un conjunto a una pila auxiliar
 				aux.Apilar(origen.ElegirConjunto());
 				origen.SacarConjunto(origen.ElegirConjunto());
 			}
-			while(!aux.PilaVacia()) {
+			while(!aux.PilaVacia()) { //se agregan a los dos conjuntos en simultaneo desde la pila
 				destino.AgregarConjunto(aux.Tope());//de esta forma, los conjuntos son copias exactas en elementos y orden
 				origen.AgregarConjunto(aux.Tope());
 				aux.Desapilar();
@@ -531,7 +611,7 @@ public class Metodos {
 			
 		}
 		//TP 3 - 5.A. Carlos Santiago YANZON -BIZK (14/04/2018)
-	    /**@TAREA Generar un dicconario multiple en base a ods diccionarios multiples D1 y D3
+	    /**@TAREA Generar un dicconario multiple en base a dos diccionarios multiples D1 y D2
 		 * @PARAMETRO diccionario 1 y 2
 		 * @PRECONDICON Diccionarios iniciados.
 		 * @POSTCONDICON 1 Diccionario multiple
@@ -551,15 +631,18 @@ public class Metodos {
 			valoresd02.InicializarConjunto();
 			
 			// Obtenemos todas las claves de cada conjunto
-			clavesd01 = D01.claves();
-			clavesd02 = D02.claves();
+			CopiarConjunto(D01.claves(),clavesd01);
+			CopiarConjunto(D02.claves(),clavesd02);
+			/*clavesd01 = D01.claves();
+			clavesd02 = D02.claves();*/
 			
 			
 			int clave, valor;
 			//obtenemos los valores de dichas claves
 			while(!clavesd01.ConjuntoVacio()) { //Recorremos todas las claves
 				clave = clavesd01.ElegirConjunto();  //Sacamaos una clave
-				valoresd01 = D01.Recuperar(clave); //Con esa clave obtenemos el conjunto de valores
+				CopiarConjunto(D01.Recuperar(clave),valoresd01); //Con esa clave obtenemos el conjunto de valores
+				//valoresd01 = D01.Recuperar(clave);
 				while(!valoresd01.ConjuntoVacio()) { //Recorremos el conjunto de valores
 					valor = valoresd01.ElegirConjunto(); // Obtenemos un valor
 					dic.Agregar(clave, valor); //Agregamos la clave y el valor
@@ -570,7 +653,8 @@ public class Metodos {
 			
 			while(!clavesd02.ConjuntoVacio()) { //Recorremos todas las claves
 				clave = clavesd02.ElegirConjunto();  //Sacamaos una clave
-				valoresd02 = D02.Recuperar(clave); //Con esa clave obtenemos el conjunto de valores
+				CopiarConjunto(D02.Recuperar(clave),valoresd02); //Con esa clave obtenemos el conjunto de valores
+				//valoresd02 = D02.Recuperar(clave); 
 				while(!valoresd02.ConjuntoVacio()) { //Recorremos el conjunto de valores
 					valor = valoresd02.ElegirConjunto(); // Obtenemos un valor
 					dic.Agregar(clave, valor); //Agregamos la clave y el valor
@@ -580,7 +664,7 @@ public class Metodos {
 			}			
 		}
 	
-		//TP 3 - 5.B. //ESTA NO PUDE AUNQU CROE QUE ES LO MISMO QUE EL D.
+		//TP 3 - 5.B. //ESTA NO PUDE AUNQU CROE QUE ES LO MISMO QUE EL D. -Efectivamente, lo es. Fedejp
 	    /**@TAREA Generar un dicconario multiple en base a los elementos en comun de los diccionarios multiples D1 y D3
 		 * @PARAMETRO diccionario 1 y 2
 		 * @PRECONDICON Diccionarios iniciados.
@@ -590,7 +674,7 @@ public class Metodos {
 		**/
 		
 		//TP 3 - 5.C. -Carlos Santiago YANZON -BIZK (14/04/2018)
-	    /**@TAREA Generar un dicconario multiple en base a dos diccionarios multiples D1 y D3 el cual tendra
+	    /**@TAREA Generar un dicconario multiple en base a dos diccionarios multiples D1 y D2 el cual tendra
 	     * 		  todos los valores de las claves en comun
 		 * @PARAMETRO diccionario 1 y 2
 		 * @PRECONDICON Diccionarios iniciados.
@@ -697,7 +781,7 @@ public class Metodos {
 			}
 			
 		}
-	}
+		
 	//TP 3 - 3.a.b Salvioli (17/04/2018)
     /**@TAREA calcular diferencias simetricas sin operaciones
 	 * @PARAMETRO conjunto
