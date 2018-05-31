@@ -233,8 +233,8 @@ public class Metodos {
 	    			aux1.Desacolar(); //paso al siguiente valor
 	    			aux2.Desacolar();
 	    		}
-	    	return iguales; //devuelvo segun corresponde
 	    	}
+	    	return iguales; //devuelvo segun corresponde
 	    }
 	    	
 	    	
@@ -429,7 +429,7 @@ public class Metodos {
 		 * @PARAMETRO cola origen, cola destino.
 	 	 * @PRECONDICON Colas iniciadas
 	 	 * @POSTCONDICON none**/
-		public ColaPrioridadTDA CopiarColaPri(ColaPrioridadTDA origen, ColaPrioridadTDA destino) {
+		public void CopiarColaPri(ColaPrioridadTDA origen, ColaPrioridadTDA destino) {
 			ColaPrioridadTDA aux = new ColaPrioridadDA();
 			aux.InicializarCola();
 			while(!origen.ColaVacia()) {
@@ -790,25 +790,23 @@ public class Metodos {
 	**/
 	public ConjuntoTDA DiferenciaSimetricaSinOperaciones(ConjuntoTDA c1,ConjuntoTDA c2){
 		ConjuntoTDA ResultadoDifSimetrica = new ConjuntoLD();
-	//	ResultadoDifSimetrica.InicializarConjunto();
+		ResultadoDifSimetrica.InicializarConjunto();
+		int elemento;
 		
 		while (!c1. ConjuntoVacio()){
-			int elemento = c1.Elegir();
-			if (!c2. Pertenece(elemento)){
-			ResultadoDifSimetrica.Agregar(elemento);
-			}
+			elemento = c1.ElegirConjunto(); //toma un elemento
+			if (!c2. PerteneceConjunto(elemento)){ //Si el elemento pertenece a C1 y no a c2
+				ResultadoDifSimetrica.AgregarConjunto(elemento); //Se agrega a la diferencia simetrica
+				}
 			else {
-			c2.Sacar(elemento);
-			}
-			c1. Sacar(elemento);
+				c2.SacarConjunto(elemento);
+				}
+			c1. SacarConjunto(elemento);
 			}
 		
 		while(!c2.ConjuntoVacio()){
-			int elemento = c2.Elegir();
-			ResultadoDifSimetrica.Agregar(elemento);
-			c1.SacarConjunto(elemento); //revisar
-			
-			
+			elemento = c2.ElegirConjunto();
+			ResultadoDifSimetrica.AgregarConjunto(elemento);
 		}
 		return ResultadoDifSimetrica;
 	
@@ -823,10 +821,15 @@ public class Metodos {
 	**/
 	public ConjuntoTDA DiferenciaSimetricaConOperaciones(ConjuntoTDA c1,ConjuntoTDA c2) {
 		
-		api.ConjuntoTDA ResDiferenciaSimetricaConOp =new ConjuntoLD;
-		ResDiferenciaSimetricaConOp.InicializarConjunto();
-	
-		while(!c1.ConjuntoVacio()) {
+		api.ConjuntoTDA ResDiferenciaSimetricaConOp = UnionConjunto(c1,c2);
+		api.ConjuntoTDA auxInter = InterseccionConjunto(c1,c2);
+		
+		while(!auxInter.ConjuntoVacio()) {
+			ResDiferenciaSimetricaConOp.SacarConjunto(auxInter.ElegirConjunto());
+			auxInter.SacarConjunto(auxInter.ElegirConjunto());
+		}
+		
+		/*while(!c1.ConjuntoVacio()) {
 			int elemento=c1.ElegirConjunto()
 			if (!c2. Pertenece(elemento)){
 				ResDiferenciaSimetricaConOp.UnionConjunto(elemento);
@@ -845,11 +848,7 @@ public class Metodos {
 		
 		}
 	
-	
-	
-	
-	
-	
+	*/
 	return ResDiferenciaSimetricaConOp;
 	}
 
@@ -861,27 +860,106 @@ public class Metodos {
 **/
 
 public boolean VerificarIgualdadconjuntos(ConjuntoTDA c1,api.ConjuntoTDA c2){
-	api.ConjuntoTDA Conjunto1 =new ConjuntoLD;
-	api.ConjuntoTDA Conjunto2 =new ConjuntoLD;
+	api.ConjuntoTDA Conjunto1 =new ConjuntoLD();
+	api.ConjuntoTDA Conjunto2 =new ConjuntoLD();
 	Conjunto1.InicializarConjunto();
 	Conjunto2.InicializarConjunto();
+	CopiarConjunto(c1,Conjunto1);
+	CopiarConjunto(c2,Conjunto2);
+
+	int x,a=1;
 	
-	int x,y,a;
 	
-	
-	while(!c1.ConjuntoVacio()){
-	c1.SacarConjunto(x);
-	while(!c2.ConjuntoVacio()){
-		c2.SacarConjunto(y);
-		if(x!=y)
-		a=1;
+	while(!Conjunto1.ConjuntoVacio()&&a==1){
+		x=Conjunto1.ElegirConjunto();
+		if(!c2.PerteneceConjunto(x))
+			a=0;
+		else {
+			Conjunto1.SacarConjunto(x);
+			Conjunto2.SacarConjunto(x);
 			}
 		}
-	if(a!=1){
-	return false;
+		
+	if(a!=0||!Conjunto2.ConjuntoVacio()){
+		return false;
+	}else {
+		return true;
+	}
+}
+//TP3 pto 3-e FedeP
+/**@TAREA Calcular elementos Conjunto
+ * @PARAMETRO ConjuntoTDA
+ * @PRECONDICON Conjunto inicializado
+ * @POSTCONDICON none
+ * @DEVUELVE Integer**/
+public int ContarConjunto(ConjuntoTDA c1) {
+	ConjuntoTDA aux = new ConjuntoLD();
+	int cont=0;
+	aux.InicializarConjunto();
+	CopiarConjunto(c1,aux);
+	while(!aux.ConjuntoVacio()) {
+		cont++;
+		aux.SacarConjunto(aux.ElegirConjunto());
+	}
+	return cont;
+}
+
+//TP3 Pto 3-F Fedep
+/**@TAREA Generar conjunto a partir de colas y pilas
+ * @PARAMETRO ColaTDA,PilaTDA
+ * @PRECONDICON Cola y pila inicializada
+ * @POSTCONDICON none
+ * @DEVUELVE ConjuntoTDA**/
+public ConjuntoTDA ConjuntoColaPila(ColaTDA C, PilaTDA P) {
+	ConjuntoTDA Colaconjunto =new ConjuntoLD();
+	ConjuntoTDA Pilaconjunto =new ConjuntoLD();
+	PilaTDA auxp = new Pilas();
+	ColaTDA auxc = new ColaPU();
+	Colaconjunto.InicializarConjunto();
+	Pilaconjunto.InicializarConjunto();
+	auxp.InicializarPila();
+	auxc.InicializarCola();
+	CopiarPila(P,auxp);
+	CopiarCola(C,auxc);
+	while(!auxp.PilaVacia()) {
+		Pilaconjunto.AgregarConjunto(auxp.Tope());
+		auxp.Desapilar();
+	}
+	while(!auxc.ColaVacia()) {
+		Colaconjunto.AgregarConjunto(auxc.Primero());
+		auxc.Desacolar();
+	}
+	return InterseccionConjunto(Colaconjunto,Pilaconjunto);
+	
+}
+//Tp3 3-G FedeP
+/**@TAREA determinar los elementos de una pila P son los mismos que los de una cola C
+ * @PARAMETRO Pila, Cola
+ * @PRECONDICON Ambas inicializadas
+ * @POSTCONDICON none
+ * @DEVUELVE true or false**/
+public boolean MismoPilaCola(PilaTDA P, ColaTDA C) {
+	ConjuntoTDA Colaconjunto =new ConjuntoLD();
+	ConjuntoTDA Pilaconjunto =new ConjuntoLD();
+	PilaTDA auxp = new Pilas();
+	ColaTDA auxc = new ColaPU();
+	Colaconjunto.InicializarConjunto();
+	Pilaconjunto.InicializarConjunto();
+	auxp.InicializarPila();
+	auxc.InicializarCola();
+	CopiarPila(P,auxp);
+	CopiarCola(C,auxc);
+	while(!auxp.PilaVacia()) {
+		Pilaconjunto.AgregarConjunto(auxp.Tope());
+		auxp.Desapilar();
+	}
+	while(!auxc.ColaVacia()) {
+		Colaconjunto.AgregarConjunto(auxc.Primero());
+		auxc.Desacolar();
 	}
 	
-	return true;
+	return (VerificarIgualdadconjuntos(Pilaconjunto,Colaconjunto));
+	
 }
 		//TP4 3-A gonza 05/05/18
 		/**@TAREA determinar si un elemento esta o no en el AB
@@ -1005,6 +1083,22 @@ public boolean VerificarIgualdadconjuntos(ConjuntoTDA c1,api.ConjuntoTDA c2){
 			return (arbol.Raiz() + SumaElementos(arbol.HijoIzq()) + SumaElementos(arbol.HijoDer()));
 		}
 	}
+	  //TP3 punto 4-A 27/04/18 gonza
+    /**@TAREA generar diccionario multiple que recupere todas las prioridades de un valor
+	 * @PARAMETRO cola prioridad c
+	 * @PRECONDICON Cola iniciada
+	 * @devuelve un diccionario multiple**/
+    public DiccionarioMultipleTDA ColaADiccionarioValoresClave(ColaPrioridadTDA C) {
+    	DiccionarioMultipleTDA dicAUX = new DicMultipleA();
+		dicAUX.InicializarDiccionario();
+		while(!C.ColaVacia()) {
+			dicAUX.Agregar(C.Primero(),C.Prioridad());
+			C.Desacolar();
+		}
+		return dicAUX; 		  
+    }	    
+
+	
 	//TP 4 - 3.g Salvioli (09/05/2018)
 	/**@TAREA calcular cantidad de hojas de un arbol
 	* @PARAMETRO arbol
@@ -1120,12 +1214,12 @@ mayores que k
 		ConjuntoTDA rI = nodos(a.HijoIzq() );
 		ConjuntoTDA rD = nodos(a.HijoDer() );
 		while(! rI. ConjuntoVacio () ){
-		int x = rI.Elegir();
+		int x = rI.ElegirConjunto());
 		r.Agregar(x);
 		rI.Sacar(x);
 		}
 		while(!rD.ConjuntoVacio () ){
-		int x = rD.Elegir();
+		int x = rD.ElegirConjunto());
 		r.Agregar(x);
 		rD.Sacar(x);
 		}
