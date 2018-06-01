@@ -35,5 +35,11 @@ public interface DiccionarioSimpleTDA {
 	* */
 	int Recuperar(int clave);
 	
+	/** @TAREA Generar un conjunto con las claves del Diccionario Simple
+	* @PARAMETRO Diccionario Simple
+	* @PRECONDICION Diccionario inicializado
+	* @DEVUELVE ConjuntoTDA
+	* @POSTCONDICION none
+	* */
 	ConjuntoTDA Claves();
 }
