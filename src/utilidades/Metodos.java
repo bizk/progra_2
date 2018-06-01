@@ -113,6 +113,121 @@ public class Metodos {
 		return (x / y); // se devuelve la división
 	}
 
+	//TP 3 - 1.A Cerfoglio (29/05/2018)
+		/**@TAREA comprobar si una pila es capicua
+		* @PARAMETRO 
+		* @PRECONDICON 
+		* @POSTCONDICON 
+		**/
+	public boolean EsCapicua (PilaTDA P){
+		boolean capi = true, par;
+		int cant, mitad;
+		PilaTDA aux = new Pilas();
+		aux.InicializarPila();
+		PilaTDA aux2 = new Pilas();
+		aux2.InicializarPila();
+		CopiarPila(P, aux);
+		cant = ContarElemPila(aux);
+		mitad = cant / 2;
+		par = (cant % 2 == 0);
+		while(mitad > 0){
+			aux.Apilar(aux2.Tope());
+			aux2.Desapilar();
+			mitad--;
+		}
+		if(!par){
+			aux2.Desapilar();
+		}
+		while(!aux2.PilaVacia()){
+			if(aux2.Tope() != aux.Tope()){
+				capi = false;
+			}
+			aux2.Desapilar();
+			aux.Desapilar();
+		}
+		return capi;
+	}
+
+	//TP 3 - 1.B Cerfoglio (30/05/2018)
+		/**@TAREA eliminar elementos repetidos
+		* @PARAMETRO 
+		* @PRECONDICON 
+		* @POSTCONDICON 
+		**/
+	public void EliminarElemRepetidos(PilaTDA P){
+		PilaTDA aux = new Pilas();
+		aux.InicializarPila();
+		PilaTDA aux2 = new Pilas();
+		aux2.InicializarPila();
+		CopiarPila(P, aux);
+		ConjuntoTDA elementos = new ConjuntoUA();
+		elementos.InicializarConjunto();
+		while(!aux.PilaVacia()){
+			aux2.Apilar(aux.Tope());
+			aux.Desapilar();
+		}
+		while(!aux2.PilaVacia()){
+			if(!elementos.PerteneceConjunto(aux2.Tope())){
+				elementos.AgregarConjunto(aux2.Tope());
+				aux.Apilar(aux2.Tope());
+				aux2.Desapilar();
+			}
+			else{
+				aux2.Desapilar();
+			}
+		}
+	}
+
+	//TP 3 - 1.C Cerfoglio (30/05/2018)
+		/**@TAREA repartir pila en dos mitades
+		* @PARAMETRO 
+		* @PRECONDICON 
+		* @POSTCONDICON 
+		**/
+	public void DividirPila(PilaTDA P){
+		int cant;
+		PilaTDA aux = new Pilas();
+		aux.InicializarPila();
+		PilaTDA M1 = new Pilas();
+		M1.InicializarPila();
+		PilaTDA M2 = new Pilas();
+		M2.InicializarPila();
+		CopiarPila(P, aux);
+		InvertirPila(aux);
+		cant = ContarElemPila(aux);
+		for(int i = 0; i < cant / 2; i++){
+			M2.Apilar(aux.Tope());
+			aux.Desapilar();
+		}
+		for(int i = (cant / 2) + 1; i < cant; i++){
+			M1.Apilar(aux.Tope());
+			aux.Desapilar();
+		}
+	}
+
+	//TP 3 - 1.D Cerfoglio (31/05/2018)
+		/**@TAREA generar conjunto de elementos repetidos en pila
+		* @PARAMETRO 
+		* @PRECONDICON 
+		* @POSTCONDICON 
+		**/
+	public ConjuntoTDA ElementosRepetidos (PilaTDA P){
+			ConjuntoTDA repetidos = new ConjuntoUA(); 
+			repetidos.InicializarConjunto();
+			ConjuntoTDA aux = new ConjuntoUA(); 
+			aux.InicializarConjunto();
+			while (!P.PilaVacia()){
+				if (!aux.PerteneceConjunto(P.Tope())){
+					aux.AgregarConjunto(P.Tope());
+				}
+				else{
+					repetidos.AgregarConjunto(P.Tope());
+				}
+				P.Desapilar();
+			}
+			return repetidos;
+		}
+
 	/**
 	 * @TAREA Copiar una cola en otra
 	 * @PARAMETRO cola original
