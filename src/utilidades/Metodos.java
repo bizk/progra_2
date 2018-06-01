@@ -115,9 +115,9 @@ public class Metodos {
 
 	//TP 3 - 1.A Cerfoglio (29/05/2018)
 		/**@TAREA comprobar si una pila es capicua
-		* @PARAMETRO 
-		* @PRECONDICON 
-		* @POSTCONDICON 
+		* @PARAMETRO PilaTDA
+		* @PRECONDICON Pila inicializada
+		* @POSTCONDICON None
 		**/
 	public boolean EsCapicua (PilaTDA P){
 		boolean capi = true, par;
@@ -150,19 +150,29 @@ public class Metodos {
 
 	//TP 3 - 1.B Cerfoglio (30/05/2018)
 		/**@TAREA eliminar elementos repetidos
-		* @PARAMETRO 
-		* @PRECONDICON 
-		* @POSTCONDICON 
+		* @PARAMETRO PilaTDA
+		* @PRECONDICON Pila Inicializada
+		* @POSTCONDICON Se eliminan las repeticiones, pero se respeta el orden original
 		**/
 	public void EliminarElemRepetidos(PilaTDA P){
 		PilaTDA aux = new Pilas();
 		aux.InicializarPila();
-		PilaTDA aux2 = new Pilas();
-		aux2.InicializarPila();
 		CopiarPila(P, aux);
 		ConjuntoTDA elementos = new ConjuntoUA();
 		elementos.InicializarConjunto();
 		while(!aux.PilaVacia()){
+			elementos.AgregarConjunto(aux.Tope());
+			aux.Desapilar();
+		}
+		while(!elementos.ConjuntoVacio())
+		{
+			aux.Apilar(elementos.ElegirConjunto());
+			elementos.SacarConjunto(elementos.ElegirConjunto());
+		}
+		CopiarPila(aux, P);
+		
+		
+		/*while(!aux.PilaVacia()){
 			aux2.Apilar(aux.Tope());
 			aux.Desapilar();
 		}
@@ -175,16 +185,18 @@ public class Metodos {
 			else{
 				aux2.Desapilar();
 			}
-		}
+		}*/
 	}
 
 	//TP 3 - 1.C Cerfoglio (30/05/2018)
 		/**@TAREA repartir pila en dos mitades
-		* @PARAMETRO 
-		* @PRECONDICON 
-		* @POSTCONDICON 
+		* @PARAMETRO PilaTDA
+		* @PRECONDICON Pila inicializada, cantidad de elementos 0 o par
+		* @POSTCONDICON Pila original almacena la primer mitad, pila devuelta con la segunda
+		* @DEVUELVE PilaTDA 
+		
 		**/
-	public void DividirPila(PilaTDA P){
+	public PilaTDA DividirPila(PilaTDA P){
 		int cant;
 		PilaTDA aux = new Pilas();
 		aux.InicializarPila();
@@ -203,27 +215,32 @@ public class Metodos {
 			M1.Apilar(aux.Tope());
 			aux.Desapilar();
 		}
+		CopiarPila(M1,P);
+		return M2;
 	}
 
 	//TP 3 - 1.D Cerfoglio (31/05/2018)
 		/**@TAREA generar conjunto de elementos repetidos en pila
-		* @PARAMETRO 
-		* @PRECONDICON 
-		* @POSTCONDICON 
+		* @PARAMETRO Pila 
+		* @PRECONDICON Pila inicializada
+		* @POSTCONDICON None
 		**/
 	public ConjuntoTDA ElementosRepetidos (PilaTDA P){
 			ConjuntoTDA repetidos = new ConjuntoUA(); 
 			repetidos.InicializarConjunto();
 			ConjuntoTDA aux = new ConjuntoUA(); 
 			aux.InicializarConjunto();
-			while (!P.PilaVacia()){
-				if (!aux.PerteneceConjunto(P.Tope())){
-					aux.AgregarConjunto(P.Tope());
+			PilaTDA Paux = new Pilas();
+			Paux.InicializarPila();
+			CopiarPila(P,Paux);
+			while (!Paux.PilaVacia()){
+				if (!aux.PerteneceConjunto(Paux.Tope())){
+					aux.AgregarConjunto(Paux.Tope());
 				}
 				else{
-					repetidos.AgregarConjunto(P.Tope());
+					repetidos.AgregarConjunto(Paux.Tope());
 				}
-				P.Desapilar();
+				Paux.Desapilar();
 			}
 			return repetidos;
 		}
