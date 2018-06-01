@@ -1,4 +1,4 @@
-package tps.tp1;
+package tps.tp2;
 
 import api.PilaTDA;
 import implementaciones.arreglos.*;
@@ -6,13 +6,13 @@ import utilidades.*;
 
 import java.util.Scanner;
 
-class testpila {
+class TestPilaLD {
 	public static void main(String[] args) {
 		Metodos m = new Metodos();
 
-		PilaTDA pila_a = new Pilas(); // Defoinimos algunas pilas a probar
-		PilaTDA pila_b = new Pilas();
-		PilaTDA pila_c = new Pilas();
+		PilaTDA pila_a = new PilaLD(); // Defoinimos algunas pilas a probar
+		PilaTDA pila_b = new PilaLD();
+		PilaTDA pila_c = new PilaLD();
 
 		pila_a.InicializarPila();
 		pila_b.InicializarPila();
@@ -23,6 +23,7 @@ class testpila {
 												// del teclado
 		int num;
 
+		System.out.println("### TEST: pila lista dinamica ###");
 		System.out.println("Ingrese numeros para la pila A");
 		for (int i = 0; i < 5; i++) {
 			num = ln.nextInt();
@@ -67,7 +68,7 @@ class testpila {
 	public static void mostrar(PilaTDA origen) {
 		Metodos m = new Metodos();
 
-		PilaTDA aux = new Pilas();
+		PilaTDA aux = new PilaLD();
 		aux.InicializarPila();
 		m.CopiarPila(origen, aux);
 		m.InvertirPila(aux);
@@ -77,4 +78,5 @@ class testpila {
 			aux.Desapilar();
 		}
 	}
+
 }

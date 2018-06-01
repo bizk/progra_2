@@ -6,13 +6,13 @@ import utilidades.*;
 
 import java.util.Scanner;
 
-class testpila {
+class TestPilaTI {
 	public static void main(String[] args) {
 		Metodos m = new Metodos();
 
-		PilaTDA pila_a = new Pilas(); // Defoinimos algunas pilas a probar
-		PilaTDA pila_b = new Pilas();
-		PilaTDA pila_c = new Pilas();
+		PilaTDA pila_a = new PilasTI(); // Defoinimos algunas PilasTI a probar
+		PilaTDA pila_b = new PilasTI();
+		PilaTDA pila_c = new PilasTI();
 
 		pila_a.InicializarPila();
 		pila_b.InicializarPila();
@@ -22,9 +22,10 @@ class testpila {
 		Scanner ln = new Scanner(System.in); // Creamos un objeto para leer info
 												// del teclado
 		int num;
+		float numdouble;
 
 		System.out.println("Ingrese numeros para la pila A");
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			num = ln.nextInt();
 			pila_a.Apilar(num);
 		}
@@ -62,12 +63,18 @@ class testpila {
 		num = m.SumarElemPIla(pila_a);
 		System.out.println(num);
 		mostrar(pila_a);
+		
+		System.out.println("Sacar promedio de una pila: ");
+		numdouble = m.PromedioElemPila(pila_a);
+		System.out.println(numdouble);
+		mostrar(pila_a);
+
 	}
 
 	public static void mostrar(PilaTDA origen) {
 		Metodos m = new Metodos();
 
-		PilaTDA aux = new Pilas();
+		PilaTDA aux = new PilasTI();
 		aux.InicializarPila();
 		m.CopiarPila(origen, aux);
 		m.InvertirPila(aux);

@@ -107,10 +107,12 @@ public class Metodos {
 	 * @DEVUELVE double que representa el promedio de los elementos
 	 * @POSTCONDICION none
 	 **/
-	public double PromedioElemPila(PilaTDA origen) {
-		int x = SumarElemPIla(origen); // x es la suma de elementos que devuelve el metodo
-		int y = ContarElemPila(origen); // y es la cantidad de elementos que devuelve el metodo
-		return (x / y); // se devuelve la división
+	public float PromedioElemPila(PilaTDA origen) {
+		float z;
+		float x = SumarElemPIla(origen); // x es la suma de elementos que devuelve el metodo
+		float y = ContarElemPila(origen); // y es la cantidad de elementos que devuelve el metodo
+		z = x/y;
+		return (z); // se devuelve la división
 	}
 
 	//TP 3 - 1.A Cerfoglio (29/05/2018)
@@ -729,7 +731,7 @@ public class Metodos {
 		aux2.InicializarConjunto();
 		uni.InicializarConjunto();
 		CopiarConjunto(C1, aux1);
-		CopiarConjunto(C1, aux2);
+		CopiarConjunto(C2, aux2);
 		while (!aux1.ConjuntoVacio()) {
 			uni.AgregarConjunto(aux1.ElegirConjunto());
 			aux1.SacarConjunto(aux1.ElegirConjunto());
@@ -754,18 +756,25 @@ public class Metodos {
 	public ConjuntoTDA DiferenciaConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
 		ConjuntoTDA aux1 = new ConjuntoUA();
 		ConjuntoTDA aux2 = new ConjuntoUA();
+		ConjuntoTDA aux3 = new ConjuntoUA();
 		aux1.InicializarConjunto();
 		aux2.InicializarConjunto();
+		aux3.InicializarConjunto();
 		CopiarConjunto(C1, aux1);
-		CopiarConjunto(C1, aux2);
+		CopiarConjunto(C2, aux2);
 		while (!aux2.ConjuntoVacio()) {
 			if (aux1.PerteneceConjunto(aux2.ElegirConjunto())) {
 				aux1.SacarConjunto(aux2.ElegirConjunto());
+			} else {
+				aux3.AgregarConjunto(aux2.ElegirConjunto());
 			}
 			aux2.SacarConjunto(aux2.ElegirConjunto());
 		}
-		return aux1;
-
+		while(!aux1.ConjuntoVacio()) {
+			aux3.AgregarConjunto(aux1.ElegirConjunto());
+			aux1.SacarConjunto(aux1.ElegirConjunto());
+		}
+		return aux3;
 	}
 
 	// TP 3 - 5.A. Carlos Santiago YANZON -BIZK (14/04/2018)

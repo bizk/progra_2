@@ -6,7 +6,7 @@ import utilidades.*;
 
 import java.util.Scanner;
 
-class testpila {
+class TestPilas {
 	public static void main(String[] args) {
 		Metodos m = new Metodos();
 
@@ -22,7 +22,8 @@ class testpila {
 		Scanner ln = new Scanner(System.in); // Creamos un objeto para leer info
 												// del teclado
 		int num;
-
+		float numdouble;
+		
 		System.out.println("Ingrese numeros para la pila A");
 		for (int i = 0; i < 5; i++) {
 			num = ln.nextInt();
@@ -61,6 +62,11 @@ class testpila {
 		System.out.print("\n Sumar elementos de una pila: ");
 		num = m.SumarElemPIla(pila_a);
 		System.out.println(num);
+		mostrar(pila_a);
+		
+		System.out.println("Sacar promedio de una pila: ");
+		numdouble = m.PromedioElemPila(pila_a);
+		System.out.println(numdouble);
 		mostrar(pila_a);
 	}
 
