@@ -1,3 +1,11 @@
+/** Costos implementación
+ *  Tamaño Máximo Acotado (TMA)
+*InicializarConjunto:  Constante
+*Agregar:  Constante
+*Sacar:  Constante
+*Pertenece:  Constante
+*Elegir:  Constante*/
+
 package implementaciones.arreglos;
 
 import api.ConjuntoTDA;

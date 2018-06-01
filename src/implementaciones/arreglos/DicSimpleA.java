@@ -1,3 +1,12 @@
+/*Costos de la implementacion
+ *DiccionarioSimple 
+*Inicializar diccionario: Constante 
+*Agregar: Lineal 
+*Eliminar: Lineal 
+*EliminarValor: - 
+*Recuperar: Lineal 
+*Claves: Lineal */
+
 package implementaciones.arreglos;
 
 import api.DiccionarioSimpleTDA;

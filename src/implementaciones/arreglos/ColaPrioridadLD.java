@@ -1,3 +1,12 @@
+/** Costos de la implementacion
+ *  Cola Prioridad con Listas dinámicas
+*InicializarColaPrioridad: Constante
+*AcolarPrioridad:  Lineal
+*Desacolar:  Constante
+*Primero:  Constante
+*ColaVacía: Constante
+*Prioridad: Constante*/
+
 package implementaciones.arreglos;
 
 import api.ColaPrioridadTDA;

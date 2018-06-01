@@ -1,3 +1,11 @@
+/*
+* Costos de la implementación
+* Pila Tope al Inicio 
+*InicializarPila :Constante
+*Apilar:  Lineal 
+*Desapilar:  Lineal 
+*Tope:Constante 
+*PilaVacía: Constante*/
 package implementaciones.arreglos;
 
 import api.PilaTDA;
@@ -19,7 +27,7 @@ public class PilasTI implements PilaTDA{
 	}
 
 	public void Desapilar(){
-		for(int 1 = 0; i < indice; i++)
+		for(int i = 0; i < indice; i++)
 			a[i]= a[i + 1];
 		indice--;
 	}

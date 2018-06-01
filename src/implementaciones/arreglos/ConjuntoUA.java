@@ -1,3 +1,11 @@
+/*Costos implementación
+ * *Conjunto Tamaño máximo no Acotado (UA) 
+*InicializarConjunto: Constante 
+*Agregar: Lineal 
+*Sacar: Lineal
+*Pertenece: Lineal 
+*Elegir: Constante */
+
 package implementaciones.arreglos;
 
 import api.ConjuntoTDA;

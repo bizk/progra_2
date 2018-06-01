@@ -1,3 +1,12 @@
+/*Costos de la implementacion
+ ColaPrioridad de Dos Arreglos
+*InicializarColaPrioridad: Constante 
+*AcolarPrioridad: Lineal (2.n) 
+*Desacolar: Constante 
+*Primero: Constante 
+*ColaVacía:Constante 
+*Prioridad:Constante*/
+
 package implementaciones.arreglos;
 
 import api.ColaPrioridadTDA;

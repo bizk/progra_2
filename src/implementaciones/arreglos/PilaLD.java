@@ -1,3 +1,11 @@
+/*Costos de la implementación
+ * Pila con Listas dinámicas
+*InicializarPila :Constante
+*Apilar:  Constante
+*Desapilar: Constante
+*Tope:  Constante
+*PilaVacía:  Constante*/
+
 package implementaciones.arreglos;
 
 import api.PilaTDA;

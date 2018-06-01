@@ -1,3 +1,12 @@
+/*Costo de la implementación
+ Diccionario Multiple
+*Inicializar diccionario:  Constante
+*Agregar:  Lineal
+*Eliminar:  Lineal
+*EliminarValor:  Lineal
+*Recuperar:  Lineal
+*Claves: Lineal*/
+
 package implementaciones.arreglos;
 
 import api.DiccionarioMultipleTDA;

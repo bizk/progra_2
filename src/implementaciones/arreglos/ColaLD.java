@@ -1,3 +1,10 @@
+/*Costos de la implementación 
+*Cola con Listas dinámicas
+*InicializarCola: Constante
+*Acolar: Constante
+*Desacolar: Constante
+*Primero: Constante
+*ColaVacía: Constante*/
 package implementaciones.arreglos;
 
 import api.ColaTDA;

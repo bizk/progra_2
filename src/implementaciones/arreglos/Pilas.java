@@ -1,3 +1,11 @@
+/*Costos de la implementacion
+*Pila Tope al Ultimo 
+*InicializarPila : Constante
+*Apilar: Constante 
+*Desapilar: Constante 
+*Tope: Constante 
+*PilaVacía: Constante */
+
 package implementaciones.arreglos;
 
 import api.PilaTDA;
