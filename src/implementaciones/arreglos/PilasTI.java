@@ -1,11 +1,17 @@
-/*
-* Costos de la implementación
+/**
+	@Autores:Santiago Cerfoglio
+	@Grupo:
+	@Costo de cada uno de los métodos de la implementación* 
 * Pila Tope al Inicio 
 *InicializarPila :Constante
 *Apilar:  Lineal 
 *Desapilar:  Lineal 
 *Tope:Constante 
 *PilaVacía: Constante*/
+
+
+
+
 package implementaciones.arreglos;
 
 import api.PilaTDA;

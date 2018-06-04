@@ -1,15 +1,16 @@
-/*Costos implementación
- * *Conjunto Tamaño máximo no Acotado (UA) 
+package implementaciones.arreglos;
+
+import api.ConjuntoTDA;
+/**@Autores:Federico J Parodi	
+	@Grupo:3
+	@Costo de cada uno de los métodos de la implementación
+	* *Conjunto Tamaño máximo no Acotado (UA) 
 *InicializarConjunto: Constante 
 *Agregar: Lineal 
 *Sacar: Lineal
 *Pertenece: Lineal 
-*Elegir: Constante */
-
-package implementaciones.arreglos;
-
-import api.ConjuntoTDA;
-/**@Author Federico Parodi **/
+*Elegir: Constante
+ **/
 public class ConjuntoUA extends ColaPU implements ConjuntoTDA {
 int vector[];
 int indice;

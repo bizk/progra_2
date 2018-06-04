@@ -1,6 +1,10 @@
 package api;
 
-/** @DEFINICION **/
+/**@Autores: Federico J. Parodi
+@Grupo: 3
+@TDA: Pila
+@Definición: Estructura donde los elementos se recuperan según First in, Last out.
+*/
 public interface PilaTDA {
 	
 	/** @TAREA iniciar_pila

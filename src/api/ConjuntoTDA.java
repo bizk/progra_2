@@ -1,5 +1,9 @@
 package api;
-/**@author Federico Parodi**/
+/**@Autores: Federico J. Parodi
+@Grupo: 3
+@TDA: Conjunto
+@Definición:Estructura que nos permite guardar elementos sin que se repitan y sin orden dado.
+*/
 public interface ConjuntoTDA {
 	/** @TAREA iniciar Conjunto
 	* @PARAMETRO none

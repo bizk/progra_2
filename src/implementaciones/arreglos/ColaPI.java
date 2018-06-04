@@ -1,10 +1,15 @@
-/*Costos de la implementación
- *  Cola Primero al Inicio 
-*InicializarCola:  Constante 
-*Acolar:  Constante 
-*Desacolar: Lineal
-*Primero: Constante 
-*ColaVacía: Constante */
+/**
+	@Autores: Gonazalo Bacigalupe
+	@Grupo: 3 
+	@Costo de cada uno de los métodos de la implementación
+ 	*  Cola Primero al Inicio 
+ 	*InicializarCola:  Constante 
+ 	*Acolar:  Constante 
+ 	*Desacolar: Lineal
+ 	*Primero: Constante 
+ 	*ColaVacía: Constante
+**/
+
 package implementaciones.arreglos;
 
 import api.ColaTDA;

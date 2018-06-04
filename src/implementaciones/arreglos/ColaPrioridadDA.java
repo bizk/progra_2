@@ -1,12 +1,15 @@
-/*Costos de la implementacion
- ColaPrioridad de Dos Arreglos
+
+/**@Autores: Santiago Salvioli
+	@Grupo: 3
+	@Costo de cada uno de los métodos de la implementación
+	 ColaPrioridad de Dos Arreglos
 *InicializarColaPrioridad: Constante 
 *AcolarPrioridad: Lineal (2.n) 
 *Desacolar: Constante 
 *Primero: Constante 
 *ColaVacía:Constante 
-*Prioridad:Constante*/
-
+*Prioridad:Constante
+*/
 package implementaciones.arreglos;
 
 import api.ColaPrioridadTDA;

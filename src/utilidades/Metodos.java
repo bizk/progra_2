@@ -2,6 +2,7 @@ package utilidades;
 
 import api.*;
 import implementaciones.arreglos.*;
+import implementaciones.listas.ConjuntoLD;
 
 public class Metodos {
 
@@ -11,6 +12,7 @@ public class Metodos {
 	 * @PARAMETRO pila destino
 	 * @PRECONDICON Ambas pilas iniciadas
 	 * @POSTCONDICON Se pierde la pila original
+	 * @COSTO Lineal
 	 **/
 	public void PasarPila(PilaTDA origen, PilaTDA destino) {
 		while (!origen.PilaVacia()) {
@@ -25,6 +27,7 @@ public class Metodos {
 	 * @PARAMETRO pila destino
 	 * @PRECONDICION Ambas pilas iniciadas
 	 * @POSTCONDICION none
+	 * * @COSTO Lineal
 	 **/
 	public void CopiarPila(PilaTDA origen, PilaTDA destino) {// Fedejp corregido
 		PilaTDA aux = new Pilas();
@@ -43,6 +46,7 @@ public class Metodos {
 	 * @PARAMETRO pila original
 	 * @PRECONDICIOn pila iniciada
 	 * @POSTCONDICON la pila original se devuelve invertida
+	 * * @COSTO Lineal
 	 **/
 	public void InvertirPila(PilaTDA origen) {
 		PilaTDA aux = new Pilas();
@@ -59,6 +63,7 @@ public class Metodos {
 	 * @PRECONDICION pila iniciada
 	 * @DEVUELVE integer que representa la cantidad de elementos
 	 * @POSTCONDICION none
+	 * * @COSTO Lineal
 	 **/
 	public int ContarElemPila(PilaTDA origen) {
 		int x = 0;
@@ -84,6 +89,7 @@ public class Metodos {
 	 * @PRECONDICION pila iniciada
 	 * @DEVUELVE integer que representa la suma de los elementos
 	 * @POSTCONDICION none
+	 * * @COSTO Lineal
 	 **/
 	public int SumarElemPIla(PilaTDA origen) {
 		int x = 0;
@@ -106,6 +112,7 @@ public class Metodos {
 	 * @PRECONDICION pila iniciada
 	 * @DEVUELVE double que representa el promedio de los elementos
 	 * @POSTCONDICION none
+	 * * @COSTO Lineal (por la utilizaci�n de m�todos con costo lineal)
 	 **/
 	public float PromedioElemPila(PilaTDA origen) {
 		float z;
@@ -120,6 +127,7 @@ public class Metodos {
 		* @PARAMETRO PilaTDA
 		* @PRECONDICON Pila inicializada
 		* @POSTCONDICON None
+	 * * @COSTO Lineal
 		**/
 	public boolean EsCapicua (PilaTDA P){
 		boolean capi = true, par;
@@ -150,11 +158,12 @@ public class Metodos {
 		return capi;
 	}
 
-	//TP 3 - 1.B Cerfoglio (30/05/2018)
+	//TP 3 - 1.B Cerfoglio (30/05/2018) - Corregido por Parodi
 		/**@TAREA eliminar elementos repetidos
 		* @PARAMETRO PilaTDA
 		* @PRECONDICON Pila Inicializada
 		* @POSTCONDICON Se eliminan las repeticiones, pero se respeta el orden original
+	 * * @COSTO Lineal
 		**/
 	public void EliminarElemRepetidos(PilaTDA P){
 		PilaTDA aux = new Pilas();
@@ -196,6 +205,7 @@ public class Metodos {
 		* @PRECONDICON Pila inicializada, cantidad de elementos 0 o par
 		* @POSTCONDICON Pila original almacena la primer mitad, pila devuelta con la segunda
 		* @DEVUELVE PilaTDA 
+	 * * @COSTO Lineal
 		
 		**/
 	public PilaTDA DividirPila(PilaTDA P){
@@ -226,6 +236,7 @@ public class Metodos {
 		* @PARAMETRO Pila 
 		* @PRECONDICON Pila inicializada
 		* @POSTCONDICON None
+	 * * @COSTO Lineal
 		**/
 	public ConjuntoTDA ElementosRepetidos (PilaTDA P){
 			ConjuntoTDA repetidos = new ConjuntoUA(); 
@@ -253,6 +264,7 @@ public class Metodos {
 	 * @PARAMETRO cola destino
 	 * @PRECONDICON Ambas colas iniciadas
 	 * @POSTCONDICON none
+	 * * @COSTO Lineal
 	 **/
 	public void CopiarCola(ColaTDA origen, ColaTDA destino) {// Cambio para que no se pierda la cola original -Fedejp
 		ColaTDA aux = new ColaPU();
@@ -273,6 +285,7 @@ public class Metodos {
 	 * @PARAMETRO cola original, Cola destino
 	 * @PRECONDICON ambas Colas iniciadas
 	 * @POSTCONDICON Se pierde la cola original
+	 * * @COSTO Lineal
 	 **/
 	public void PasarCola(ColaTDA origen, ColaTDA destino) {
 		while (!origen.ColaVacia()) {
@@ -286,6 +299,7 @@ public class Metodos {
 	 * @PARAMETRO cola original
 	 * @PRECONDICON Cola iniciada
 	 * @POSTCONDICON La cola se devolvera invertida
+	 * * @COSTO Lineal
 	 **/
 	public void InvertirColaPila(ColaTDA origen) { // usando pilas auxiliares
 		PilaTDA p = new Pilas();
@@ -304,6 +318,7 @@ public class Metodos {
 	 * @PARAMETRO cola original
 	 * @PRECONDICON Cola iniciada
 	 * @POSTCONDICON none
+	 * * @COSTO Lineal
 	 **/
 	public int ContarElemCola(ColaTDA origen) {
 		int cont = 0;
@@ -322,6 +337,7 @@ public class Metodos {
 	 * @PARAMETRO cola original
 	 * @PRECONDICON Cola iniciada
 	 * @POSTCONDICON La cola se devolverï¿½ invertida
+	 * * @COSTO Polinomico
 	 **/
 	public void InvertirColaSola(ColaTDA origen) {
 		ColaTDA aux = new ColaPI();
@@ -361,6 +377,7 @@ public class Metodos {
 	 * @PRECONDICON Colas iniciadas
 	 * @POSTCONDICON none
 	 * @DEVUELVE Verdadero si los finales coinciden, Falso si no
+	 * * @COSTO Lineal
 	 **/
 	public boolean CompararFinal(ColaTDA c1, ColaTDA c2) {// editado para que no se pierdan las colas y se ajuste a la
 															// consigna -Fedejp
@@ -401,6 +418,7 @@ public class Metodos {
 	 * @PARAMETRO cola nro1
 	 * @PRECONDICON Cola iniciada
 	 * @POSTCONDICON none
+	 * * @COSTO Lineal
 	 **/
 	public void ColaCapicua(ColaTDA o) {// Editado para que no se pierda la cola original -Fedejp
 		ColaTDA aux = new ColaPI();
@@ -428,6 +446,7 @@ public class Metodos {
 	 * @PARAMETRO cola nro2
 	 * @PRECONDICON Colas iniciadas
 	 * @POSTCONDICON none
+	 * * @COSTO Lineal
 	 **/
 	public void ColaCompararInverso(ColaTDA cp1, ColaTDA cp2) {
 		int iguales = 1;
@@ -453,20 +472,14 @@ public class Metodos {
 		}
 	}
 
-	/*
-	 * # # # # # # # # # # # # # # # # # # # # # # # # # BANDERA # # # # # # # # # #
-	 * # # # # # # # # # # # # # # #
-	 */
-
-	// Aca va lo del tp 3 punto 2, no se si tendria que ir en otro archivo, pero
-	// bueno, -BIZK
-	// TP 3 - 2.A. -BIZK (11/04/2018)
+	// TP 3 - 2.A. -Carlos S. Yanzon (11/04/2018)
 
 	/**
 	 * @TAREA Eliminar de la cola la repeticion de elementos
 	 * @PARAMETRO cola nro1
 	 * @PRECONDICON Colas iniciadas
 	 * @POSTCONDICON La cola quedara sin elemento repetidos
+	 * * @COSTO Polinomico
 	 **/
 	public void ColaEliminarRepeticiones(ColaTDA cp1) {
 		ColaTDA aux = new ColaPI();
@@ -495,12 +508,13 @@ public class Metodos {
 		}
 	}
 
-	// TP 3 - 2.B. -BIZK (11/04/2018) -Corregido por Fedejp (21/05/18)
+	// TP 3 - 2.B. -Carlos S Yanzon (11/04/2018) -Corregido por FParodi (21/05/18)
 	/**
 	 * @TAREA Partir una cola dos mitades M1 y M2 de elementos consecutivos
 	 * @PARAMETRO cola a partir, dos colas para guardar las mitades
 	 * @PRECONDICON Colas iniciadas, cantidad de elementos par
 	 * @POSTCONDICON La cola original se pierde, las dos mitades se llenan
+	 * * @COSTO Lineal
 	 **/
 	public void ColaPartir(ColaTDA cp1, ColaTDA M1, ColaTDA M2) {
 		int x = ContarElemCola(cp1);
@@ -535,10 +549,11 @@ public class Metodos {
 	 * ); } }
 	 */
 	/**
-	 * @TAREA Genera una cola con las repeticiones de elementos ` * @PARAMETRO cola
-	 *        origen, cola para mostrar los repetidos.
+	 * @TAREA Genera una cola con las repeticiones de elementos 
+	 * @PARAMETRO cola origen, cola para mostrar los repetidos.
 	 * @PRECONDICON Colas iniciadas
 	 * @POSTCONDICON none
+	 * * @COSTO Lineal
 	 **/
 	public void ColaGenerarRepetidos(ColaTDA cp1, ConjuntoTDA repeticiones) {
 		ColaTDA aux = new ColaPI();
@@ -575,6 +590,7 @@ public class Metodos {
 	 * @PARAMETRO cola origen, cola destino.
 	 * @PRECONDICON Colas iniciadas
 	 * @POSTCONDICON none
+	 * * @COSTO Lineal
 	 **/
 	public void CopiarColaPri(ColaPrioridadTDA origen, ColaPrioridadTDA destino) {
 		ColaPrioridadTDA aux = new ColaPrioridadDA();
@@ -596,18 +612,20 @@ public class Metodos {
 	 *        tendrï¿½n mï¿½s prioridad que los de la segunda
 	 * @PARAMETRO cola nro1, de mayor prioridad
 	 * @PARAMETRO cola nro2
-	 * @PARAMETRO Cola destino
 	 * @PRECONDICON Colas iniciadas
-	 * @POSTCONDICON Las colas originales se pierden
+	 * @DEVUELVE ColaPrioridad combinada.
+	 * @POSTCONDICON Las colas originales se pierden ARREGLAR
+	 * * @COSTO Lineal
 	 **/
-	public void CombinarColasPrioridad(ColaPrioridadTDA CP1, ColaPrioridadTDA CP2, ColaPrioridadTDA destino) {
+	public ColaPrioridadTDA CombinarColasPrioridad(ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
 
 		/*
 		 * //Inicializamos ambas colas CP1.InicializarCola(); CP2.InicializarCola();
 		 * 
-		 * //Creamos la cola auxiliar y la inicializamos ColaPrioridadTDA AUX = new
-		 * ColaPrioridadDA(); AUX.InicializarCola();
+		 * //Creamos la cola auxiliar y la inicializamos 
 		 */
+		ColaPrioridadTDA destino = new ColaPrioridadDA();
+		destino.InicializarCola();
 
 		// Ya que la primer cola tiene prioridad realizamos el proceso hasta que esta se
 		// vacie
@@ -628,6 +646,7 @@ public class Metodos {
 			destino.AcolarPrioridad(CP2.Primero(), CP2.Prioridad());
 			CP2.Desacolar();
 		}
+		return destino;
 		// }
 	}
 
@@ -637,6 +656,7 @@ public class Metodos {
 	 * @PARAMETRO cola prioridad nro2
 	 * @PRECONDICON Colas prioridad iniciadas
 	 * @POSTCONDICON Las colas se pierden ARREGLAR ESTO
+	 * @COSTO Lineal
 	 **/
 	public boolean ComprobarIdentidad(ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
 		ColaPrioridadDA aux1 = new ColaPrioridadDA();
@@ -677,6 +697,7 @@ public class Metodos {
 	 * @PARAMETROS: Conjunto Origen, Conjunto destino
 	 * @precondicion: conjuntos inicializados
 	 * @POSTCONDICION:
+	 *  @COSTO Lineal
 	 **/
 	public ConjuntoTDA CopiarConjunto(ConjuntoTDA origen, ConjuntoTDA destino) {
 		PilaTDA aux = new Pilas();
@@ -700,6 +721,7 @@ public class Metodos {
 	 * @PRECONDICION Conjuntos inicializados
 	 * @POSTCONDICION none
 	 * @DEVUELVE ConjuntoTDA con los elementos que estan en ambos conjuntos.
+	 *  @COSTO Lineal
 	 **/
 	public ConjuntoTDA InterseccionConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
 		ConjuntoTDA aux1 = new ConjuntoUA();
@@ -722,6 +744,7 @@ public class Metodos {
 	 * @PRECONDICION Conjuntos inicializados
 	 * @POSTCONDICION none
 	 * @DEVUELVE ConjuntoTDA con los elementos que estan en uno u otro conjunto.
+	 *  @COSTO Lineal
 	 **/
 	public ConjuntoTDA UnionConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
 		ConjuntoTDA aux1 = new ConjuntoUA();
@@ -752,6 +775,7 @@ public class Metodos {
 	 * @POSTCONDICION none
 	 * @DEVUELVE ConjuntoTDA con los elementos que estan en C1 menos los que
 	 *           estï¿½n en C2.
+	 * @COSTO Lineal
 	 **/
 	public ConjuntoTDA DiferenciaConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
 		ConjuntoTDA aux1 = new ConjuntoUA();
@@ -784,6 +808,7 @@ public class Metodos {
 	 * @PARAMETRO diccionario 1 y 2
 	 * @PRECONDICON Diccionarios iniciados.
 	 * @POSTCONDICON 1 Diccionario multiple
+	 *  @COSTO Polinomico
 	 **/
 	public void UnificarDicMultiples(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
 		DiccionarioMultipleTDA dic = new DicMultipleA();
@@ -852,6 +877,7 @@ public class Metodos {
 	 * @PARAMETRO diccionario 1 y 2
 	 * @PRECONDICON Diccionarios iniciados.
 	 * @POSTCONDICON 1 Diccionario multiple
+	 *  @COSTO Polinomico
 	 **/
 	public void DicMultClavesComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
 		DiccionarioMultipleTDA dic = new DicMultipleA();
@@ -903,6 +929,7 @@ public class Metodos {
 	 * @PARAMETRO diccionario 1 y 2
 	 * @PRECONDICON Diccionarios iniciados.
 	 * @POSTCONDICON 1 Diccionario multiple
+	 * @COSTO polinomico
 	 **/
 	public void DicMultClavesYValComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
 		DiccionarioMultipleTDA dic = new DicMultipleA(); // Definimos el diccionario donde guardaremos todo
@@ -964,6 +991,7 @@ public class Metodos {
 	 * @PARAMETRO conjunto
 	 * @PRECONDICON inicializar conjunto
 	 * @POSTCONDICON resultado diferencia simetrica
+	 * @COSTO Lineal
 	 **/
 	public ConjuntoTDA DiferenciaSimetricaSinOperaciones(ConjuntoTDA c1, ConjuntoTDA c2) {
 		ConjuntoTDA ResultadoDifSimetrica = new ConjuntoLD();
@@ -993,6 +1021,7 @@ public class Metodos {
 	 * @PARAMETRO conjunto
 	 * @PRECONDICON iniciar conjunto
 	 * @POSTCONDICON devolver diferemcia simetrica
+	 * @COSTO Lineal
 	 **/
 	public ConjuntoTDA DiferenciaSimetricaConOperaciones(ConjuntoTDA c1, ConjuntoTDA c2) {
 
@@ -1025,7 +1054,9 @@ public class Metodos {
 	 * @TAREA verificar si dos conjuntos son iguales
 	 * @PARAMETRO conjunto 1 y conjunto 2
 	 * @PRECONDICON inicializar los conjuntos
-	 * @POSTCONDICON true o false
+	 * @Devuelve true o false
+	 * @POSTCONDICION none 
+	 * @COSTO Lineal
 	 **/
 	public boolean VerificarIgualdadconjuntos(ConjuntoTDA c1, api.ConjuntoTDA c2) {
 		api.ConjuntoTDA Conjunto1 = new ConjuntoLD();
@@ -1054,18 +1085,6 @@ public class Metodos {
 		}
 	}
 
-	// TP3 pto 3-e FedeP
-	/**
-	 * @TAREA Calcular elementos Conjunto
-	 * @PARAMETRO ConjuntoTDA
-	 * @PRECONDICON Conjunto inicializado
-	 * @POSTCONDICON none
-	 * @DEVUELVE Integer
-	 **/
-
-	/*
-	 * TP 4
-	 */
 
 	// TP4 3-A gonza 05/05/18
 	/**
@@ -1074,6 +1093,7 @@ public class Metodos {
 	 * @PRECONDICON arbol inicializado
 	 * @POSTCONDICON none
 	 * @DEVUELVE true or false
+	 * @COSTO recursivo
 	 **/
 	public boolean existeElementoABB(int elemen, ABBTDA arbol) {
 		if (arbol.ArbolVacio()) {
@@ -1094,6 +1114,7 @@ public class Metodos {
 	 * @PRECONDICON arbol inicializado
 	 * @POSTCONDICON none
 	 * @DEVUELVE true or false
+	 * @COSTO Recursivo
 	 **/
 	public boolean ElemenHoja(int elemen, ABBTDA arbol) {
 		if (arbol.ArbolVacio()) {
@@ -1119,7 +1140,8 @@ public class Metodos {
 	 * @PARAMETRO arbol
 	 * @PRECONDICON arbol inicializado
 	 * @POSTCONDICON none
-	 * @DEVUELVE profundidad
+	 * @DEVUELVE Integer profundidad
+	 * @COSTO recursivo
 	 **/ // prof: cantidad de niveles del arbol empieza en 0
 	public int Profundidad(int elemen, ABBTDA arbol) {// preguntar si existe elemento como precondicion
 		if (arbol.ArbolVacio()) {
@@ -1140,6 +1162,7 @@ public class Metodos {
 	 * @PRECONDICON arbol inicializado y no vacío
 	 * @POSTCONDICON none
 	 * @DEVUELVE valor
+	 * @COSTO Recursivo
 	 **/
 	public int Menor(ABBTDA a) {// mirar la implementacio
 		if (a.HijoIzq().ArbolVacio()) { // si el hijo izquierdo esta vacío
@@ -1156,6 +1179,7 @@ public class Metodos {
 	 * @PRECONDICON Conjunto inicializado
 	 * @POSTCONDICON none
 	 * @DEVUELVE Integer
+	 * @COSTO Recursivo
 	 **/
 	public int ContarConjunto(ConjuntoTDA c1) {
 		ConjuntoTDA aux = new ConjuntoLD();
@@ -1177,6 +1201,7 @@ public class Metodos {
 	 * @PRECONDICON Ambas inicializadas
 	 * @POSTCONDICON none
 	 * @DEVUELVE true or false
+	 * @COSTO Lineal
 	 **/
 	public boolean MismoPilaCola(PilaTDA P, ColaTDA C) {
 		ConjuntoTDA Colaconjunto = new ConjuntoLD();
@@ -1207,6 +1232,7 @@ public class Metodos {
 	 * @PRECONDICON Cola y pila inicializada
 	 * @POSTCONDICON none
 	 * @DEVUELVE ConjuntoTDA
+	 * @COSTO Lineal
 	 **/
 	public ConjuntoTDA ConjuntoColaPila(ColaTDA C, PilaTDA P) {
 		ConjuntoTDA Colaconjunto = new ConjuntoLD();
@@ -1229,13 +1255,26 @@ public class Metodos {
 		}
 		return InterseccionConjunto(Colaconjunto, Pilaconjunto);
 	}
+	// TP3 punto 4-A 27/04/18 gonza
+		/**
+		 * @TAREA generar diccionario multiple que recupere todas las prioridades de un
+		 *        valor
+		 * @PARAMETRO cola prioridad c
+		 * @PRECONDICON Cola iniciada
+		 * @devuelve un diccionario multiple
+		 * @COSTO Lineal
+		 **/
+		public DiccionarioMultipleTDA ColaADiccionarioValoresClave(ColaPrioridadTDA C) {
+			DiccionarioMultipleTDA dicAUX = new DicMultipleA();
+			dicAUX.InicializarDiccionario();
+			while (!C.ColaVacia()) {
+				dicAUX.Agregar(C.Primero(), C.Prioridad());
+				C.Desacolar();
+			}
+			return dicAUX;
+		}
 
-	// -Termina class abb-
-	/*
-	 * 
-	 * 
-	 * 
-	 * */
+
 
 	// TP4 3-e gonza 08/05/18
 	/**
@@ -1244,6 +1283,7 @@ public class Metodos {
 	 * @PRECONDICON arbol inicializado
 	 * @POSTCONDICON none
 	 * @DEVUELVE cant
+	 * @COSTO recursivo
 	 **/
 	public int CantElementos(ABBTDA arbol) {
 		if (arbol.ArbolVacio())
@@ -1259,7 +1299,8 @@ public class Metodos {
 	 * @PARAMETRO arbol
 	 * @PRECONDICON arbol inicializado
 	 * @POSTCONDICON none
-	 * @DEVUELVE suma
+	 * @DEVUELVE integer
+	 * @COSTO Recursivo
 	 **/
 	public int SumaElementos(ABBTDA arbol) {
 		if (arbol.ArbolVacio())
@@ -1269,25 +1310,7 @@ public class Metodos {
 		}
 	}
 
-	// TP3 punto 4-A 27/04/18 gonza
-	/**
-	 * @TAREA generar diccionario multiple que recupere todas las prioridades de un
-	 *        valor
-	 * @PARAMETRO cola prioridad c
-	 * @PRECONDICON Cola iniciada
-	 * @devuelve un diccionario multiple
-	 **/
-	public DiccionarioMultipleTDA ColaADiccionarioValoresClave(ColaPrioridadTDA C) {
-		DiccionarioMultipleTDA dicAUX = new DicMultipleA();
-		dicAUX.InicializarDiccionario();
-		while (!C.ColaVacia()) {
-			dicAUX.Agregar(C.Primero(), C.Prioridad());
-			C.Desacolar();
-		}
-		return dicAUX;
-	}
-
-	/*
+		/*
 	 * 
 	 * 
 	 * 
@@ -1301,6 +1324,7 @@ public class Metodos {
 	 * @PARAMETRO arbol
 	 * @PRECONDICON inicializar el arbol
 	 * @POSTCONDICON valor cantidad de hojas
+	 * @COSTO recursivo
 	 **/
 	public int ContarCantidadDeHojas(ABBTDA a) {
 		int b = 0;
@@ -1319,6 +1343,7 @@ public class Metodos {
 	 * @PARAMETRO arbol
 	 * @PRECONDICON inicializar el arbol
 	 * @POSTCONDICON valor altura arbol
+	 * @COSTO recursivo
 	 **/
 	public int CalcularAlturaABB(ABBTDA a) {
 		a.InicializarArbol();

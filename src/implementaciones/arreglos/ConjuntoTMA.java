@@ -1,15 +1,18 @@
-/** Costos implementación
- *  Tamaño Máximo Acotado (TMA)
-*InicializarConjunto:  Constante
-*Agregar:  Constante
-*Sacar:  Constante
-*Pertenece:  Constante
-*Elegir:  Constante*/
+
 
 package implementaciones.arreglos;
 
 import api.ConjuntoTDA;
-/**@Author Federico Parodi **/
+/**@Autores: Federico J. Parodi 
+	@Grupo: 3 
+	@Costo de cada uno de los métodos de la implementación
+	Inicializar: Constante
+	ConjuntoVacio: Lineal
+	Agregar: Constante
+	Elegir: Lineal
+	Sacar: Constante
+	Pertenece: Constante
+**/
 public class ConjuntoTMA implements ConjuntoTDA {
 	int vector[]; 
 	int indice;
