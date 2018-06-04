@@ -1,7 +1,10 @@
 package api;
 
-/**@author Carlos Santiago Yanzon (BIZK) **/
-
+/**@Autores: Carlos S. Yanzon
+@Grupo: 3
+@TDA: Diccionario Múltiple
+@Definición: Cada valor que se ingresa a la estructura tiene asociada una clave, y éstas claves pueden tener asociadas un único valor
+*/
 public interface DiccionarioSimpleTDA {
 	/** @TAREA iniciar Diccionario Simple
 	* @PARAMETRO none

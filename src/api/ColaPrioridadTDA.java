@@ -1,5 +1,9 @@
 package api;
-
+/**@Autores: Federico J. Parodi
+@Grupo: 3
+@TDA: Cola Prioridad
+@Definición: Cola cuyos elementos tienen asignados una determinada prioridad, que los ordena primero por ésta característica (de mayor prioridad a menor prioridad) y luego, entre elementos con la misma prioridad, como FIFO
+*/
 public interface ColaPrioridadTDA {
 	
 	/** @TAREA iniciar_cola_con_prioridad

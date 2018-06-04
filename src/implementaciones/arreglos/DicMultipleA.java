@@ -1,18 +1,24 @@
-/*Costo de la implementación
- Diccionario Multiple
-*Inicializar diccionario:  Constante
-*Agregar:  Lineal
-*Eliminar:  Lineal
-*EliminarValor:  Lineal
-*Recuperar:  Lineal
-*Claves: Lineal*/
+
 
 package implementaciones.arreglos;
 
 import api.DiccionarioMultipleTDA;
 import api.ConjuntoTDA;
 
-/**@author Carlos Santiago Yanzon (BIZK) 13/04/2018*/
+
+
+/**
+@Autores:Carlos S. Yanzon
+@Grupo: 3
+@Costo de cada uno de los métodos de la implementación
+Inicializar: Constante
+Agregar: Lineal
+Eliminar clave: lineal
+Eliminar Valor: Lineal
+Recuperar: Lineal
+Claves: Lineal
+**/
+
 public class DicMultipleA implements DiccionarioMultipleTDA {
 
 	class Elemento {

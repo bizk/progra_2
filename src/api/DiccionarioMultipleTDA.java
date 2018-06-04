@@ -1,5 +1,9 @@
 package api;
-
+/**@Autores: Carlos S. Yanzon
+@Grupo: 3
+@TDA: Diccionario Múltiple
+@Definición: Cada valor que se ingresa a la estructura tiene asociada una clave, y éstas claves pueden tener asociadas muchos valores organizadas en un conjunto
+*/
 public interface DiccionarioMultipleTDA {
 
 	/** @TAREA Inicializar el dicccionario multiple.

@@ -1,10 +1,16 @@
-/*Costos de la implementacion
-*Pila Tope al Ultimo 
+
+/**
+	@Autores:Federico J.Parodi
+	@Grupo: 3 
+	@Costo de cada uno de los métodos de la implementación
+	*Pila Tope al Ultimo 
 *InicializarPila : Constante
 *Apilar: Constante 
 *Desapilar: Constante 
 *Tope: Constante 
-*PilaVacía: Constante */
+*PilaVacía: Constante
+**/
+
 
 package implementaciones.arreglos;
 

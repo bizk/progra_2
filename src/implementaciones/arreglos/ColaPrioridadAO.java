@@ -1,11 +1,16 @@
-/*Costos de la implementación
- *  Cola Prioridad de Objetos 
+/**
+	@Autores: Federico J. Parodi
+	@Grupo: 3 
+	@Costo de cada uno de los métodos de la implementación
+	*  Cola Prioridad de Objetos 
 *InicializarColaPrioridad: Constante 
 *AcolarPrioridad:  Lineal 
 *Desacolar: Constante 
 *Primero:  Constante 
 *ColaVacía: Constante 
-*Prioridad: Constante */
+*Prioridad: Constante
+**/
+
 
 package implementaciones.arreglos;
 

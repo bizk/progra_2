@@ -1,6 +1,10 @@
 package api;
 
-/** @DEFINICION **/
+/**@Autores: Federico J. Parodi
+@Grupo: 3
+@TDA: Cola
+@Definición: Estructura donde los elementos se recuperan como First in, First out.
+*/
 public interface ColaTDA {
     
 	/** @TAREA iniciar_cola

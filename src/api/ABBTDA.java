@@ -1,7 +1,11 @@
 package api;
-
+/**@Autores: Federico J. Parodi
+	@Grupo: 3
+	@TDA: Arbol Binario de Búsqueda
+	@Definición: Árbol binario cuyos elementos están ordenados de izquierda a derecha.
+*/
 public interface ABBTDA {
-//Creada por Federico J.Parodi - 4.05.2018
+
 	/** @TAREA Devolver la raiz del arbol
 	* @PARAMETRO none
 	* @PRECONDICION Arbol inicializado y no vacío

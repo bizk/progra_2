@@ -1,18 +1,22 @@
-/*Costos de la implementacion
- *DiccionarioSimple 
-*Inicializar diccionario: Constante 
-*Agregar: Lineal 
-*Eliminar: Lineal 
-*EliminarValor: - 
-*Recuperar: Lineal 
-*Claves: Lineal */
-
 package implementaciones.arreglos;
 
 import api.DiccionarioSimpleTDA;
 import api.ConjuntoTDA;
 
-/**@author Carlos Santiago Yanzon (BIZK) 13/04/2018*/
+
+/**
+@Autores: Carlos S. Yanzon
+@Grupo: 3 
+@Costo de cada uno de los métodos de la implementación
+*DiccionarioSimple 
+*Inicializar diccionario: Constante 
+*Agregar: Lineal 
+*Eliminar: Lineal 
+*EliminarValor: - 
+*Recuperar: Lineal 
+*Claves: Lineal 
+**/
+
 class DicSimpleA implements DiccionarioSimpleTDA {
 	
 	class Elemento {
