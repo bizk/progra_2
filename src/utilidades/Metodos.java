@@ -825,8 +825,8 @@ public class Metodos {
 		valoresd02.InicializarConjunto();
 
 		// Obtenemos todas las claves de cada conjunto
-		CopiarConjunto(D01.claves(), clavesd01);
-		CopiarConjunto(D02.claves(), clavesd02);
+		CopiarConjunto(D01.Claves(), clavesd01);
+		CopiarConjunto(D02.Claves(), clavesd02);
 		/*
 		 * clavesd01 = D01.claves(); clavesd02 = D02.claves();
 		 */
@@ -894,7 +894,7 @@ public class Metodos {
 		valoresd02.InicializarConjunto();
 
 		// Obtenemos todas las claves de cada conjunto
-		clavesd01 = D01.claves();
+		clavesd01 = D01.Claves();
 
 		int clave1, clave2, valor1, valor2;
 		ConjuntoTDA valconj01 = new ConjuntoTMA();
@@ -902,7 +902,7 @@ public class Metodos {
 
 		// obtenemos los valores de dichas claves
 		while (!clavesd01.ConjuntoVacio()) {
-			clavesd02 = D02.claves(); // Reinicioamos las claves de claves02 para recorrerlas todas
+			clavesd02 = D02.Claves(); // Reinicioamos las claves de claves02 para recorrerlas todas
 			clave1 = clavesd01.ElegirConjunto(); // Sacamos una clave de clavesd01
 			while (!clavesd02.ConjuntoVacio()) { // Recorremos todas las claves de d02
 				clave2 = clavesd02.ElegirConjunto(); // Sacamos una clave de clavesd02
@@ -948,14 +948,14 @@ public class Metodos {
 		valoresd02.InicializarConjunto();
 
 		// Obtenemos todas las claves del primer conjunto
-		clavesd01 = D01.claves();
+		clavesd01 = D01.Claves();
 
 		// Definimos los enteros
 		int clave1, clave2, valor1, valor2;
 
 		// Obtenemos una clave
 		while (!clavesd01.ConjuntoVacio()) { // Recorremos todas las claves de d01
-			clavesd02 = D02.claves(); // Reiniciamos las claves de d02
+			clavesd02 = D02.Claves(); // Reiniciamos las claves de d02
 			clave1 = clavesd01.ElegirConjunto(); // Elegimos una clave de d01
 			while (!clavesd02.ConjuntoVacio()) { // Para cada clave de d01 recorremos todas las de d02
 				clave2 = clavesd02.ElegirConjunto(); // Elegimos una clav de d02

@@ -30,22 +30,6 @@ public class DicMultipleA implements DiccionarioMultipleTDA {
 	Elemento[] elementos;
 	int cantClaves;
 	
-	private int Clave2Indice(int clave) {
-		int i = cantClaves-1;
-		while(i >= 0 && elementos[i].clave!=clave) {
-			i--;
-		}
-		return i;
-	}
-	
-	private int Valor2Indice(Elemento e, int valor) {
-		int i = e.cantValores-1;
-		while(i>=0 && e.valores[i] != valor) {
-			i--;
-		}
-		return i;
-	}
-	
 	public void InicializarDiccionario() {
 		elementos = new Elemento[100];
 		cantClaves = 0;
@@ -68,6 +52,14 @@ public class DicMultipleA implements DiccionarioMultipleTDA {
 			e.valores[e.cantValores] = valor;
 			e.cantValores++;
 		}
+	}
+	
+	private int Clave2Indice(int clave) {
+		int i = cantClaves-1;
+		while(i >= 0 && elementos[i].clave!=clave) {
+			i--;
+		}
+		return i;
 	}
 
 	public void Eliminar(int clave) {
@@ -92,9 +84,17 @@ public class DicMultipleA implements DiccionarioMultipleTDA {
 			}
 		}
 	}
+	
+	private int Valor2Indice(Elemento e, int valor) {
+		int i = e.cantValores-1;
+		while(i>=0 && e.valores[i] != valor) {
+			i--;
+		}
+		return i;
+	}
 
 	public ConjuntoTDA Recuperar(int clave) { //Todos los valores de una clave
-		ConjuntoTDA c = new ConjuntoTMA();
+		ConjuntoTDA c = new ConjuntoLD();
 		c.InicializarConjunto();
 		
 		int pos = Clave2Indice(clave); // recuperamos una clave
@@ -108,8 +108,8 @@ public class DicMultipleA implements DiccionarioMultipleTDA {
 		return c;
 	}
 
-	public ConjuntoTDA claves() {
-		ConjuntoTDA c = new ConjuntoTMA();
+	public ConjuntoTDA Claves() {
+		ConjuntoTDA c = new ConjuntoLD();
 		c.InicializarConjunto();
 		
 		for(int i = 0; i < cantClaves; i++) {

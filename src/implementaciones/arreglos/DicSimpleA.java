@@ -17,7 +17,7 @@ import api.ConjuntoTDA;
 *Claves: Lineal 
 **/
 
-class DicSimpleA implements DiccionarioSimpleTDA {
+public class DicSimpleA implements DiccionarioSimpleTDA {
 	
 	class Elemento {
 		int clave;
@@ -54,7 +54,7 @@ class DicSimpleA implements DiccionarioSimpleTDA {
 	public void Eliminar(int clave) {
 		int pos = Clave2Indice(clave);
 		if(pos != -1) {
-			elementos[pos] = elementos[pos-1];
+			elementos[pos] = elementos[cant-1];
 			cant--;
 		}
 	}
@@ -66,11 +66,11 @@ class DicSimpleA implements DiccionarioSimpleTDA {
 	}
 	
 	public ConjuntoTDA Claves() {
-		ConjuntoTDA c = new ConjuntoTMA();
+		ConjuntoTDA c = new ConjuntoLD();
 		c.InicializarConjunto();
 		
 		for(int i = 0; i < cant; i++) {
-			c.AgregarConjunto(elementos[i].valor);
+			c.AgregarConjunto(elementos[i].clave);
 		}
 		return c;
 	}

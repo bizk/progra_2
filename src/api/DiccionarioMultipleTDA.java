@@ -52,5 +52,5 @@ public interface DiccionarioMultipleTDA {
 	* @DEVUELVE Todas las claves.
 	* @POSTCONDICION NONE
 	* */
-	ConjuntoTDA claves();
+	ConjuntoTDA Claves();
 }
