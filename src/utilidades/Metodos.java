@@ -137,8 +137,11 @@ public class Metodos {
 		PilaTDA aux2 = new Pilas();
 		aux2.InicializarPila();
 		CopiarPila(P, aux);
+		PasarPila(aux, aux2);
+		CopiarPila(P, aux);
 		cant = ContarElemPila(aux);
 		mitad = cant / 2;
+		
 		par = (cant % 2 == 0);
 		while(mitad > 0){
 			aux.Apilar(aux2.Tope());
@@ -168,19 +171,17 @@ public class Metodos {
 	public void EliminarElemRepetidos(PilaTDA P){
 		PilaTDA aux = new Pilas();
 		aux.InicializarPila();
-		CopiarPila(P, aux);
-		ConjuntoTDA elementos = new ConjuntoUA();
-		elementos.InicializarConjunto();
+		PasarPila(P,aux);
+		PilaTDA aux2 = new Pilas();
+		aux2.InicializarPila();
+		
 		while(!aux.PilaVacia()){
-			elementos.AgregarConjunto(aux.Tope());
+			if(!PertenecePila(aux.Tope(), aux2))
+				aux2.Apilar(aux.Tope());
 			aux.Desapilar();
 		}
-		while(!elementos.ConjuntoVacio())
-		{
-			aux.Apilar(elementos.ElegirConjunto());
-			elementos.SacarConjunto(elementos.ElegirConjunto());
-		}
-		CopiarPila(aux, P);
+		CopiarPila(aux2, P);
+		
 		
 		
 		/*while(!aux.PilaVacia()){
@@ -198,7 +199,19 @@ public class Metodos {
 			}
 		}*/
 	}
-
+	private boolean PertenecePila(int a, PilaTDA P)
+	{
+		PilaTDA aux = new Pilas();
+		aux.InicializarPila();
+		CopiarPila(P,aux);
+		boolean pertenece=false;
+		while(!pertenece&&!aux.PilaVacia()){
+			if(aux.Tope()==a)
+				pertenece=true;
+			aux.Desapilar();
+		}
+		return pertenece;
+	}
 	//TP 3 - 1.C Cerfoglio (30/05/2018)
 		/**@TAREA repartir pila en dos mitades
 		* @PARAMETRO PilaTDA
@@ -216,15 +229,15 @@ public class Metodos {
 		M1.InicializarPila();
 		PilaTDA M2 = new Pilas();
 		M2.InicializarPila();
-		CopiarPila(P, aux);
-		InvertirPila(aux);
+		PasarPila(P, aux);
+		
 		cant = ContarElemPila(aux);
 		for(int i = 0; i < cant / 2; i++){
-			M2.Apilar(aux.Tope());
+			M1.Apilar(aux.Tope());
 			aux.Desapilar();
 		}
-		for(int i = (cant / 2) + 1; i < cant; i++){
-			M1.Apilar(aux.Tope());
+		for(int i = (cant / 2); i < cant; i++){
+			M2.Apilar(aux.Tope());
 			aux.Desapilar();
 		}
 		CopiarPila(M1,P);
