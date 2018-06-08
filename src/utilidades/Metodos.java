@@ -985,6 +985,7 @@ public class Metodos {
 
 	}
 
+	
 	// TP 3 - 3.a.b Salvioli (17/04/2018)
 	/**
 	 * @TAREA calcular diferencias simetricas sin operaciones
@@ -995,21 +996,30 @@ public class Metodos {
 	 **/
 	public ConjuntoTDA DiferenciaSimetricaSinOperaciones(ConjuntoTDA c1, ConjuntoTDA c2) {
 		ConjuntoTDA ResultadoDifSimetrica = new ConjuntoLD();
+		ConjuntoTDA aux1 = new ConjuntoLD();
+		ConjuntoTDA aux2 = new ConjuntoLD();
+
 		ResultadoDifSimetrica.InicializarConjunto();
+		aux1.InicializarConjunto();
+		aux2.InicializarConjunto();
 		int elemento;
 
-		while (!c1.ConjuntoVacio()) {
-			elemento = c1.ElegirConjunto(); // toma un elemento
-			if (!c2.PerteneceConjunto(elemento)) { // Si el elemento pertenece a C1 y no a c2
+		CopiarConjunto(c1, aux1);
+		CopiarConjunto(c2, aux2);
+
+		
+		while (!aux1.ConjuntoVacio()) {
+			elemento = aux1.ElegirConjunto(); // toma un elemento
+			if (!aux2.PerteneceConjunto(elemento)) { // Si el elemento pertenece a C1 y no a c2
 				ResultadoDifSimetrica.AgregarConjunto(elemento); // Se agrega a la diferencia simetrica
 			} else {
-				c2.SacarConjunto(elemento);
+				aux2.SacarConjunto(elemento);
 			}
-			c1.SacarConjunto(elemento);
+			aux1.SacarConjunto(elemento);
 		}
 
-		while (!c2.ConjuntoVacio()) {
-			elemento = c2.ElegirConjunto();
+		while (!aux2.ConjuntoVacio()) {
+			elemento = aux2.ElegirConjunto();
 			ResultadoDifSimetrica.AgregarConjunto(elemento);
 		}
 		return ResultadoDifSimetrica;
