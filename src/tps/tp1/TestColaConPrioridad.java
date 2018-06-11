@@ -16,7 +16,8 @@ class TestColaConPrioridad{
 		ColaPrioridadTDA ColaPriori_b= new ColaPrioridadDA();
 		ColaPrioridadTDA ColaPriori_c= new ColaPrioridadDA();
 		ColaPrioridadTDA aux1= new ColaPrioridadDA();
-		
+		ColaPrioridadTDA aux2= new ColaPrioridadDA();
+		ColaPrioridadTDA aux3= new ColaPrioridadDA();
 	
 	
 		Scanner atr = new Scanner(System.in);
@@ -25,6 +26,8 @@ class TestColaConPrioridad{
 		ColaPriori_b.InicializarCola();
 		ColaPriori_c.InicializarCola();
 		aux1.InicializarCola();
+		aux2.InicializarCola();
+		aux3.InicializarCola();
 		
 		
 		
@@ -55,11 +58,18 @@ class TestColaConPrioridad{
 			ColaPriori_b.AcolarPrioridad(num, prioridad);
 		}
 		mostrar(ColaPriori_b);
+		
+		m.CopiarColaPri(ColaPriori_a, aux2);
+		m.CopiarColaPri(ColaPriori_b, aux3);
+		
 		System.out.println("\n");
 				
 		
 		
 		System.out.println("#####Arranca Testeo#####");
+
+		
+	
 		System.out.println("###Combinar Cola Prioridad");
 		
 		aux1=m.CombinarColasPrioridad(ColaPriori_a, ColaPriori_b);
@@ -68,10 +78,10 @@ class TestColaConPrioridad{
 	
 		System.out.println("\n");
 		System.out.println("###Comprobar Identidad");
-		aux=m.ComprobarIdentidad(ColaPriori_a, ColaPriori_b);
+		aux=m.ComprobarIdentidad(aux2, aux3);                   //le mando las copias de la cola a y b
 		System.out.println(aux);
 		
-		
+	
 		
 		
 		
@@ -100,3 +110,5 @@ class TestColaConPrioridad{
 	}
 	
 }	
+
+//ñeriare
