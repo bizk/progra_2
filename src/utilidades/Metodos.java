@@ -224,6 +224,20 @@ public class Metodos {
 		* @POSTCONDICON None
 	 * * @COSTO Lineal
 		**/
+		
+		private boolean PertenecePila(int a, PilaTDA P)
+	{
+		PilaTDA aux = new Pilas();
+		aux.InicializarPila();
+		CopiarPila(P,aux);
+		boolean pertenece=false;
+		while(!pertenece&&!aux.PilaVacia()){
+			if(aux.Tope()==a)
+				pertenece=true;
+			aux.Desapilar();
+		}
+		return pertenece;
+	}
 	public ConjuntoTDA ElementosRepetidos (PilaTDA P){
 			ConjuntoTDA repetidos = new ConjuntoUA(); 
 			repetidos.InicializarConjunto();
