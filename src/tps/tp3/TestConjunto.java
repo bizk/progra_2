@@ -34,28 +34,26 @@ class TestConjunto {
 		}
 		mostrar(B);
 		
-		System.out.println("Conjunto simetria sin operaciones: ");
+		System.out.println("Diferencia simétrica de los conjuntos sin operaciones: ");
 		ConjuntoTDA conjaux = new ConjuntoLD();
-		
-		//no anda este
-		/*conjaux.InicializarConjunto();
+		conjaux.InicializarConjunto();
 		conjaux = M.DiferenciaSimetricaSinOperaciones(A, B);
-		mostrar(conjaux);*/
+		mostrar(conjaux);
 		
+		System.out.println("Diferencia simétrica de los conjuntos con operaciones: ");
 		conjaux.InicializarConjunto();
 		conjaux = M.DiferenciaSimetricaConOperaciones(A, B);
 		mostrar(conjaux);
 		
-		//NO ANDA
-		/*banderabooleana = M.VerificarIgualdadconjuntos(A, B);
+		banderabooleana = M.VerificarIgualdadconjuntos(A, B);
 		if(banderabooleana){
 			System.out.println("Son Iguales!");
 		} else {
 			System.out.println("Son diferentes");
-		}*/
+		}
 		
 		num = M.ContarConjunto(A);
-		System.out.println(num);
+		System.out.println("Cantidad de elementos conjunto: " + num);
 		mostrar(A);
 		
 		System.out.println("####### FIN DEL PROGRAMA #######");

@@ -60,6 +60,10 @@ class TestColaConPrioridad{
 		
 		
 		System.out.println("#####Arranca Testeo#####");
+		System.out.println("###Comprobar Identidad");
+		aux=m.ComprobarIdentidad(ColaPriori_a, ColaPriori_b);
+		System.out.println(aux);
+		
 		System.out.println("###Combinar Cola Prioridad");
 		
 		aux1=m.CombinarColasPrioridad(ColaPriori_a, ColaPriori_b);

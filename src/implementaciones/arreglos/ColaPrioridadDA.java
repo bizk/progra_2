@@ -1,13 +1,13 @@
 
 /**@Autores: Santiago Salvioli
 	@Grupo: 3
-	@Costo de cada uno de los mÃ©todos de la implementaciÃ³n
+	@Costo de cada uno de los métodos de la implementación
 	 ColaPrioridad de Dos Arreglos
 *InicializarColaPrioridad: Constante 
 *AcolarPrioridad: Lineal (2.n) 
 *Desacolar: Constante 
 *Primero: Constante 
-*ColaVacÃ­a:Constante 
+*ColaVacía:Constante 
 *Prioridad:Constante
 */
 package implementaciones.arreglos;
@@ -27,7 +27,7 @@ public class ColaPrioridadDA implements ColaPrioridadTDA {
 	
 	public void AcolarPrioridad(int x, int prioridad) {
 		int j = indice;
-		for(; j>0 && prioridades[j-1] >= prioridad; j--) {
+		for( ;j>0 && prioridades[j-1] >= prioridad; j--) {
 			elementos[j] = elementos[j-1];
 			prioridades[j] = prioridades[j-1];
 		}

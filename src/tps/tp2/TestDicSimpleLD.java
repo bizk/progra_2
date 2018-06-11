@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 class TestDicSimpleLD {
 	public static void main(String[] args) {
-		DiccionarioSimpleTDA dic_a = new DiccionarioSimpleLD(); // Defoinimos algunas pilas a probar
+		DiccionarioSimpleTDA dic_a = new DiccionarioSimpleLD(); // Defoinimos algunos dic a probar
 
 		dic_a.InicializarDiccionario();
 

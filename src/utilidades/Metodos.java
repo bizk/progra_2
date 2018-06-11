@@ -194,7 +194,6 @@ public class Metodos {
 		
 		**/
 	public PilaTDA DividirPila(PilaTDA P){
-		public PilaTDA DividirPila(PilaTDA P){
 		int cant;
 		PilaTDA aux = new Pilas();
 		aux.InicializarPila();
@@ -216,16 +215,7 @@ public class Metodos {
 		CopiarPila(M1,P);
 		return M2;
 	}
-
-	//TP 3 - 1.D Cerfoglio (31/05/2018)
-		/**@TAREA generar conjunto de elementos repetidos en pila
-		* @PARAMETRO Pila 
-		* @PRECONDICON Pila inicializada
-		* @POSTCONDICON None
-	 * * @COSTO Lineal
-		**/
-		
-		private boolean PertenecePila(int a, PilaTDA P)
+	private boolean PertenecePila(int a, PilaTDA P)
 	{
 		PilaTDA aux = new Pilas();
 		aux.InicializarPila();
@@ -238,6 +228,14 @@ public class Metodos {
 		}
 		return pertenece;
 	}
+
+	//TP 3 - 1.D Cerfoglio (31/05/2018)
+		/**@TAREA generar conjunto de elementos repetidos en pila
+		* @PARAMETRO Pila 
+		* @PRECONDICON Pila inicializada
+		* @POSTCONDICON None
+	 * * @COSTO Lineal
+		**/
 	public ConjuntoTDA ElementosRepetidos (PilaTDA P){
 			ConjuntoTDA repetidos = new ConjuntoUA(); 
 			repetidos.InicializarConjunto();
@@ -1021,6 +1019,7 @@ public class Metodos {
 		while (!aux2.ConjuntoVacio()) {
 			elemento = aux2.ElegirConjunto();
 			ResultadoDifSimetrica.AgregarConjunto(elemento);
+			aux2.SacarConjunto(elemento);
 		}
 		return ResultadoDifSimetrica;
 	}
@@ -1088,10 +1087,10 @@ public class Metodos {
 			}
 		}
 
-		if (a != 0 || !Conjunto2.ConjuntoVacio()) {
-			return false;
-		} else {
+		if (a == 1 && Conjunto2.ConjuntoVacio()) {
 			return true;
+		} else {
+			return false;
 		}
 	}
 
