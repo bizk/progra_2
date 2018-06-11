@@ -15,6 +15,8 @@ class TestColaConPrioridad{
 		ColaPrioridadTDA ColaPriori_a= new ColaPrioridadDA();
 		ColaPrioridadTDA ColaPriori_b= new ColaPrioridadDA();
 		ColaPrioridadTDA ColaPriori_c= new ColaPrioridadDA();
+		ColaPrioridadTDA aux1= new ColaPrioridadDA();
+		
 	
 	
 		Scanner atr = new Scanner(System.in);
@@ -22,8 +24,12 @@ class TestColaConPrioridad{
 		ColaPriori_a.InicializarCola();
 		ColaPriori_b.InicializarCola();
 		ColaPriori_c.InicializarCola();
+		aux1.InicializarCola();
+		
+		
 		
 		int num;
+		boolean aux;
 		int prioridad;
 		//el numero es mas alto, mayor prioridad
 		
@@ -50,21 +56,21 @@ class TestColaConPrioridad{
 		}
 		mostrar(ColaPriori_b);
 		System.out.println("\n");
-				//hasta aca va jamoncelii
+				
 		
 		
 		System.out.println("#####Arranca Testeo#####");
 		System.out.println("###Combinar Cola Prioridad");
 		
-		m.CombinarColasPrioridad(ColaPriori_a, ColaPriori_b);
-		mostrar(ColaPriori_a);
-		mostrar(ColaPriori_b);
+		aux1=m.CombinarColasPrioridad(ColaPriori_a, ColaPriori_b);
+		mostrar(aux1);
 		
-		
+	
+		System.out.println("\n");
 		System.out.println("###Comprobar Identidad");
-		m.ComprobarIdentidad(ColaPriori_a, ColaPriori_b);
-		mostrar(ColaPriori_a);
-		mostrar(ColaPriori_b);
+		aux=m.ComprobarIdentidad(ColaPriori_a, ColaPriori_b);
+		System.out.println(aux);
+		
 		
 		
 		
@@ -94,5 +100,3 @@ class TestColaConPrioridad{
 	}
 	
 }	
-
-//ñeriare
