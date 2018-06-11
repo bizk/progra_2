@@ -659,6 +659,9 @@ public class Metodos {
 	public boolean ComprobarIdentidad(ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
 		ColaPrioridadDA aux1 = new ColaPrioridadDA();
 		ColaPrioridadDA aux2 = new ColaPrioridadDA();
+		aux1.InicializarCola();
+		aux2.InicializarCola();
+		
 		CopiarColaPri(CP1, aux1);
 		CopiarColaPri(CP2, aux2);
 		boolean iguales = true;
