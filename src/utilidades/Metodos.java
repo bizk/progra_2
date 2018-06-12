@@ -301,6 +301,7 @@ public class Metodos {
 	 **/
 	public void InvertirColaPila(ColaTDA origen) { // usando pilas auxiliares
 		PilaTDA p = new Pilas();
+		p.InicializarPila();//MODIFICACION SANTI C.
 		while (!origen.ColaVacia()) {
 			p.Apilar(origen.Primero());
 			origen.Desacolar();
@@ -321,6 +322,7 @@ public class Metodos {
 	public int ContarElemCola(ColaTDA origen) {
 		int cont = 0;
 		ColaTDA aux = new ColaPI();
+		aux.InicializarCola();
 		while (!origen.ColaVacia()) {
 			cont++;
 			aux.Acolar(origen.Primero());
@@ -340,24 +342,36 @@ public class Metodos {
 	public void InvertirColaSola(ColaTDA origen) {
 		ColaTDA aux = new ColaPI();
 		ColaTDA aux2 = new ColaPI();
-		int cant = ContarElemCola(origen);
-		int count = 0;
 		aux.InicializarCola();
 		aux2.InicializarCola();
-		while (cant != 0) {
-			while (count < cant - 1) {
-				count++;
-				aux.Acolar(origen.Primero());
-				origen.Desacolar();
-			}
-			aux2.Acolar(origen.Primero());
-			origen.Desacolar();
-			count = 0;
-			cant--;
-			CopiarCola(aux, origen);
+		while(!origen.ColaVacia()) {
+				if(aux.ColaVacia() && aux2.ColaVacia()) {
+						aux.Acolar(origen.Primero());
+						origen.Desacolar();
+					} else if(aux.ColaVacia() && !aux2.ColaVacia()) {
+			 				aux.Acolar(origen.Primero());
+			 				origen.Desacolar();
+						while(!aux2.ColaVacia()) {
+							aux.Acolar(aux2.Primero());
+							aux2.Desacolar();
+						}
+					} 
+					else if (!aux.ColaVacia() && aux2.ColaVacia()){
+						aux2.Acolar(origen.Primero());
+						origen.Desacolar();
+						while(!aux.ColaVacia()) {
+							aux2.Acolar(aux.Primero());
+							aux.Desacolar();
+						}
+					}
 		}
-		CopiarCola(aux2, origen); // Si no me equivoco es lo que dijo la profe, revisar -Fedejp
-
+		
+				if(aux.ColaVacia()) {
+					CopiarCola(aux2, origen);
+						}
+						else {
+							CopiarCola(aux, origen);
+					}	
 	}
 	/*
 	 * public void InvertirColaSola(ColaTDA o) { // Este no pude hacerlo ColaTDA aux
@@ -480,9 +494,41 @@ public class Metodos {
 	 * * @COSTO Polinomico
 	 **/
 	public void ColaEliminarRepeticiones(ColaTDA cp1) {
-		ColaTDA aux = new ColaPI();
+		ColaTDA aux1 = new ColaPI();
 		ColaTDA aux2 = new ColaPI();
 		ColaTDA aux3 = new ColaPI();
+		aux1.InicializarCola();
+		aux2.InicializarCola();
+		aux3.InicializarCola();
+		CopiarCola(cp1, aux2);
+		while(!aux2.ColaVacia()) {
+			aux1.Acolar(aux2.Primero());
+			aux2.Desacolar();
+			while(!aux2.ColaVacia()) {
+				if(aux1.Primero()==aux2.Primero())
+					aux2.Desacolar();
+				else
+				{
+					aux3.Acolar(aux2.Primero());
+					aux2.Desacolar();
+				}
+			}
+			CopiarCola(aux3,aux2);
+		}
+		
+		
+		
+	}
+	
+	/*public void ColaEliminarRepeticiones(ColaTDA cp1) {
+		ColaTDA aux = new ColaPI();
+		ColaTDA aux1= new ColaPI();
+		ColaTDA aux2 = new ColaPI();
+		ColaTDA aux3 = new ColaPI();
+		aux.InicializarCola();
+		aux1.InicializarCola();
+		aux2.InicializarCola();
+		aux3.InicializarCola();
 		CopiarCola(cp1, aux); // Copiamos los elementos de la cola 1 a aux para no perderla
 		while (!aux.ColaVacia()) {
 			CopiarCola(aux, aux2);
@@ -494,17 +540,20 @@ public class Metodos {
 				aux3.Acolar(aux2.Primero()); // Acolamos el primero, ya que tecnicamente esle numero que vamos a
 												// comaprar
 				aux2.Desacolar(); // Y lo desacolamos de aux2 para no borrarlo.
-				if (aux.Primero() == aux2.Primero()) { // Cualquier otra repeticion la salteamos
+				if (aux2.ColaVacia()){
+					;
+					}
+				else if (aux.Primero() == aux2.Primero()) { // Cualquier otra repeticion la salteamos
 					aux2.Desacolar();
 				} else { // Mientras que aca la vamos acolando
 					aux3.Acolar(aux2.Primero());
 				}
 			}
-			CopiarCola(aux3, aux); // Pasamos aux3 donde tiene los elementos repetidos de aux borrados como el
-									// nuevo aux
+			CopiarCola(aux3, aux); // Pasamos aux3 donde tiene los elementos repetidos de aux borrados
+			aux1.Acolar(aux.Primero());					// En esta cola vamos a guardar sólo la primer repetición de cada elemento
 			aux.Desacolar(); // Desacolamos aux para comparar el siguiente numero
 		}
-	}
+	}*/
 
 	// TP 3 - 2.B. -Carlos S Yanzon (11/04/2018) -Corregido por FParodi (21/05/18)
 	/**
