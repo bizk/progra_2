@@ -112,14 +112,14 @@ public class Metodos {
 	 * @PRECONDICION pila iniciada
 	 * @DEVUELVE double que representa el promedio de los elementos
 	 * @POSTCONDICION none
-	 * * @COSTO Lineal (por la utilización de métodos con costo lineal)
+	 * * @COSTO Lineal (por la utilizaci�n de m�todos con costo lineal)
 	 **/
 	public float PromedioElemPila(PilaTDA origen) {
 		float z;
 		float x = SumarElemPIla(origen); // x es la suma de elementos que devuelve el metodo
 		float y = ContarElemPila(origen); // y es la cantidad de elementos que devuelve el metodo
 		z = x/y;
-		return (z); // se devuelve la división
+		return (z); // se devuelve la divisi�n
 	}
 
 	//TP 3 - 1.A Cerfoglio (29/05/2018)
@@ -137,11 +137,8 @@ public class Metodos {
 		PilaTDA aux2 = new Pilas();
 		aux2.InicializarPila();
 		CopiarPila(P, aux);
-		PasarPila(aux, aux2);
-		CopiarPila(P, aux);
 		cant = ContarElemPila(aux);
 		mitad = cant / 2;
-		
 		par = (cant % 2 == 0);
 		while(mitad > 0){
 			aux.Apilar(aux2.Tope());
@@ -169,19 +166,37 @@ public class Metodos {
 	 * * @COSTO Lineal
 		**/
 	public void EliminarElemRepetidos(PilaTDA P){
-	PilaTDA aux = new Pilas();
+		PilaTDA aux = new Pilas();
 		aux.InicializarPila();
-		PasarPila(P,aux);
-		PilaTDA aux2 = new Pilas();
-		aux2.InicializarPila();
-		
+		CopiarPila(P, aux);
+		ConjuntoTDA elementos = new ConjuntoUA();
+		elementos.InicializarConjunto();
 		while(!aux.PilaVacia()){
-			if(!PertenecePila(aux.Tope(), aux2))
-				aux2.Apilar(aux.Tope());
+			elementos.AgregarConjunto(aux.Tope());
 			aux.Desapilar();
 		}
-		CopiarPila(aux2, P);
+		while(!elementos.ConjuntoVacio())
+		{
+			aux.Apilar(elementos.ElegirConjunto());
+			elementos.SacarConjunto(elementos.ElegirConjunto());
+		}
+		CopiarPila(aux, P);
 		
+		
+		/*while(!aux.PilaVacia()){
+			aux2.Apilar(aux.Tope());
+			aux.Desapilar();
+		}
+		while(!aux2.PilaVacia()){
+			if(!elementos.PerteneceConjunto(aux2.Tope())){
+				elementos.AgregarConjunto(aux2.Tope());
+				aux.Apilar(aux2.Tope());
+				aux2.Desapilar();
+			}
+			else{
+				aux2.Desapilar();
+			}
+		}*/
 	}
 
 	//TP 3 - 1.C Cerfoglio (30/05/2018)
@@ -201,32 +216,19 @@ public class Metodos {
 		M1.InicializarPila();
 		PilaTDA M2 = new Pilas();
 		M2.InicializarPila();
-		PasarPila(P, aux);
-		
+		CopiarPila(P, aux);
+		InvertirPila(aux);
 		cant = ContarElemPila(aux);
 		for(int i = 0; i < cant / 2; i++){
-			M1.Apilar(aux.Tope());
+			M2.Apilar(aux.Tope());
 			aux.Desapilar();
 		}
-		for(int i = (cant / 2); i < cant; i++){
-			M2.Apilar(aux.Tope());
+		for(int i = (cant / 2) + 1; i < cant; i++){
+			M1.Apilar(aux.Tope());
 			aux.Desapilar();
 		}
 		CopiarPila(M1,P);
 		return M2;
-	}
-	private boolean PertenecePila(int a, PilaTDA P)
-	{
-		PilaTDA aux = new Pilas();
-		aux.InicializarPila();
-		CopiarPila(P,aux);
-		boolean pertenece=false;
-		while(!pertenece&&!aux.PilaVacia()){
-			if(aux.Tope()==a)
-				pertenece=true;
-			aux.Desapilar();
-		}
-		return pertenece;
 	}
 
 	//TP 3 - 1.D Cerfoglio (31/05/2018)
@@ -301,6 +303,7 @@ public class Metodos {
 	 **/
 	public void InvertirColaPila(ColaTDA origen) { // usando pilas auxiliares
 		PilaTDA p = new Pilas();
+		p.InicializarPila();//MODIFICACION SANTI C.
 		while (!origen.ColaVacia()) {
 			p.Apilar(origen.Primero());
 			origen.Desacolar();
@@ -321,6 +324,7 @@ public class Metodos {
 	public int ContarElemCola(ColaTDA origen) {
 		int cont = 0;
 		ColaTDA aux = new ColaPI();
+		aux.InicializarCola();
 		while (!origen.ColaVacia()) {
 			cont++;
 			aux.Acolar(origen.Primero());
@@ -334,30 +338,49 @@ public class Metodos {
 	 * @TAREA Invertir una Cola SIN pilas auxiliares
 	 * @PARAMETRO cola original
 	 * @PRECONDICON Cola iniciada
-	 * @POSTCONDICON La cola se devolverÃ¯Â¿Â½ invertida
+	 * @POSTCONDICON La cola se devolverï¿½ invertida
 	 * * @COSTO Polinomico
 	 **/
 	public void InvertirColaSola(ColaTDA origen) {
 		ColaTDA aux = new ColaPI();
 		ColaTDA aux2 = new ColaPI();
-		int cant = ContarElemCola(origen);
-		int count = 0;
 		aux.InicializarCola();
 		aux2.InicializarCola();
-		while (cant != 0) {
-			while (count < cant - 1) {
-				count++;
+		/*
+		aux.Acolar(origen.Primero());
+		origen.Desacolar();
+		aux2.Acolar(origen.Primero());
+		origen.Desacolar();
+		aux2.Acolar(aux.Primero());
+		aux.Desacolar();
+		*/
+		while(!origen.ColaVacia()) {
+			if(aux.ColaVacia() && aux2.ColaVacia()) {
 				aux.Acolar(origen.Primero());
 				origen.Desacolar();
+			} else if(aux.ColaVacia() && !aux2.ColaVacia()) {
+				aux.Acolar(origen.Primero());
+				origen.Desacolar();
+				while(!aux2.ColaVacia()) {
+					aux.Acolar(aux2.Primero());
+					aux2.Desacolar();
+				}
+			} 
+			else if (!aux.ColaVacia() && aux2.ColaVacia()){
+				aux2.Acolar(origen.Primero());
+				origen.Desacolar();
+				while(!aux.ColaVacia()) {
+					aux2.Acolar(aux.Primero());
+					aux.Desacolar();
+				}
 			}
-			aux2.Acolar(origen.Primero());
-			origen.Desacolar();
-			count = 0;
-			cant--;
-			CopiarCola(aux, origen);
 		}
-		CopiarCola(aux2, origen); // Si no me equivoco es lo que dijo la profe, revisar -Fedejp
-
+		if(aux.ColaVacia()) {
+			CopiarCola(aux2, origen);
+		}
+		else {
+			CopiarCola(aux, origen);
+		}	
 	}
 	/*
 	 * public void InvertirColaSola(ColaTDA o) { // Este no pude hacerlo ColaTDA aux
@@ -607,7 +630,7 @@ public class Metodos {
 
 	/**
 	 * @TAREA Combinar colas con prioridad, donde los elementos de la primera
-	 *        tendrÃ¯Â¿Â½n mÃ¯Â¿Â½s prioridad que los de la segunda
+	 *        tendrï¿½n mï¿½s prioridad que los de la segunda
 	 * @PARAMETRO cola nro1, de mayor prioridad
 	 * @PARAMETRO cola nro2
 	 * @PRECONDICON Colas iniciadas
@@ -659,9 +682,6 @@ public class Metodos {
 	public boolean ComprobarIdentidad(ColaPrioridadTDA CP1, ColaPrioridadTDA CP2) {
 		ColaPrioridadDA aux1 = new ColaPrioridadDA();
 		ColaPrioridadDA aux2 = new ColaPrioridadDA();
-		aux1.InicializarCola();
-		aux2.InicializarCola();
-		
 		CopiarColaPri(CP1, aux1);
 		CopiarColaPri(CP2, aux2);
 		boolean iguales = true;
@@ -775,7 +795,7 @@ public class Metodos {
 	 * @PRECONDICION Conjuntos inicializados
 	 * @POSTCONDICION none
 	 * @DEVUELVE ConjuntoTDA con los elementos que estan en C1 menos los que
-	 *           estÃ¯Â¿Â½n en C2.
+	 *           estï¿½n en C2.
 	 * @COSTO Lineal
 	 **/
 	public ConjuntoTDA DiferenciaConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
@@ -1022,7 +1042,6 @@ public class Metodos {
 		while (!aux2.ConjuntoVacio()) {
 			elemento = aux2.ElegirConjunto();
 			ResultadoDifSimetrica.AgregarConjunto(elemento);
-			aux2.SacarConjunto(elemento);
 		}
 		return ResultadoDifSimetrica;
 	}
@@ -1090,10 +1109,10 @@ public class Metodos {
 			}
 		}
 
-		if (a == 1 && Conjunto2.ConjuntoVacio()) {
-			return true;
-		} else {
+		if (a != 0 || !Conjunto2.ConjuntoVacio()) {
 			return false;
+		} else {
+			return true;
 		}
 	}
 
@@ -1171,13 +1190,13 @@ public class Metodos {
 	/**
 	 * @TAREA obtener el valor del menor elelemnto de un ABB
 	 * @PARAMETRO arbol
-	 * @PRECONDICON arbol inicializado y no vacÃ­o
+	 * @PRECONDICON arbol inicializado y no vacío
 	 * @POSTCONDICON none
 	 * @DEVUELVE valor
 	 * @COSTO Recursivo
 	 **/
 	public int Menor(ABBTDA a) {// mirar la implementacio
-		if (a.HijoIzq().ArbolVacio()) { // si el hijo izquierdo esta vacÃ­o
+		if (a.HijoIzq().ArbolVacio()) { // si el hijo izquierdo esta vacío
 			return a.Raiz(); // es el valor mas bajo
 		} else {
 			return Menor(a.HijoIzq()); // busca el valor mas bajo en el hijo izquierdo
