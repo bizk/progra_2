@@ -2,14 +2,15 @@ package tps.tp2;
 
 import api.ConjuntoTDA;
 import api.DiccionarioSimpleTDA;
-import implementaciones.arreglos.*;
-import utilidades.*;
+import implementaciones.arreglos.ConjuntoTMA;
+import implementaciones.listas.DiccionarioSimpleLD;
+import utilidades.Metodos;
 
 import java.util.Scanner;
 
-class TestDicSimpleA {
+class TestDicSimpleLD {
 	public static void main(String[] args) {
-		DiccionarioSimpleTDA dic_a = new DicSimpleA(); // Defoinimos algunos dic a probar
+		DiccionarioSimpleTDA dic_a = new DiccionarioSimpleLD(); // Defoinimos algunos dic a probar
 
 		dic_a.InicializarDiccionario();
 
@@ -23,23 +24,18 @@ class TestDicSimpleA {
 		for (int i = 1; i <= 5; i++) {
 			System.out.print("-V: ");
 			valor = ln.nextInt();
-			System.out.print("-C: ");
 			clave = ln.nextInt();
 			//clave = i;
 			dic_a.Agregar(clave, valor);
 		}
-		System.out.print("Resultado: ");
-		mostrardicsimp(dic_a);
+		
 		System.out.print("Elegir una clave del diccionario A para sacar: ");
 		clave = ln.nextInt();
 		dic_a.Eliminar(clave);
-		System.out.print("Resultado: ");
-		mostrardicsimp(dic_a);
 		
 		System.out.print("Recuperar un valor a partir de una clave: ");
 		clave = ln.nextInt();
 		System.out.println(" " + dic_a.Recuperar(clave));
-		
 
 		System.out.print("Recuperar un conjunto con las claves del diccionario: ");
 		ConjuntoTDA conjclaves = new ConjuntoTMA(); 
@@ -64,14 +60,5 @@ class TestDicSimpleA {
 			aux.SacarConjunto(x);
 		}
 		System.out.println(" ");
-	}
-	public static void mostrardicsimp(DiccionarioSimpleTDA origen) { 
-		ConjuntoTDA aux=origen.Claves();
-		while(!aux.ConjuntoVacio()) {
-			System.out.print("Clave " + aux.ElegirConjunto() + ": " + origen.Recuperar(aux.ElegirConjunto()));
-			aux.SacarConjunto(aux.ElegirConjunto());
-			System.out.println("");
-			}
-		
 	}
 }

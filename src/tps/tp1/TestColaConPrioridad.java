@@ -78,7 +78,7 @@ class TestColaConPrioridad{
 	
 		System.out.println("\n");
 		System.out.println("###Comprobar Identidad");
-		aux=m.ComprobarIdentidad(aux2, aux3);                   //le mando las copias de la cola a y b
+		aux=m.ComprobarIdentidad(aux2, aux3);
 		System.out.println(aux);
 		
 	
@@ -111,4 +111,4 @@ class TestColaConPrioridad{
 	
 }	
 
-//Ã±eriare
+//ñeriare

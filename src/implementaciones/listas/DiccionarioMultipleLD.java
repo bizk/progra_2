@@ -136,7 +136,7 @@ public class DiccionarioMultipleLD implements DiccionarioMultipleTDA{
 		  }
 		  
 		  
-		  public ConjuntoTDA claves(){
+		  public ConjuntoTDA Claves(){
 		    ConjuntoTDA c = new ConjuntoLD();
 		    c.InicializarConjunto();
 		    NodoClave aux = origen;

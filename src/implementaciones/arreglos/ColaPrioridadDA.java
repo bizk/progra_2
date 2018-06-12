@@ -27,7 +27,7 @@ public class ColaPrioridadDA implements ColaPrioridadTDA {
 	
 	public void AcolarPrioridad(int x, int prioridad) {
 		int j = indice;
-		for(; j>0 && prioridades[j-1] >= prioridad; j--) {
+		for( ;j>0 && prioridades[j-1] >= prioridad; j--) {
 			elementos[j] = elementos[j-1];
 			prioridades[j] = prioridades[j-1];
 		}
