@@ -1,13 +1,13 @@
 /**
 	@Autores: Gonazalo Bacigalupe
 	@Grupo: 3 
-	@Costo de cada uno de los métodos de la implementación
+	@Costo de cada uno de los mï¿½todos de la implementaciï¿½n
  	*  Cola Primero al Inicio 
  	*InicializarCola:  Constante 
  	*Acolar:  Constante 
  	*Desacolar: Lineal
  	*Primero: Constante 
- 	*ColaVacía: Constante
+ 	*ColaVacï¿½a: Constante
 **/
 
 package implementaciones.arreglos;
@@ -29,7 +29,7 @@ public class ColaPI implements ColaTDA {
 	}
 	
 	public void Desacolar() {
-		for(int i = 0; i < indice-1; i--) {
+		for(int i = 0; i < indice-1; i++) {
 			a[i] = a[i+1];
 		}
 		indice--;
