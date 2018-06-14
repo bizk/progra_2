@@ -6,7 +6,7 @@ import utilidades.*;
 
 import java.util.Scanner;
 
-class testcolaLD {
+class TestColaLD {
 	public static void main (String[] args) {
 		Metodos m = new Metodos();
 		//COLAS A PROBAR
@@ -24,6 +24,7 @@ class testcolaLD {
 		//INGRESO POR TECLADO
 
 		int num;
+		System.out.println("### TEST cola LD ###");
 		System.out.println("Ingrese 5 numeros para la cola A");
 		for (int i = 0; i < 5; i++){
 			num = ln.nextInt();
@@ -54,9 +55,9 @@ class testcolaLD {
 		System.out.print("\n -----------------");
 		System.out.print("\n");
 
-		//INVERTIR CONTENIDO DE LA COLA CON LDLAS AUXILIARES
+		//INVERTIR CONTENIDO DE LA COLA CON PILAS AUXILIARES
 
-		System.out.print("\n Invertir cola con LDlas auxiliares: ");
+		System.out.print("\n Invertir cola con Pilas auxiliares: ");
 		System.out.print("\n Original: ");
 		mostrar(cola_a);
 		m.InvertirColaPila(cola_a);
@@ -67,9 +68,9 @@ class testcolaLD {
 		System.out.print("\n -----------------");
 		System.out.print("\n");
 
-		//INVERTIR CONTENIDO DE LA COLA SIN LDLAS AUXILIARES
+		//INVERTIR CONTENIDO DE LA COLA SIN PILAS AUXILIARES
 
-		System.out.print("\n Invertir cola sin LDlas auxiliares: ");
+		System.out.print("\n Invertir cola sin Pilas auxiliares: ");
 		System.out.print("\n Original: ");
 		mostrar(cola_c);
 		m.InvertirColaSola(cola_c);
@@ -98,9 +99,9 @@ class testcolaLD {
 		System.out.print("\n -----------------");
 		System.out.print("\n");
 
-		//COLA CALDCUA
+		//COLA CAPICUA
 
-		System.out.print("\n Cola es caLDcua?");
+		System.out.print("\n Cola es capicua?");
 		System.out.print("\n Original");
 		mostrar(cola_c);
 		System.out.print("\n");
@@ -137,8 +138,4 @@ class testcolaLD {
 		}
 	}
 }
-
-
-
-
 

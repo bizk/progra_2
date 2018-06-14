@@ -13,27 +13,31 @@ public class TestPunto2{
 	public static void main(String[] args) {
 		Metodos m=new Metodos();
 		
-		ColaTDA cola_a= new ColaPI();
-		ColaTDA cola_b= new ColaPI();
-		ColaTDA cola_c= new ColaPI();
-		ColaTDA cola_aux= new ColaPI();
-		ColaTDA cola_M1= new ColaPI();
-		ColaTDA cola_M2= new ColaPI();
+		ColaTDA cola_a= new ColaLD();
+		ColaTDA cola_b= new ColaLD();
+		ColaTDA cola_c= new ColaLD();
+		ColaTDA cola_d= new ColaLD();
 		
-		ConjuntoTDA c1= new ConjuntoLD();
+		ColaTDA cola_M1= new ColaLD();
+		ColaTDA cola_M2= new ColaLD();
+		ConjuntoTDA repeticiones= new ConjuntoLD();
 		
 		cola_a.InicializarCola();
 		cola_b.InicializarCola();
 		cola_c.InicializarCola();
+		cola_d.InicializarCola();
+		
 		cola_M1.InicializarCola();
 		cola_M2.InicializarCola();
-		cola_aux.InicializarCola();
 		
 		cola_a.Acolar(1);
 		cola_a.Acolar(2);
 		cola_a.Acolar(3);
-		cola_a.Acolar(2);
+		cola_a.Acolar(4);
+		cola_a.Acolar(5);
 		cola_a.Acolar(1);
+		cola_a.Acolar(2);
+		cola_a.Acolar(3);
 		
 		
 		cola_b.Acolar(1);
@@ -45,33 +49,38 @@ public class TestPunto2{
 		cola_b.Acolar(7);
 		cola_b.Acolar(8);
 		
+		
+		cola_d.Acolar(1);
+		cola_d.Acolar(2);
+		cola_d.Acolar(3);
+		cola_d.Acolar(4);
+		cola_d.Acolar(5);
+		cola_d.Acolar(6);
+		cola_d.Acolar(2);
+		cola_d.Acolar(4);
+	
+		
 		System.out.println("Inciso A:Eliminar las repeticiones de una cola ");
 		mostrar(cola_a);
 		m.ColaEliminarRepeticiones(cola_a);
-		System.out.println("Eliminados: ");
+		System.out.println("Cola sin repetidos: ");
 		mostrar(cola_a);
 		
-		
-		/*
 		System.out.println("Inciso b: Repartir una cola en dos mitades");
 		mostrar(cola_b);
-		cola_c= m.ColaPartir(cola_b, cola_M1, cola_M2);
+		m.ColaPartir(cola_b, cola_M1, cola_M2);
 		System.out.println("Mitad 1: ");
-		mostrar(cola_b);
+		mostrar(cola_M1);
 		System.out.println("Mitad 2: ");
-		mostrar(cola_b);
-		
+		mostrar(cola_M2);
 		
 		System.out.println("Inciso C: Devolver un conjunto con los elementos repetidos de una cola");
-		mostrar(cola_a);
+		mostrar(cola_d);
 		System.out.println("Elementos repetidos");
-		//	C1=m.ElementosRepetidos(pila_a);
-		mostrarC(c1);
-		
-		*/
-
-	
+		m.ColaGenerarRepetidos(cola_d, repeticiones);
+		mostrarC(repeticiones);
 	}	
+	
 	public static void mostrar(ColaTDA origen) {
 		Metodos m = new Metodos();
 
@@ -85,9 +94,6 @@ public class TestPunto2{
 		}
 		System.out.println("");
 	}
-	
-	
-	
 	
 	public static void mostrarC(ConjuntoTDA origen) {
 		ConjuntoTDA aux = new ConjuntoLD();

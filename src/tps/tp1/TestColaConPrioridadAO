@@ -12,9 +12,9 @@ class TestColaConPrioridad{
 	public static void main(String[] args){
 		Metodos m=new Metodos();
 		
-		ColaPrioridadTDA ColaPriori_a= new ColaPrioridadDA();
-		ColaPrioridadTDA ColaPriori_b= new ColaPrioridadDA();
-		ColaPrioridadTDA ColaPriori_c= new ColaPrioridadDA();
+		ColaPrioridadTDA ColaPriori_a= new ColaPrioridadAO();
+		ColaPrioridadTDA ColaPriori_b= new ColaPrioridadAO();
+		ColaPrioridadTDA ColaPriori_c= new ColaPrioridadAO();
 		ColaPrioridadTDA aux1= new ColaPrioridadDA();
 		
 		Scanner atr = new Scanner(System.in);

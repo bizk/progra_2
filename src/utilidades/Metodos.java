@@ -3,6 +3,7 @@ package utilidades;
 import api.*;
 import implementaciones.arreglos.*;
 import implementaciones.listas.ConjuntoLD;
+import implementaciones.listas.DiccionarioMultipleLD;
 
 public class Metodos {
 
@@ -265,7 +266,7 @@ public class Metodos {
 	 * * @COSTO Lineal
 	 **/
 	public void CopiarCola(ColaTDA origen, ColaTDA destino) {// Cambio para que no se pierda la cola original -Fedejp
-		ColaTDA aux = new ColaPU();
+		ColaTDA aux = new ColaLD();
 		aux.InicializarCola();
 		while (!origen.ColaVacia()) {
 			destino.Acolar(origen.Primero());
@@ -300,8 +301,8 @@ public class Metodos {
 	 * * @COSTO Lineal
 	 **/
 	public void InvertirColaPila(ColaTDA origen) { // usando pilas auxiliares
-		PilaTDA p = new Pilas();
-		p.InicializarPila();//MODIFICACION SANTI C.
+		PilaTDA p = new PilaLD();
+		p.InicializarPila();
 		while (!origen.ColaVacia()) {
 			p.Apilar(origen.Primero());
 			origen.Desacolar();
@@ -322,7 +323,7 @@ public class Metodos {
 	public int ContarElemCola(ColaTDA origen) {
 		int cont = 0;
 		ColaTDA aux = new ColaPI();
-		aux.InicializarCola();
+		aux.InicializarCola(); //NUEVOOOO!!! 
 		while (!origen.ColaVacia()) {
 			cont++;
 			aux.Acolar(origen.Primero());
@@ -493,67 +494,20 @@ public class Metodos {
 	 * @POSTCONDICON La cola quedara sin elemento repetidos
 	 * * @COSTO Polinomico
 	 **/
-	public void ColaEliminarRepeticiones(ColaTDA cp1) {
-		ColaTDA aux1 = new ColaPI();
-		ColaTDA aux2 = new ColaPI();
-		ColaTDA aux3 = new ColaPI();
-		aux1.InicializarCola();
-		aux2.InicializarCola();
-		aux3.InicializarCola();
-		CopiarCola(cp1, aux2);
-		while(!aux2.ColaVacia()) {
-			aux1.Acolar(aux2.Primero());
-			aux2.Desacolar();
-			while(!aux2.ColaVacia()) {
-				if(aux1.Primero()==aux2.Primero())
-					aux2.Desacolar();
-				else
-				{
-					aux3.Acolar(aux2.Primero());
-					aux2.Desacolar();
-				}
+	public void ColaEliminarRepeticiones(ColaTDA cp1){
+		ColaTDA destino = new ColaLD(); 
+		destino.InicializarCola();
+		ConjuntoTDA valores = new ConjuntoLD(); 
+               valores.InicializarConjunto();
+		while (!cp1.ColaVacia()){
+			if (!valores.PerteneceConjunto(cp1.Primero())){
+				valores.AgregarConjunto(cp1.Primero());
+				destino.Acolar(cp1.Primero());
 			}
-			CopiarCola(aux3,aux2);
+			cp1.Desacolar();
 		}
-		
-		
-		
+		CopiarCola(destino,cp1);
 	}
-	
-	/*public void ColaEliminarRepeticiones(ColaTDA cp1) {
-		ColaTDA aux = new ColaPI();
-		ColaTDA aux1= new ColaPI();
-		ColaTDA aux2 = new ColaPI();
-		ColaTDA aux3 = new ColaPI();
-		aux.InicializarCola();
-		aux1.InicializarCola();
-		aux2.InicializarCola();
-		aux3.InicializarCola();
-		CopiarCola(cp1, aux); // Copiamos los elementos de la cola 1 a aux para no perderla
-		while (!aux.ColaVacia()) {
-			CopiarCola(aux, aux2);
-			// Copiamos aux a aux2 ya que vamos a ir moviendo de numero en numero
-			// Es decir como vamos a comparar al primero de l de aux y luego lo desacolamos
-			// para comparar
-			// Al siguiente numero.
-			while (!aux2.ColaVacia()) { // Hasta que no llegemos al final de aux 2 no paramos
-				aux3.Acolar(aux2.Primero()); // Acolamos el primero, ya que tecnicamente esle numero que vamos a
-												// comaprar
-				aux2.Desacolar(); // Y lo desacolamos de aux2 para no borrarlo.
-				if (aux2.ColaVacia()){
-					;
-					}
-				else if (aux.Primero() == aux2.Primero()) { // Cualquier otra repeticion la salteamos
-					aux2.Desacolar();
-				} else { // Mientras que aca la vamos acolando
-					aux3.Acolar(aux2.Primero());
-				}
-			}
-			CopiarCola(aux3, aux); // Pasamos aux3 donde tiene los elementos repetidos de aux borrados
-			aux1.Acolar(aux.Primero());					// En esta cola vamos a guardar sólo la primer repetición de cada elemento
-			aux.Desacolar(); // Desacolamos aux para comparar el siguiente numero
-		}
-	}*/
 
 	// TP 3 - 2.B. -Carlos S Yanzon (11/04/2018) -Corregido por FParodi (21/05/18)
 	/**
@@ -567,14 +521,13 @@ public class Metodos {
 		int x = ContarElemCola(cp1);
 		int cont = 0;
 		while (!cp1.ColaVacia()) {// mientras que la cola tenga elementos
-			if (cont <= (x / 2))// Si se iteraron menos de la mitad de la cantidad de elementos de la cola
+			if (cont < (x / 2))// Si se iteraron menos de la mitad de la cantidad de elementos de la cola
 				M1.Acolar(cp1.Primero()); // se agregan a la primer mitad
 			else
 				M2.Acolar(cp1.Primero()); // se agregan a la segunda
 			cp1.Desacolar();
 			cont++;
 		}
-
 	}
 
 	/*
@@ -606,6 +559,12 @@ public class Metodos {
 		ColaTDA aux = new ColaPI();
 		ColaTDA aux2 = new ColaPI();
 		ColaTDA aux3 = new ColaPI();
+		
+		aux.InicializarCola();
+		aux2.InicializarCola();
+		aux3.InicializarCola();
+		
+		
 		CopiarCola(cp1, aux); // Copiamos los elementos de la cola 1 a aux para no perderla
 								// Funciona igual que el otro
 
@@ -620,7 +579,7 @@ public class Metodos {
 				if (aux.Primero() == aux2.Primero()) { // Cualquier repeticion la copiamos
 					aux3.Acolar(aux2.Primero());
 				} else { // Mientras que aca la vamos acolando
-					aux2.Desacolar();
+					//aux2.Desacolar(); !!!!ESTA LINEA NO VAAA
 				}
 			}
 			aux.Desacolar(); // Desacolamos aux para comparar el siguiente numero
@@ -629,9 +588,7 @@ public class Metodos {
 			repeticiones.AgregarConjunto(aux3.Primero());
 			aux3.Desacolar();
 		}
-
 	}
-
 	/**
 	 * @TAREA Copia una Cola prioridad en otra
 	 * @PARAMETRO cola origen, cola destino.
@@ -651,7 +608,6 @@ public class Metodos {
 			origen.AcolarPrioridad(aux.Primero(), aux.Prioridad());
 			aux.Desacolar();
 		}
-
 	}
 
 	/**
@@ -671,7 +627,7 @@ public class Metodos {
 		 * 
 		 * //Creamos la cola auxiliar y la inicializamos 
 		 */
-		ColaPrioridadTDA destino = new ColaPrioridadDA();
+		ColaPrioridadTDA destino = new ColaPrioridadLD();
 		destino.InicializarCola();
 
 		// Ya que la primer cola tiene prioridad realizamos el proceso hasta que esta se
@@ -853,6 +809,7 @@ public class Metodos {
 
 	// TP 3 - 5.A. Carlos Santiago YANZON -BIZK (14/04/2018)
 	/**
+	 * @return 
 	 * @TAREA Generar un dicconario multiple en base a dos diccionarios multiples D1
 	 *        y D2
 	 * @PARAMETRO diccionario 1 y 2
@@ -860,7 +817,7 @@ public class Metodos {
 	 * @POSTCONDICON 1 Diccionario multiple
 	 *  @COSTO Polinomico
 	 **/
-	public void UnificarDicMultiples(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
+	public DiccionarioMultipleTDA UnificarDicMultiples(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
 		DiccionarioMultipleTDA dic = new DicMultipleA();
 		dic.InicializarDiccionario();
 
@@ -906,22 +863,27 @@ public class Metodos {
 			} // Una vez recorrimos todos los valores
 			clavesd02.SacarConjunto(clave); // eliminamos esa clave asi podemos acceder a la siguiente
 		}
+		
+		return dic;
 	}
 
 	// TP 3 - 5.B. //ESTA NO PUDE AUNQU CROE QUE ES LO MISMO QUE EL D.
 	// -Efectivamente, lo es. Fedejp
 	/**
 	 * @TAREA Generar un dicconario multiple en base a los elementos en comun de los
-	 *        diccionarios multiples D1 y D3
+	 *        diccionarios multiples D1 y D2
 	 * @PARAMETRO diccionario 1 y 2
 	 * @PRECONDICON Diccionarios iniciados.
-	 * @POSTCONDICON 1 Diccionario multiple
-	 * 
-	 *               ESTE NO LO ENTENDI BIEN.
+	 * @Devuelve 1 Diccionario multiple
 	 **/
-
+	public DiccionarioMultipleTDA DiccionarioElemComun (DiccionarioMultipleTDA D1, DiccionarioMultipleTDA D2) {
+		
+		return DicMultClavesYValComun(D1,D2);
+	}
+	
 	// TP 3 - 5.C. -Carlos Santiago YANZON -BIZK (14/04/2018)
 	/**
+	 * @return 
 	 * @TAREA Generar un dicconario multiple en base a dos diccionarios multiples D1
 	 *        y D2 el cual tendra todos los valores de las claves en comun
 	 * @PARAMETRO diccionario 1 y 2
@@ -929,62 +891,71 @@ public class Metodos {
 	 * @POSTCONDICON 1 Diccionario multiple
 	 *  @COSTO Polinomico
 	 **/
-	public void DicMultClavesComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
-		DiccionarioMultipleTDA dic = new DicMultipleA();
+	public DiccionarioMultipleTDA DicMultClavesComun(DiccionarioMultipleTDA ORIGEN1, DiccionarioMultipleTDA ORIGEN2) {
+		DiccionarioMultipleTDA dic = new DiccionarioMultipleLD();
 		dic.InicializarDiccionario();
 
-		ConjuntoTDA clavesd01 = new ConjuntoTMA();
-		ConjuntoTDA clavesd02 = new ConjuntoTMA();
+		DiccionarioMultipleTDA D01 = new DiccionarioMultipleLD();
+		DiccionarioMultipleTDA D02 = new DiccionarioMultipleLD();
+		D01.InicializarDiccionario();
+		D02.InicializarDiccionario();
+				
+		ConjuntoTDA clavesd01 = new ConjuntoLD();
+		ConjuntoTDA clavesd02 = new ConjuntoLD();
 		clavesd01.InicializarConjunto();
 		clavesd02.InicializarConjunto();
-
-		ConjuntoTDA valoresd01 = new ConjuntoTMA();
-		ConjuntoTDA valoresd02 = new ConjuntoTMA();
+		ConjuntoTDA valoresd01 = new ConjuntoLD();
+		ConjuntoTDA valoresd02 = new ConjuntoLD();
 		valoresd01.InicializarConjunto();
 		valoresd02.InicializarConjunto();
-
-		// Obtenemos todas las claves de cada conjunto
-		clavesd01 = D01.Claves();
-
+		
 		int clave1, clave2, valor1, valor2;
-		ConjuntoTDA valconj01 = new ConjuntoTMA();
-		ConjuntoTDA valconj02 = new ConjuntoTMA();
-
+		ConjuntoTDA valconj01 = new ConjuntoLD();
+		ConjuntoTDA valconj02 = new ConjuntoLD();
+		
 		// obtenemos los valores de dichas claves
+		clavesd01 = ORIGEN1.Claves();
 		while (!clavesd01.ConjuntoVacio()) {
-			clavesd02 = D02.Claves(); // Reinicioamos las claves de claves02 para recorrerlas todas
+			clavesd02 = ORIGEN2.Claves(); // Reinicioamos las claves de claves02 para recorrerlas todas
 			clave1 = clavesd01.ElegirConjunto(); // Sacamos una clave de clavesd01
 			while (!clavesd02.ConjuntoVacio()) { // Recorremos todas las claves de d02
 				clave2 = clavesd02.ElegirConjunto(); // Sacamos una clave de clavesd02
 				if (clave1 == clave2) { // Si son iguales procedemos a unificar todo
-					valconj01 = D01.Recuperar(clave1); // Obtenemos todos los valores de la clave
+					valconj01 = ORIGEN1.Recuperar(clave1); // Obtenemos todos los valores de la clave
 					while (!valconj01.ConjuntoVacio()) { // REcorremos todos los valores
 						valor1 = valconj01.ElegirConjunto(); // Elegimos un valor al azar
-						valor2 = valconj02.ElegirConjunto();
 						dic.Agregar(clave1, valor1); // Agregamos el primer valor
+						valconj01.SacarConjunto(valor1);
+					}
+					valconj02 = ORIGEN2.Recuperar(clave2); // Obtenemos todos los valores de la clave
+					while (!valconj02.ConjuntoVacio()) { // REcorremos todos los valores
+						valor2 = valconj02.ElegirConjunto();
 						dic.Agregar(clave2, valor2); // Agruegamos ambos valores
+						valconj02.SacarConjunto(valor2);
 					}
 				} // Si no, decidimos seguir comparando todas las claves2 con esa clave
 				clavesd02.SacarConjunto(clave2);
 			} // Volvemos a hacer lo mismo hasta quedarnos sin claves en clavd01
-
 			clavesd01.SacarConjunto(clave1); // eliminamos esa clave asi podemos acceder a la siguiente
 		}
+		return dic;
 	}
 
-	// TP 3 - 5.C. Yanzon (14/04/2018)
+	// TP 3 - 5.D. Yanzon (14/04/2018)
 	/**
+	 * @return 
 	 * @TAREA Generar un dicconario multiple en base a dos diccionarios multiples D1
-	 *        y D3 el cual tendra todos los valores de las claves en comun
+	 *        y D2 el cual tendra todos los valores de las claves en comun
 	 * @PARAMETRO diccionario 1 y 2
 	 * @PRECONDICON Diccionarios iniciados.
-	 * @POSTCONDICON 1 Diccionario multiple
+	 * @Devuelve 1 Diccionario multiple
+	 * @Postcondicion none
 	 * @COSTO polinomico
 	 **/
-	public void DicMultClavesYValComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
+	public DiccionarioMultipleTDA DicMultClavesYValComun(DiccionarioMultipleTDA D01, DiccionarioMultipleTDA D02) {
 		DiccionarioMultipleTDA dic = new DicMultipleA(); // Definimos el diccionario donde guardaremos todo
 		dic.InicializarDiccionario();
-
+		
 		// Obtenemos los conjuntos de claves
 		ConjuntoTDA clavesd01 = new ConjuntoTMA();
 		ConjuntoTDA clavesd02 = new ConjuntoTMA();
@@ -1032,7 +1003,7 @@ public class Metodos {
 			}
 			clavesd01.SacarConjunto(clave1); // Vamos vaciando el conjunto de claves
 		}
-
+		return dic;
 	}
 
 	

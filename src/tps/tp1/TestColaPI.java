@@ -6,7 +6,7 @@ import utilidades.*;
 
 import java.util.Scanner;
 
-class testcolaPI {
+class TestColaPI {
 	public static void main (String[] args) {
 		Metodos m = new Metodos();
 		//COLAS A PROBAR
@@ -24,6 +24,7 @@ class testcolaPI {
 		//INGRESO POR TECLADO
 
 		int num;
+		System.out.println("### TEST cola PI ###");
 		System.out.println("Ingrese 5 numeros para la cola A");
 		for (int i = 0; i < 5; i++){
 			num = ln.nextInt();
