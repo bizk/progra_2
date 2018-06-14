@@ -901,7 +901,6 @@ public class Metodos {
 		while(!claves1.ConjuntoVacio()) {
 			clave1 = claves1.ElegirConjunto();
 			claves2 = D2.Claves();
-			while(!claves1)
 			while(!claves2.ConjuntoVacio()) {
 				clave2 = claves2.ElegirConjunto();
 				
