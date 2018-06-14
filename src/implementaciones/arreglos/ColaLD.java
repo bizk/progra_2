@@ -13,7 +13,9 @@ public class ColaLD implements ColaTDA {
 Nodo primero;
 Nodo ultimo;
 	@Override
-	public void InicializarCola() {//Costo Constante
+	/**@Costo Constante
+	 */
+	public void InicializarCola() {
 		primero=null;
 		ultimo=null;
 

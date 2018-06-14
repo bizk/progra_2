@@ -8,7 +8,7 @@ import api.ABBTDA;
 **/
 
 public class ABB implements ABBTDA {
-	nodoABB raiz;
+	NodoABB raiz;
 	@Override
 	public int Raiz() {
 		return raiz.info;
@@ -39,7 +39,7 @@ public class ABB implements ABBTDA {
 	@Override
 	public void AgregarElem(int x) {
 		if(raiz==null) { //Si el arbol es vacío
-			raiz=new nodoABB();
+			raiz=new NodoABB();
 			raiz.info= x;
 			raiz.hijoIzq = new ABB();
 			raiz.hijoIzq.InicializarArbol();

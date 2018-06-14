@@ -44,6 +44,10 @@ public interface ColaPrioridadTDA {
  	@POSTCONDICION none**/
     public boolean ColaVacia(); 
     
-    /**@QUEHACEESTO**/
+    /**@TAREA Devolver_Prioridad_del_primer_elemento
+ 	@PARAMETRO none
+ 	@PRECONDICION Cola_inicializada_No_Vacia
+ 	@DEVUELVE integer
+ 	@POSTCONDICION none**/
     public int Prioridad();
 }

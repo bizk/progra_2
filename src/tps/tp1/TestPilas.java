@@ -82,5 +82,6 @@ class TestPilas {
 			System.out.print(" " + aux.Tope());
 			aux.Desapilar();
 		}
+		System.out.println("");
 	}
 }
