@@ -29,11 +29,15 @@ class TestDicMultipleA {
 			//clave = i;
 			dic_a.Agregar(clave, valor);
 		}
+		System.out.println("Diccionario A: ");
+		mostrardicmult(dic_a);
 		
 		System.out.println("Elegir una clave para eliminar: ");
 		System.out.print("-C: ");
 		clave = ln.nextInt();
 		dic_a.Eliminar(clave);
+		System.out.println("Resultado: ");
+		mostrardicmult(dic_a);
 		
 		System.out.println("Elegir un valor de una clave a eliminarr: ");
 		System.out.print("-V: ");
@@ -41,6 +45,8 @@ class TestDicMultipleA {
 		System.out.print("-C: ");
 		clave = ln.nextInt();
 		dic_a.EliminarValor(clave, valor);
+		System.out.println("Resultado: ");
+		mostrardicmult(dic_a);
 		
 		System.out.print("Recuperar valores a partir de una clave: ");
 		clave = ln.nextInt();
@@ -67,5 +73,13 @@ class TestDicMultipleA {
 			aux.SacarConjunto(x);
 		}
 		System.out.println(" ");
+	}
+	public static void mostrardicmult (DiccionarioMultipleTDA origen) {
+		ConjuntoTDA aux=origen.Claves();
+		while(!aux.ConjuntoVacio()) {
+			System.out.print("Clave " + aux.ElegirConjunto() + ": ");
+			mostrarconjunto(origen.Recuperar(aux.ElegirConjunto()));
+			aux.SacarConjunto(aux.ElegirConjunto());
+			}
 	}
 }
