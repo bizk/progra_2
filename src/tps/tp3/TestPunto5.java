@@ -4,10 +4,7 @@ import java.util.Scanner;
 
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
-import implementaciones.arreglos.ConjuntoLD;
-import implementaciones.arreglos.DicMultipleA;
-import implementaciones.listas.DiccionarioMultipleLD;
-import utilidades.Metodos;
+import implementaciones.listas.*;
 import utilidades.Metodos;
 
 class TestPunto5 {

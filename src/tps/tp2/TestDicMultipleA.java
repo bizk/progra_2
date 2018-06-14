@@ -3,6 +3,7 @@ package tps.tp2;
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
 import implementaciones.arreglos.*;
+import implementaciones.listas.*;
 import utilidades.*;
 
 import java.util.Scanner;

@@ -94,7 +94,7 @@ public class DicMultipleA implements DiccionarioMultipleTDA {
 	}
 
 	public ConjuntoTDA Recuperar(int clave) { //Todos los valores de una clave
-		ConjuntoTDA c = new ConjuntoLD();
+		ConjuntoTDA c = new ConjuntoUA();
 		c.InicializarConjunto();
 		
 		int pos = Clave2Indice(clave); // recuperamos una clave
@@ -109,7 +109,7 @@ public class DicMultipleA implements DiccionarioMultipleTDA {
 	}
 
 	public ConjuntoTDA Claves() {
-		ConjuntoTDA c = new ConjuntoLD();
+		ConjuntoTDA c = new ConjuntoUA();
 		c.InicializarConjunto();
 		
 		for(int i = 0; i < cantClaves; i++) {

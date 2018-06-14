@@ -2,7 +2,7 @@ package tps.tp2;
 
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
-import implementaciones.arreglos.ConjuntoLD;
+import implementaciones.listas.ConjuntoLD;
 import implementaciones.arreglos.ConjuntoTMA;
 import implementaciones.listas.DiccionarioMultipleLD;
 import utilidades.*;

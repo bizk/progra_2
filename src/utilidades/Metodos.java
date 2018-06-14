@@ -2,8 +2,7 @@ package utilidades;
 
 import api.*;
 import implementaciones.arreglos.*;
-import implementaciones.listas.ConjuntoLD;
-import implementaciones.listas.DiccionarioMultipleLD;
+import implementaciones.listas.*;
 
 public class Metodos {
 

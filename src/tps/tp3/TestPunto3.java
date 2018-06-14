@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import api.*;
 import implementaciones.arreglos.*;
+import implementaciones.listas.*;
 import utilidades.Metodos;
 
 class TestPunto3 {

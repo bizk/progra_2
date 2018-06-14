@@ -1,7 +1,7 @@
 package tps.tp2;
 
 import api.ColaTDA;
-import implementaciones.arreglos.*;
+import implementaciones.listas.ColaLD;
 import utilidades.*;
 
 import java.util.Scanner;

@@ -3,6 +3,7 @@ package tps.tp3;
 import api.ConjuntoTDA;
 import api.ColaTDA;
 import implementaciones.arreglos.*;
+import implementaciones.listas.*;
 import utilidades.*;
 
 /**

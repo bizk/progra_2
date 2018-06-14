@@ -3,7 +3,7 @@ package tps.tp3;
 import java.util.Scanner;
 
 import api.ConjuntoTDA;
-import implementaciones.arreglos.ConjuntoLD;
+import implementaciones.listas.ConjuntoLD;
 import utilidades.Metodos;
 
 class TestConjunto {

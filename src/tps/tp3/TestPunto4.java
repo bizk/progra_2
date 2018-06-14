@@ -6,6 +6,7 @@ import api.ColaPrioridadTDA;
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
 import implementaciones.arreglos.*;
+import implementaciones.listas.*;
 import utilidades.*;
 
 public class TestPunto4 {

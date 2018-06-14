@@ -1,7 +1,7 @@
 package tps.tp2;
 
 import api.ConjuntoTDA;
-import implementaciones.arreglos.ConjuntoLD;
+import implementaciones.listas.ConjuntoLD;
 import utilidades.Metodos;
 
 import java.util.Scanner;
