@@ -1,7 +1,7 @@
 package tps.tp3;
-/** @Autor Federico Parodi
-@Grupo 3
-*/
+/**@Autor Federico Parodi
+ * @Grupo 3
+ */
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
 import api.DiccionarioSimpleTDA;
@@ -21,7 +21,9 @@ public class TestPunto52 {
 		DS.Agregar(1245215, 5);
 		DS.Agregar(4587445, 4);
 		DS.Agregar(478552, 7);
-		
+		System.out.println("Diccionario simple:");
+		mostrards(DS);
+		System.out.println("Diccionario multiple:");
 		mostrar(m.DiccionarioSimpleAMultiple(DS));
 	}
 	public static void mostrar(DiccionarioMultipleTDA original) {
@@ -46,4 +48,20 @@ public class TestPunto52 {
 		}
 		System.out.println("\n");
 	}
-}
+	public static void mostrards(DiccionarioSimpleTDA original) {
+		int x, y;
+		ConjuntoTDA claves = new ConjuntoLD();
+		claves.InicializarConjunto();
+
+		claves = original.Claves();
+		while(!claves.ConjuntoVacio()) {
+			x = claves.ElegirConjunto();
+			System.out.print("\n C " + x);
+				System.out.print(": " + original.Recuperar(x));
+			
+			claves.SacarConjunto(x);
+		}
+		System.out.println("\n");
+	}
+	}
+
