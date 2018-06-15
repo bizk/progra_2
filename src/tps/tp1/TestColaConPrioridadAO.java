@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("resource")
 
-class TestColaConPrioridad{
+class TestColaConPrioridadAO{
 	public static void main(String[] args){
 		Metodos m=new Metodos();
 		
