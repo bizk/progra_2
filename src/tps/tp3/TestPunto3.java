@@ -1,7 +1,9 @@
 package tps.tp3;
 
 import java.util.Scanner;
-
+/** @Autor Santiago Yanzon
+@Grupo 3
+*/
 import api.*;
 import implementaciones.arreglos.*;
 import implementaciones.listas.*;
@@ -36,13 +38,13 @@ class TestPunto3 {
 		}
 		mostrar(B);
 		
-		System.out.println("Inciso A.b: Diferencia simétrica de los conjuntos sin operaciones: ");
+		System.out.println("Inciso A.b: Diferencia simÃ©trica de los conjuntos sin operaciones: ");
 		ConjuntoTDA conjaux = new ConjuntoLD();
 		conjaux.InicializarConjunto();
 		conjaux = M.DiferenciaSimetricaSinOperaciones(A, B);
 		mostrar(conjaux);
 		
-		System.out.println("Inciso A.c: Diferencia simétrica de los conjuntos con operaciones: ");
+		System.out.println("Inciso A.c: Diferencia simÃ©trica de los conjuntos con operaciones: ");
 		conjaux.InicializarConjunto();
 		conjaux = M.DiferenciaSimetricaConOperaciones(A, B);
 		mostrar(conjaux);
