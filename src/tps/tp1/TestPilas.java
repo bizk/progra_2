@@ -1,4 +1,7 @@
 package tps.tp1;
+/** @Autor Santiago Cerfoglio
+@Grupo 3
+*/
 
 import api.PilaTDA;
 import implementaciones.arreglos.*;
