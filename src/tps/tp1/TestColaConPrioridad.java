@@ -68,9 +68,7 @@ class TestColaConPrioridad{
 		mostrar(aux1);
 		
 		System.out.println("\n");
-		System.out.println("###Comprobar Identidad");
-		aux=m.ComprobarIdentidad(ColaPriori_a, ColaPriori_b);
-		System.out.println(aux);
+		
 				
 }
 		
