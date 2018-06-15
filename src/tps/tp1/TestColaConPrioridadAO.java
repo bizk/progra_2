@@ -1,5 +1,7 @@
 package tps.tp1;
-
+/** @Autor Gonzalo Bacigalupe
+* @Grupo 3
+*/
 import api.ColaPrioridadTDA;
 //import api.PilaTDA;
 import implementaciones.arreglos.*;
