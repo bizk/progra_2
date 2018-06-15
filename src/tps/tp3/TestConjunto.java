@@ -1,5 +1,7 @@
 package tps.tp3;
-
+/** @Autor Santiago Salvioli
+@Grupo 3
+*/
 import java.util.Scanner;
 
 import api.ConjuntoTDA;
