@@ -1,5 +1,9 @@
 package utilidades;
 
+/* @Autores Carlos S. Yanzon, Federico Parodi, Santiago Salvioli, Gonzalo Bacigalupe, Santiago Cerfoglio
+@Grupo 3
+*/
+
 import api.*;
 import implementaciones.arreglos.*;
 import implementaciones.listas.*;
