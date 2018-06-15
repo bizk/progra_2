@@ -1,5 +1,9 @@
 package tps.tp2;
 
+/* @Autor Carlos S. Yanzon
+@Grupo 3
+*/
+
 import api.PilaTDA;
 import implementaciones.listas.PilaLD;
 import utilidades.*;

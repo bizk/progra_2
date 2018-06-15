@@ -1,5 +1,9 @@
 package tps.tp2;
 
+/* @Autor Santiago Cerfoglio
+@Grupo 3
+*/
+
 import api.ConjuntoTDA;
 import implementaciones.listas.ConjuntoLD;
 import utilidades.Metodos;
