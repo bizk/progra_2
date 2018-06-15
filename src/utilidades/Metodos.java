@@ -1115,6 +1115,34 @@ public class Metodos {
 			return false;
 		}
 	}
+	// TP 3 - 5.2. Cerfoglio (14/06/2018)
+	/**
+	 * @TAREA Crear un diccionario multiple a partir de un simple
+	 * @PARAMETRO diccionario Simple
+	 * @PRECONDICON diccionario inicializado
+	 * @Devuelve Diccionario multiple
+	 * @POSTCONDICION none 
+	 * @COSTO Lineal
+	 **/
+    public DiccionarioMultipleTDA DiccionarioSimpleAMultiple(DiccionarioSimpleTDA D) {
+        DiccionarioMultipleTDA dic = new DicMultipleA(); // Diccionario multiple donde se guarda
+        dic.InicializarDiccionario();
+       
+        ConjuntoTDA clavesD = new ConjuntoTMA();
+        clavesD.InicializarConjunto(); // Conjunto de claves del diccionario simple otorgado
+       
+        //Valores enteros
+        int nota, dni;
+       
+        clavesD = D.Claves(); //Se agregan al conjunto todas las claves del Dic. Simple otorgado
+        while(!clavesD.ConjuntoVacio()) {
+            dni = clavesD.ElegirConjunto(); //Se elije una clave del conjunto
+            nota = D.Recuperar(dni); //Se obtiene el valor asociado a la clave obtenida
+            dic.Agregar(nota, dni); //Se agrega el dato al diccionario, teniendo a la nota como clave y al documento como valor
+            clavesD.SacarConjunto(dni); //Se elimina la clave del conjunto para poder seguir buscando
+        }
+        return dic;
+    }
 
 
 	// TP4 3-A gonza 05/05/18
