@@ -6,9 +6,9 @@ import implementaciones.listas.*;
 import implementaciones.arreglos.*;
 import utilidades.Metodos;
 
-public class TestEj123 {
+public class TestEj123LD {
 	public static void main(String[] args) {
-		GrafoTDA G = new GrafoMA();
+		GrafoTDA G = new GrafoLA();
 		G.InicializarGrafo();
 		G.AgregarVertice(1);
 		G.AgregarVertice(2);

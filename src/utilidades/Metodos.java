@@ -1506,4 +1506,80 @@ public class Metodos {
 		return r;
 	}
 	*/
+	
+	/**
+	 * @TAREA Calcular conjunto de vertices Adyacentes Dobles del vértice
+	 * @PARAMETRO Grafo, vértice
+	 * @PRECONDICON Grafo inicializado, vertice pertenece al grafo
+	 * @POSTCONDICON none
+	 * @DEVUELVE ConjuntoTDA
+	 * @COSTO polinómico
+	 **/
+	public ConjuntoTDA GAdyacentesDobles(GrafoTDA G, int v) {
+		ConjuntoTDA Ady = new ConjuntoLD();
+		ConjuntoTDA AdyD = new ConjuntoLD();
+		ConjuntoTDA vert= G.Vertices();
+		Ady.InicializarConjunto();
+		AdyD.InicializarConjunto();
+		while(!vert.ConjuntoVacio()) {
+			if(G.ExisteArista(v, vert.ElegirConjunto())) { //Obtengo todos los adyacentes
+				Ady.AgregarConjunto(vert.ElegirConjunto());
+			}
+			vert.SacarConjunto(vert.ElegirConjunto());
+		}
+		CopiarConjunto(G.Vertices(), vert);
+		while(!Ady.ConjuntoVacio()) { //Mientras que tenga vértices adyacentes
+			while(!vert.ConjuntoVacio()) {
+				if(G.ExisteArista(Ady.ElegirConjunto(), vert.ElegirConjunto())) {//Obtengo todos los adyacentes dobles {
+					AdyD.AgregarConjunto(vert.ElegirConjunto());
+				}
+				vert.SacarConjunto(vert.ElegirConjunto());
+			}
+			CopiarConjunto(G.Vertices(), vert);
+			Ady.SacarConjunto(Ady.ElegirConjunto());
+		}
+		return AdyD;
+	}
+	/**
+	 * @TAREA Determinar el conjunto de predecesores de un vértice
+	 * @PARAMETRO Grafo, vértice
+	 * @PRECONDICON Grafo inicializado, vertice pertenece al grafo
+	 * @POSTCONDICON none
+	 * @DEVUELVE ConjuntoTDA
+	 * @COSTO Lineal
+	 **/
+	public ConjuntoTDA GPredecesores (GrafoTDA G, int v) {
+		ConjuntoTDA vert = G.Vertices();
+		ConjuntoTDA pred = new ConjuntoLD();
+		while(!vert.ConjuntoVacio()) {
+			if(G.ExisteArista(vert.ElegirConjunto(), v)) {
+				pred.AgregarConjunto(vert.ElegirConjunto());
+			}
+			vert.SacarConjunto(vert.ElegirConjunto());
+		}
+		return pred;
+	}
+	/**
+	 * @TAREA Determinar el conjunto de puentes entre dos vértices
+	 * @PARAMETRO Grafo, vértice 1, vértice 2
+	 * @PRECONDICON Grafo inicializado, vertices pertenecen al grafo
+	 * @POSTCONDICON none
+	 * @DEVUELVE ConjuntoTDA
+	 * @COSTO Lineal
+	 **/
+	public ConjuntoTDA GPuentes (GrafoTDA G, int v1, int v2) {
+		ConjuntoTDA vert=G.Vertices();
+		ConjuntoTDA puente= new ConjuntoLD();
+		puente.InicializarConjunto();
+		while(!vert.ConjuntoVacio()) {
+			if(G.ExisteArista(v1, vert.ElegirConjunto())) {
+				if(G.ExisteArista(vert.ElegirConjunto(), v2)) {
+					puente.AgregarConjunto(vert.ElegirConjunto());
+				}
+			}
+			vert.SacarConjunto(vert.ElegirConjunto());
+		}
+		return puente;
+	}
+	
 }
