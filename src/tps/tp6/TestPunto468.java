@@ -3,12 +3,12 @@ package tps.tp6;
 import api.GrafoTDA;
 import api.ConjuntoTDA;
 import implementaciones.listas.*;
-import implementaciones.arreglos.*;
 import utilidades.Metodos;
 
-public class TestEj123 {
+public class TestPunto468 {
 	public static void main(String[] args) {
-		GrafoTDA G = new GrafoMA();
+		Metodos m = new Metodos();
+		GrafoTDA G = new GrafoLA();
 		G.InicializarGrafo();
 		G.AgregarVertice(1);
 		G.AgregarVertice(2);
@@ -25,14 +25,15 @@ public class TestEj123 {
 		G.AgregarArista(3, 5, 89);
 		G.AgregarArista(5,1, 40);
 		G.AgregarArista(5, 2, 90);
+		mostrarg(G);
+		System.out.println("Punto 4: Los adyacentes dobles de 1 son:");
+		mostrar(m.GAdyacentesDobles(G, 1));
+		System.out.println("Punto 5: Los predecesores de 1 son:");
+		mostrar(m.GPredecesores(G, 1));
+		System.out.println("Punto 8: Los puentes entre 1 y 5 son:");
+		mostrar(m.GPuentes(G, 1, 5));
 		
-		mostrarg(G);
-		System.out.println("Eliminaremos la arista del nodo 1 al nodo 3");
-		G.EliminarArista(1, 3);
-		mostrarg(G);
-		System.out.println("Eliminaremos el nodo 2");
-		G.EliminarVertice(2);
-		mostrarg(G);
+		
 	}
 	private static void mostrarg(GrafoTDA G) {
 		Metodos m = new Metodos();
@@ -54,5 +55,21 @@ public class TestEj123 {
 			vert.SacarConjunto(vert.ElegirConjunto());
 		}
 		
+	}
+	public static void mostrar(ConjuntoTDA origen) {
+		ConjuntoTDA aux = new ConjuntoLD();
+		
+		Metodos m = new Metodos();
+		
+		aux.InicializarConjunto();
+		
+		int x;
+		m.CopiarConjunto(origen, aux);
+		while(!aux.ConjuntoVacio()){
+			x = aux.ElegirConjunto();
+			System.out.print(" " + x);
+			aux.SacarConjunto(x);
+		}
+		System.out.println(" ");
 	}
 }
