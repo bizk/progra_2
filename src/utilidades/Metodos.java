@@ -1581,5 +1581,70 @@ public class Metodos {
 		}
 		return puente;
 	}
-	
+	/**
+	 * @TAREA Determinar el costo de la arista saliente mayor
+	 * @PARAMETRO Grafo, vértice 1
+	 * @PRECONDICON Grafo inicializado, vertice pertenece al grafo
+	 * @POSTCONDICON none
+	 * @DEVUELVE integer
+	 * @COSTO Lineal
+	 **/
+	public int GAristaMay(GrafoTDA G, int v) {
+		int aristamay=-1;
+		ConjuntoTDA vert = G.Vertices();
+		while(!vert.ConjuntoVacio()) {
+			if(G.ExisteArista(v, vert.ElegirConjunto())&& G.PesoArista(v, vert.ElegirConjunto())>aristamay) {
+				aristamay=G.PesoArista(v, vert.ElegirConjunto());
+			}
+			vert.SacarConjunto(vert.ElegirConjunto());
+		}
+		return aristamay;
+	}
+	/**
+	 * @TAREA Determinar conjunto de vértices aislados
+	 * @PARAMETRO Grafo
+	 * @PRECONDICON Grafo inicializado
+	 * @POSTCONDICON none
+	 * @DEVUELVE Conjunto
+	 * @COSTO Polinomico
+	 **/
+	public ConjuntoTDA GVertAislados (GrafoTDA G) {
+		ConjuntoTDA vert = G.Vertices();
+		ConjuntoTDA vert2 = G.Vertices();
+		ConjuntoTDA aisl = G.Vertices();
+		while(!vert.ConjuntoVacio()) {
+			while(!vert2.ConjuntoVacio()) {
+				if(G.ExisteArista(vert.ElegirConjunto(), vert2.ElegirConjunto())||G.ExisteArista(vert2.ElegirConjunto(), vert.ElegirConjunto())) {
+					aisl.SacarConjunto(vert.ElegirConjunto());
+				}
+				vert2.SacarConjunto(vert2.ElegirConjunto());
+			}
+			CopiarConjunto(G.Vertices(),vert2);
+			vert.SacarConjunto(vert.ElegirConjunto());
+		}
+		return aisl;
+	}
+	/**
+	 * @TAREA Determinar el grado de un vértice
+	 * @PARAMETRO Grafo, Vértice
+	 * @PRECONDICON Grafo inicializado, Vertice perteneciente al grafo
+	 * @POSTCONDICON none
+	 * @DEVUELVE int
+	 * @COSTO Lineal
+	 **/
+	public int GGradoVert(GrafoTDA G, int v) {
+		int salientes=0, entrantes=0,grado;
+		ConjuntoTDA vert=G.Vertices();
+		while(!vert.ConjuntoVacio()) {
+			if(G.ExisteArista(v, vert.ElegirConjunto())) {
+				salientes++;
+			}
+			if(G.ExisteArista(vert.ElegirConjunto(), v)) {
+				entrantes++;
+			}
+			vert.SacarConjunto(vert.ElegirConjunto());
+		}
+		grado=salientes-entrantes;
+		return grado;
+	}
 }
