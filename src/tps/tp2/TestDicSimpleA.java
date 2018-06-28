@@ -1,5 +1,9 @@
 package tps.tp2;
 
+/* @Autor Carlos S. Yanzon
+@Grupo 3
+*/
+
 import api.ConjuntoTDA;
 import api.DiccionarioSimpleTDA;
 import implementaciones.arreglos.*;

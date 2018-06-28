@@ -1,7 +1,11 @@
 package tps.tp2;
 
+/* @Autor Carlos S. Yanzon
+@Grupo 3
+*/
+
 import api.PilaTDA;
-import implementaciones.arreglos.*;
+import implementaciones.listas.PilaLD;
 import utilidades.*;
 
 import java.util.Scanner;

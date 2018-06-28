@@ -1,8 +1,11 @@
 package tps.tp3;
-
+/** @Autor Federico Parodi
+@Grupo 3
+*/
 import api.ConjuntoTDA;
 import api.PilaTDA;
 import implementaciones.arreglos.*;
+import implementaciones.listas.*;
 import utilidades.*;
 /**
  * @Autor Parodi, Federico

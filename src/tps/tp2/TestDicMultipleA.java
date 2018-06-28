@@ -1,8 +1,13 @@
 package tps.tp2;
 
+/* @Autor Carlos S. Yanzon
+@Grupo 3
+*/
+
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
 import implementaciones.arreglos.*;
+import implementaciones.listas.*;
 import utilidades.*;
 
 import java.util.Scanner;

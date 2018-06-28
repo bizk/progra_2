@@ -1,5 +1,5 @@
 package tps.tp1;
-/**@Autor Santiago Salvioli
+/** @Autor Gonzalo Bacigalupe
 * @Grupo 3
 */
 import api.ColaPrioridadTDA;
@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 @SuppressWarnings("resource")
 
-class TestColaConPrioridad{
+class TestColaConPrioridadAO{
 	public static void main(String[] args){
 		Metodos m=new Metodos();
 		
-		ColaPrioridadTDA ColaPriori_a= new ColaPrioridadDA();
-		ColaPrioridadTDA ColaPriori_b= new ColaPrioridadDA();
-		ColaPrioridadTDA ColaPriori_c= new ColaPrioridadDA();
+		ColaPrioridadTDA ColaPriori_a= new ColaPrioridadAO();
+		ColaPrioridadTDA ColaPriori_b= new ColaPrioridadAO();
+		ColaPrioridadTDA ColaPriori_c= new ColaPrioridadAO();
 		ColaPrioridadTDA aux1= new ColaPrioridadDA();
 		
 		Scanner atr = new Scanner(System.in);
@@ -69,7 +69,6 @@ class TestColaConPrioridad{
 		
 		System.out.println("\n");
 		
-				
 }
 		
 	public static void mostrar(ColaPrioridadTDA origen){

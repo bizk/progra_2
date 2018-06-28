@@ -81,10 +81,20 @@ public class TestPunto3 {
 		
 		
 		//TEST 3-G
-		//aca explota
+		
 		System.out.println("#### CANTIDAD DE HOJAS ####");
 		num2=m.ContarCantidadDeHojas(arbol_a);
 		System.out.println("La cantidad de hojas es:"+num2);
+		
+		//TEST3-H 
+		//aca explota
+		System.out.println("####MUESTRO ARBOL IN ORDER ####");
+		m.inOrder(arbol_a);
+		
+		
+        System.out.println("#### ALTURA DE UN ABB #####");
+        num2=m.CalcularAlturaABB(arbol_a);
+        System.out.println("La altura es:"+num2);
 		
 		
 		

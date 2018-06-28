@@ -1,13 +1,15 @@
 package tps.tp3;
 
 import java.util.Scanner;
-
+/** @Autor Santiago Yanzon
+@Grupo 3
+*/
 import api.ColaPrioridadTDA;
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
 import implementaciones.arreglos.*;
+import implementaciones.listas.*;
 import utilidades.*;
-import tps.*;
 
 public class TestPunto4 {
 	public static void main(String[] args) {
@@ -30,7 +32,8 @@ public class TestPunto4 {
 		//ColaPrioridadTDA ColaPriori_b= new ColaPrioridadDA();
 		//ColaPrioridadTDA ColaPriori_c= new ColaPrioridadDA();
 		
-		Scanner atr = new Scanner(System.in);
+		@SuppressWarnings("resource")
+		Scanner ln = new Scanner(System.in);
 		
 		ColaPriori_a.InicializarCola();
 		//ColaPriori_b.InicializarCola();
@@ -38,9 +41,9 @@ public class TestPunto4 {
 		System.out.println("Ingrese numeros y prioridad para la ColaPriori a");
 		for (int i = 0; i < 5; i++){
 			System.out.println("Ingrese numero");
-			num = atr.nextInt();
+			num = ln.nextInt();
 			System.out.println("Ingrese Prioridad");
-			prioridad =atr.nextInt();
+			prioridad =ln.nextInt();
 			ColaPriori_a.AcolarPrioridad(num, prioridad);
 		}
 		
@@ -57,19 +60,19 @@ public class TestPunto4 {
 		
 		
 	}
+	
 	public static void mostrar(ColaPrioridadTDA origen){
-		Metodos m = new Metodos();
-		
+		Metodos m = new Metodos();	
 		ColaPrioridadTDA aux = new ColaPrioridadDA();
 		aux.InicializarCola();
 		m.CopiarColaPri(origen, aux);
 		//m.InvertirPila(aux);
-
 		while(!aux.ColaVacia()) {
 			System.out.print(" " + aux.Primero());
 			aux.Desacolar();
 		}
 	}
+	
 	public static void mostrardicmult (DiccionarioMultipleTDA origen) {
 		ConjuntoTDA aux=origen.Claves();
 		while(!aux.ConjuntoVacio()) {
@@ -79,6 +82,7 @@ public class TestPunto4 {
 			}
 	
 	}
+	
 	public static void mostrarconjunto(ConjuntoTDA origen) {
 		ConjuntoTDA aux = new ConjuntoLD();
 		

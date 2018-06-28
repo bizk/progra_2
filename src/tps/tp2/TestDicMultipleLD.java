@@ -1,8 +1,12 @@
 package tps.tp2;
 
+/* @Autor Carlos S. Yanzon
+@Grupo 3
+*/
+
 import api.ConjuntoTDA;
 import api.DiccionarioMultipleTDA;
-import implementaciones.arreglos.ConjuntoLD;
+import implementaciones.listas.ConjuntoLD;
 import implementaciones.arreglos.ConjuntoTMA;
 import implementaciones.listas.DiccionarioMultipleLD;
 import utilidades.*;

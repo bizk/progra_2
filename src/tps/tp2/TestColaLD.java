@@ -1,20 +1,22 @@
-package tps.tp1;
-/** @Autor Gonzalo Bacigalupe
+package tps.tp2;
+
+/* @Autor Santiago Cerfoglio
 @Grupo 3
 */
-import java.util.Scanner;
 
 import api.ColaTDA;
-import implementaciones.arreglos.ColaPU;
-import utilidades.Metodos;
+import implementaciones.listas.ColaLD;
+import utilidades.*;
 
-public class TestColaPU {
+import java.util.Scanner;
+
+class TestColaLD {
 	public static void main (String[] args) {
 		Metodos m = new Metodos();
 		//COLAS A PROBAR
-		ColaTDA cola_a = new ColaPU();
-		ColaTDA cola_b = new ColaPU();
-		ColaTDA cola_c = new ColaPU();
+		ColaTDA cola_a = new ColaLD();
+		ColaTDA cola_b = new ColaLD();
+		ColaTDA cola_c = new ColaLD();
 
 		cola_a.InicializarCola();
 		cola_b.InicializarCola();
@@ -26,8 +28,7 @@ public class TestColaPU {
 		//INGRESO POR TECLADO
 
 		int num;
-		
-		System.out.println("### TEST cola PU1 ###");
+		System.out.println("### TEST cola LD ###");
 		System.out.println("Ingrese 5 numeros para la cola A");
 		for (int i = 0; i < 5; i++){
 			num = ln.nextInt();
@@ -130,7 +131,7 @@ public class TestColaPU {
 	
 	public static void mostrar(ColaTDA origen){
 		Metodos m = new Metodos();
-		ColaTDA aux = new ColaPU();
+		ColaTDA aux = new ColaLD();
 		
 		aux.InicializarCola();
 		m.CopiarCola(origen, aux);
@@ -141,3 +142,4 @@ public class TestColaPU {
 		}
 	}
 }
+
