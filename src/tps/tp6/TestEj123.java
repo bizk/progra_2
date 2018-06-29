@@ -5,7 +5,8 @@ import api.ConjuntoTDA;
 import implementaciones.listas.*;
 import implementaciones.arreglos.*;
 import utilidades.Metodos;
-
+/*Autor: Federico Parodi
+ * Grupo 3*/
 public class TestEj123 {
 	public static void main(String[] args) {
 		GrafoTDA G = new GrafoMA();

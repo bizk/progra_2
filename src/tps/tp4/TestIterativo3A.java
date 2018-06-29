@@ -1,5 +1,6 @@
 package tps.tp4;
-
+/*Autor: Federico Parodi
+ * Grupo 3*/
 import java.util.Scanner;
 
 import api.ABBTDA;

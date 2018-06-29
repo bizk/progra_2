@@ -9,7 +9,8 @@ import api.ColaPrioridadTDA;
 import implementaciones.arreglos.*;
 import implementaciones.listas.*;
 import utilidades.*;
-
+/*Autor: Santiago Salvioli
+ * Grupo 3*/
 public class TestPunto1y2 {
 	public static void main(String[] args) {
 		Metodos m = new Metodos();

@@ -1849,5 +1849,28 @@ public class Metodos {
 		else
 			return false;
 	}
-	
+	//TP4 Punto 3 I
+		/**
+		 * @TAREA Determinar si dos árboles tienen la misma forma y los mismos elementos
+		 * @PARAMETRO ABBTDA, ABBTDA
+		 * @PRECONDICON Arboles inicializados
+		 * @POSTCONDICON none
+		 * @DEVUELVE Booleano
+		 * @COSTO Recursivo
+		 **/
+		public boolean CompararIguales(ABBTDA a1, ABBTDA a2){
+			if(!a1.ArbolVacio()&&!a2.ArbolVacio()&&a1.Raiz()==a2.Raiz()){
+				if((a1.HijoIzq().ArbolVacio()&&!a2.HijoIzq().ArbolVacio())||(a1.HijoDer().ArbolVacio()&&!a2.HijoDer().ArbolVacio())){
+					return false;
+				}else if((a1.HijoIzq().ArbolVacio()&&a2.HijoIzq().ArbolVacio())&&(a1.HijoDer().ArbolVacio()&&a2.HijoDer().ArbolVacio())){
+					return true;
+				}
+				else{
+					return CompararIguales(a1.HijoIzq(),a2.HijoIzq())&&CompararIguales(a1.HijoDer(),a2.HijoDer());
+				}
+			}else if(a1.ArbolVacio()&&a2.ArbolVacio())
+				return true;
+			else
+				return false;
+		}
 }

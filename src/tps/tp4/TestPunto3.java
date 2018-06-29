@@ -10,7 +10,8 @@ import api.ConjuntoTDA;
 import implementaciones.arreglos.*;
 import implementaciones.listas.*;
 import utilidades.*;
-
+/*Autor: Gonzalo Bacigalupe, Santiago Salvioli
+ * Grupo 3*/
 public class TestPunto3 {
 	public static void main(String[] args) {
 		Metodos m = new Metodos();

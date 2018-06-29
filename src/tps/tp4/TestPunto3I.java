@@ -5,7 +5,8 @@ import java.util.Scanner;
 import api.ABBTDA;
 import implementaciones.listas.ABB;
 import utilidades.Metodos;
-
+/*Autor: Federico Parodi
+ * Grupo 3*/
 public class TestPunto3I {
 	public static void main(String[] args) {
 		Metodos m = new Metodos();
@@ -35,6 +36,12 @@ public class TestPunto3I {
 		
 		System.out.println("Los arboles tienen la misma forma?");
 		if(m.CompararFormaABB(arbol_a,arbol_b)){
+			System.out.println("Si");
+		}
+		else
+			System.out.println("No");
+		System.out.println("Los arboles son iguales?");
+		if(m.CompararIguales(arbol_a,arbol_b)){
 			System.out.println("Si");
 		}
 		else
