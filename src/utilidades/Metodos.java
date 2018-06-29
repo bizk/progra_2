@@ -116,14 +116,14 @@ public class Metodos {
 	 * @PRECONDICION pila iniciada
 	 * @DEVUELVE double que representa el promedio de los elementos
 	 * @POSTCONDICION none
-	 * * @COSTO Lineal (por la utilización de métodos con costo lineal)
+	 * * @COSTO Lineal (por la utilizaciÃ³n de mÃ©todos con costo lineal)
 	 **/
 	public float PromedioElemPila(PilaTDA origen) {
 		float z;
 		float x = SumarElemPIla(origen); // x es la suma de elementos que devuelve el metodo
 		float y = ContarElemPila(origen); // y es la cantidad de elementos que devuelve el metodo
 		z = x/y;
-		return (z); // se devuelve la división
+		return (z); // se devuelve la divisiÃ³n
 	}
 
 	//TP 3 - 1.A Cerfoglio (29/05/2018)
@@ -340,7 +340,7 @@ public class Metodos {
 	 * @TAREA Invertir una Cola SIN pilas auxiliares
 	 * @PARAMETRO cola original
 	 * @PRECONDICON Cola iniciada
-	 * @POSTCONDICON La cola se devolverÃ¯Â¿Â½ invertida
+	 * @POSTCONDICON La cola se devolverÃÂ¯ÃÂ¿ÃÂ½ invertida
 	 * * @COSTO Polinomico
 	 **/
 	public void InvertirColaSola(ColaTDA origen) {
@@ -615,7 +615,7 @@ public class Metodos {
 
 	/**
 	 * @TAREA Combinar colas con prioridad, donde los elementos de la primera
-	 *        tendrÃ¯Â¿Â½n mÃ¯Â¿Â½s prioridad que los de la segunda
+	 *        tendrÃÂ¯ÃÂ¿ÃÂ½n mÃÂ¯ÃÂ¿ÃÂ½s prioridad que los de la segunda
 	 * @PARAMETRO cola nro1, de mayor prioridad
 	 * @PARAMETRO cola nro2
 	 * @PRECONDICON Colas iniciadas
@@ -783,7 +783,7 @@ public class Metodos {
 	 * @PRECONDICION Conjuntos inicializados
 	 * @POSTCONDICION none
 	 * @DEVUELVE ConjuntoTDA con los elementos que estan en C1 menos los que
-	 *           estÃ¯Â¿Â½n en C2.
+	 *           estÃÂ¯ÃÂ¿ÃÂ½n en C2.
 	 * @COSTO Lineal
 	 **/
 	public ConjuntoTDA DiferenciaConjunto(ConjuntoTDA C1, ConjuntoTDA C2) {
@@ -1222,13 +1222,13 @@ public class Metodos {
 	/**
 	 * @TAREA obtener el valor del menor elelemnto de un ABB
 	 * @PARAMETRO arbol
-	 * @PRECONDICON arbol inicializado y no vacÃ­o
+	 * @PRECONDICON arbol inicializado y no vacÃÂ­o
 	 * @POSTCONDICON none
 	 * @DEVUELVE valor
 	 * @COSTO Recursivo
 	 **/
     public int Menor(ABBTDA a) {// mirar la implementacio
-		if (a.HijoIzq().ArbolVacio()) { // si el hijo izquierdo esta vacío
+		if (a.HijoIzq().ArbolVacio()) { // si el hijo izquierdo esta vacÃ­o
 			return a.Raiz(); // es el valor mas bajo
 		} else {
 			return Menor(a.HijoIzq()); // busca el valor mas bajo en el hijo izquierdo
@@ -1495,12 +1495,12 @@ public class Metodos {
 	*/
 	
 	/**
-	 * @TAREA Calcular conjunto de vertices Adyacentes Dobles del v�rtice
-	 * @PARAMETRO Grafo, v�rtice
+	 * @TAREA Calcular conjunto de vertices Adyacentes Dobles del vértice
+	 * @PARAMETRO Grafo, vértice
 	 * @PRECONDICON Grafo inicializado, vertice pertenece al grafo
 	 * @POSTCONDICON none
 	 * @DEVUELVE ConjuntoTDA
-	 * @COSTO polin�mico
+	 * @COSTO polinómico
 	 **/
 	public ConjuntoTDA GAdyacentesDobles(GrafoTDA G, int v) {
 		ConjuntoTDA Ady = new ConjuntoLD();
@@ -1515,7 +1515,7 @@ public class Metodos {
 			vert.SacarConjunto(vert.ElegirConjunto());
 		}
 		CopiarConjunto(G.Vertices(), vert);
-		while(!Ady.ConjuntoVacio()) { //Mientras que tenga v�rtices adyacentes
+		while(!Ady.ConjuntoVacio()) { //Mientras que tenga vértices adyacentes
 			while(!vert.ConjuntoVacio()) {
 				if(G.ExisteArista(Ady.ElegirConjunto(), vert.ElegirConjunto())) {//Obtengo todos los adyacentes dobles {
 					AdyD.AgregarConjunto(vert.ElegirConjunto());
@@ -1528,8 +1528,8 @@ public class Metodos {
 		return AdyD;
 	}
 	/**
-	 * @TAREA Determinar el conjunto de predecesores de un v�rtice
-	 * @PARAMETRO Grafo, v�rtice
+	 * @TAREA Determinar el conjunto de predecesores de un vértice
+	 * @PARAMETRO Grafo, vértice
 	 * @PRECONDICON Grafo inicializado, vertice pertenece al grafo
 	 * @POSTCONDICON none
 	 * @DEVUELVE ConjuntoTDA
@@ -1547,8 +1547,8 @@ public class Metodos {
 		return pred;
 	}
 	/**
-	 * @TAREA Determinar el conjunto de puentes entre dos v�rtices
-	 * @PARAMETRO Grafo, v�rtice 1, v�rtice 2
+	 * @TAREA Determinar el conjunto de puentes entre dos vértices
+	 * @PARAMETRO Grafo, vértice 1, vértice 2
 	 * @PRECONDICON Grafo inicializado, vertices pertenecen al grafo
 	 * @POSTCONDICON none
 	 * @DEVUELVE ConjuntoTDA
@@ -1570,7 +1570,7 @@ public class Metodos {
 	}
 	/**
 	 * @TAREA Determinar el costo de la arista saliente mayor
-	 * @PARAMETRO Grafo, v�rtice 1
+	 * @PARAMETRO Grafo, vértice 1
 	 * @PRECONDICON Grafo inicializado, vertice pertenece al grafo
 	 * @POSTCONDICON none
 	 * @DEVUELVE integer
@@ -1588,7 +1588,7 @@ public class Metodos {
 		return aristamay;
 	}
 	/**
-	 * @TAREA Determinar conjunto de v�rtices aislados
+	 * @TAREA Determinar conjunto de vértices aislados
 	 * @PARAMETRO Grafo
 	 * @PRECONDICON Grafo inicializado
 	 * @POSTCONDICON none
@@ -1612,8 +1612,8 @@ public class Metodos {
 		return aisl;
 	}
 	/**
-	 * @TAREA Determinar el grado de un v�rtice
-	 * @PARAMETRO Grafo, V�rtice
+	 * @TAREA Determinar el grado de un vértice
+	 * @PARAMETRO Grafo, Vértice
 	 * @PRECONDICON Grafo inicializado, Vertice perteneciente al grafo
 	 * @POSTCONDICON none
 	 * @DEVUELVE int
@@ -1637,7 +1637,7 @@ public class Metodos {
 	
 	//TP4 Pto 3 K -FedeP
 	/**
-	 * @TAREA Determinar los elementos que est�n en un nivel X del �rbol
+	 * @TAREA Determinar los elementos que están en un nivel X del árbol
 	 * @PARAMETRO ABBTDA, int nivel
 	 * @PRECONDICON Arbol inicializado
 	 * @POSTCONDICON none
@@ -1683,9 +1683,9 @@ public class Metodos {
 		
 	}
 	
-	//TP4 Punto 3D Iterativo
+	//TP4 Punto 3D Iterativo Santi Y
 	/**
-	 * @TAREA Encontrar el valor m�nimo de un �rbol de forma iterativa
+	 * @TAREA Encontrar el valor mínimo de un árbol de forma iterativa
 	 * @PARAMETRO ABBTDA
 	 * @PRECONDICON Arbol inicializado
 	 * @POSTCONDICON SE PIERDE EL ARBOL
@@ -1717,7 +1717,7 @@ public class Metodos {
 		}
 		return min;
 	}
-	//TP4 Punto 3A ITERATIVO
+	//TP4 Punto 3A ITERATIVO Santi Y
 	/**
 	 * @TAREA Determinar si un elemento pertenece o no a un arbol
 	 * @PARAMETRO ABBTDA, integer
@@ -1752,9 +1752,9 @@ public class Metodos {
 			return false;
 	
 	}
-	//TP4 Punto 3C iterativo
+	//TP4 Punto 3C iterativo Fede
 	/**
-	 * @TAREA Determinar la profundidad de un elemento en un �rbol
+	 * @TAREA Determinar la profundidad de un elemento en un árbol
 	 * @PARAMETRO ABBTDA, integer
 	 * @PRECONDICON Arbol inicializado, valor existente
 	 * @POSTCONDICON SE PIERDE EL ARBOL
@@ -1793,7 +1793,7 @@ public class Metodos {
 				return profundidad;
 		}
 	}
-	//Punto 4B Iterativo
+	//Punto 4B Iterativo Fede
 	/**
 	 * @TAREA Determinar si un elemento es una hoja de un arbol de forma iterativa
 	 * @PARAMETRO ABBTDA, valor
@@ -1825,9 +1825,9 @@ public class Metodos {
 		
 		return (a.HijoDer().ArbolVacio()&&a.HijoIzq().ArbolVacio());
 	}
-	//TP4 Punto 3 I
+	//TP4 Punto 3 I Fede
 	/**
-	 * @TAREA Determinar si dos �rboles tienen la misma forma
+	 * @TAREA Determinar si dos árboles tienen la misma forma
 	 * @PARAMETRO ABBTDA, ABBTDA
 	 * @PRECONDICON Arboles inicializados
 	 * @POSTCONDICON none
@@ -1849,9 +1849,9 @@ public class Metodos {
 		else
 			return false;
 	}
-	//TP4 Punto 3 I
+	//TP4 Punto 3 I Salvioli
 		/**
-		 * @TAREA Determinar si dos �rboles tienen la misma forma y los mismos elementos
+		 * @TAREA Determinar si dos árboles tienen la misma forma y los mismos elementos
 		 * @PARAMETRO ABBTDA, ABBTDA
 		 * @PRECONDICON Arboles inicializados
 		 * @POSTCONDICON none
@@ -1873,4 +1873,29 @@ public class Metodos {
 			else
 				return false;
 		}
+	public int RecorrerIzq(ABBTDA a) {
+		if (!a.ArbolVacio()) {
+			RecorrerIzq(a.HijoIzq());
+		}
+		return a.Raiz();
+		
+	}
+	
+	public int RecorrerDer(ABBTDA a) {
+		if (!a.ArbolVacio()) {
+			RecorrerDer(a.HijoDer());
+		}
+		return a.Raiz();
+		
+	}
+	
+	public int ElementoAnteriorABB(ABBTDA arbol, int v) {
+		ConjuntoTDA c = new ConjuntoLD();
+		c.InicializarConjunto();
+		if(!arbol.ArbolVacio()) {
+			RecorrerIzq(arbol.HijoIzq());
+			c.AgregarConjunto(recorrer(arbol));
+		}
+		}
+	}
 }
