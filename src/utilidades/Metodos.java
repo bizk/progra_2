@@ -1888,14 +1888,20 @@ public class Metodos {
 		return a.Raiz();
 		
 	}
-	
+	/**
+		 * @TAREA Devolver el elemento inmediatamente anterior a k
+		 * @PARAMETRO ABBTDA, int
+		 * @PRECONDICON Arboles inicializados, k perteneciente al arbol
+		 * @POSTCONDICON none
+		 * @DEVUELVE Int
+		 * @COSTO Recursivo
+		 **/
 	public int ElementoAnteriorABB(ABBTDA arbol, int v) {
 		ConjuntoTDA c = new ConjuntoLD();
 		c.InicializarConjunto();
 		if(!arbol.ArbolVacio()) {
 			RecorrerIzq(arbol.HijoIzq());
-			c.AgregarConjunto(recorrer(arbol));
-		}
+			c.AgregarConjunto(RecorrerDer(arbol));
 		}
 	}
 }
