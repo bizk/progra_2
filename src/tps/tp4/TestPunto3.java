@@ -102,6 +102,14 @@ public class TestPunto3 {
 		System.out.println("Conjunto:");
 		mostrar(m.ConjuntoElementosMayoresKABB(arbol_a, num));
 		
+		//TEST 3-N
+		/*System.out.println("###ELEMENTO ANTERIOR A K###");
+		System.out.println("Ingrese numero a comprobar");
+		num = atr.nextInt();
+		System.out.println("Es: "+ m.ElementoAnteriorABB(arbol_a,num))
+		No sabemos como hacerlo*/;
+		
+		
 		System.out.println("###Test finalizado###");
 		
 	}
