@@ -1158,7 +1158,7 @@ public class Metodos {
 	 * @DEVUELVE true or false
 	 * @COSTO recursivo
 	 **/
-	public boolean existeElementoABB(int elemen, ABBTDA arbol) {
+    public boolean existeElementoABB(int elemen, ABBTDA arbol) {
 		if (arbol.ArbolVacio()) {
 			return false;
 		} else if (arbol.Raiz() == elemen) {
@@ -1179,7 +1179,7 @@ public class Metodos {
 	 * @DEVUELVE true or false
 	 * @COSTO Recursivo
 	 **/
-	public boolean ElemenHoja(int elemen, ABBTDA arbol) {
+    public boolean ElemenHoja(int elemen, ABBTDA arbol) {
 		if (arbol.ArbolVacio()) {
 			return false;
 		} else {
@@ -1206,7 +1206,7 @@ public class Metodos {
 	 * @DEVUELVE Integer profundidad
 	 * @COSTO recursivo
 	 **/ // prof: cantidad de niveles del arbol empieza en 0
-	public int Profundidad(int elemen, ABBTDA arbol) {// preguntar si existe elemento como precondicion
+    public int Profundidad(int elemen, ABBTDA arbol) {// preguntar si existe elemento como precondicion
 		if (arbol.ArbolVacio()) {
 			return 0;
 		} else if (arbol.Raiz() == elemen) {
@@ -1227,8 +1227,8 @@ public class Metodos {
 	 * @DEVUELVE valor
 	 * @COSTO Recursivo
 	 **/
-	public int Menor(ABBTDA a) {// mirar la implementacio
-		if (a.HijoIzq().ArbolVacio()) { // si el hijo izquierdo esta vacÃƒÂ­o
+    public int Menor(ABBTDA a) {// mirar la implementacio
+		if (a.HijoIzq().ArbolVacio()) { // si el hijo izquierdo esta vacÃ­o
 			return a.Raiz(); // es el valor mas bajo
 		} else {
 			return Menor(a.HijoIzq()); // busca el valor mas bajo en el hijo izquierdo
@@ -1348,13 +1348,13 @@ public class Metodos {
 	 * @DEVUELVE cant
 	 * @COSTO recursivo
 	 **/
-	public int CantElementos(ABBTDA arbol) {
-		if (arbol.ArbolVacio())
-			return 0;
-		else {
-			return (1 + CantElementos(arbol.HijoIzq()) + CantElementos(arbol.HijoDer()));
+		public int CantElementos(ABBTDA arbol) {
+			if (arbol.ArbolVacio())
+				return 0;
+			else {
+				return (1 + CantElementos(arbol.HijoIzq()) + CantElementos(arbol.HijoDer()));
+			}
 		}
-	}
 
 	// TP4 3-f gonza 08/05/18 //segun el profesor va a asi
 	/**
@@ -1365,21 +1365,13 @@ public class Metodos {
 	 * @DEVUELVE integer
 	 * @COSTO Recursivo
 	 **/
-	public int SumaElementos(ABBTDA arbol) {
-		if (arbol.ArbolVacio())
-			return 0;
-		else {
-			return (arbol.Raiz() + SumaElementos(arbol.HijoIzq()) + SumaElementos(arbol.HijoDer()));
+		public int SumaElementos(ABBTDA arbol) {
+			if (arbol.ArbolVacio())
+				return 0;
+			else {
+				return (arbol.Raiz() + SumaElementos(arbol.HijoIzq()) + SumaElementos(arbol.HijoDer()));
+			}
 		}
-	}
-
-		/*
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
 
 	// TP 4 - 3.g Salvioli (09/05/2018)
 	/**
@@ -1389,16 +1381,16 @@ public class Metodos {
 	 * @POSTCONDICON valor cantidad de hojas
 	 * @COSTO recursivo
 	 **/
-	public int ContarCantidadDeHojas(ABBTDA a) {
-		int b = 0;
-		a.InicializarArbol();
-		if (!a.ArbolVacio()) {
-			while (a.HijoIzq().ArbolVacio() && a.HijoDer().ArbolVacio()) { // verifca que sean hoja
-				b = (ContarCantidadDeHojas(a.HijoIzq()) + ContarCantidadDeHojas(a.HijoDer())); // va reemplazando en b el valor
+		public int ContarCantidadDeHojas (ABBTDA a){
+			if (a.ArbolVacio())
+				return 0;
+			else{
+				if (a.HijoDer().ArbolVacio() && a.HijoIzq().ArbolVacio())
+					return 1;
+				else
+					return ContarCantidadDeHojas(a.HijoDer()) + ContarCantidadDeHojas(a.HijoIzq());
 			}
 		}
-		return b;
-	}
 
 	// TP 4 - 3.h Salvioli (09/05/2018)
 	/**
@@ -1408,23 +1400,18 @@ public class Metodos {
 	 * @POSTCONDICON valor altura arbol
 	 * @COSTO recursivo
 	 **/
-	public int CalcularAlturaABB(ABBTDA a) {
-		a.InicializarArbol();
-		int b = 0;
-		int c = 0;
-		if (a.ArbolVacio()) {
-			return 0;
-		} else {
-			b = ContarCantidadDeHojas(a.HijoIzq()); // no se si esto esta bien pero cuenta izquierda
-			c = ContarCantidadDeHojas(a.HijoDer()); // luego derecha
+		public int CalcularAlturaABB(ABBTDA a) {
+			if (a.ArbolVacio()) {
+				return 0;
+			}
+			else if (a.HijoDer().ArbolVacio()&&a.HijoIzq().ArbolVacio())
+			{
+				return 0;
+			}
+			else {
+				return 1 + Math.max(CalcularAlturaABB(a.HijoDer()),CalcularAlturaABB(a.HijoIzq()));
+			}
 		}
-		if (b >= c) { // devuelve el mas alto
-			return b;
-		} else {
-			return c;
-		}
-	}
-
 	// TP 4 - 3.l.i Salvioli (09/05/2018)
 	/**
 	 * @TAREA mostrar arbol por in order
@@ -1647,4 +1634,196 @@ public class Metodos {
 		grado=salientes-entrantes;
 		return grado;
 	}
+	
+	//TP4 Pto 3 K -FedeP
+	/**
+	 * @TAREA Determinar los elementos que están en un nivel X del árbol
+	 * @PARAMETRO ABBTDA, int nivel
+	 * @PRECONDICON Arbol inicializado
+	 * @POSTCONDICON none
+	 * @DEVUELVE integer
+	 * @COSTO Recursivo
+	 **/
+	public int ElementosNivelABB(ABBTDA a, int x) {
+		int alt=CalcularAlturaABB(a);
+		int cant=0;
+		if(a.ArbolVacio()||x>alt) {
+			return cant;
+		}
+		else if (!a.ArbolVacio()&&alt==0) {
+			return cant +1;
+		}
+		else {
+			return ElementosNivelABB(a.HijoDer(),x-1)+ElementosNivelABB(a.HijoIzq(),x-1);
+		}
+				
+	}
+	//TP4 Punto3M Fedep
+	/**
+	 * @TAREA hacer un conjunto con los elementos mayores que k
+	 * @PARAMETRO ABBTDA, int nivel
+	 * @PRECONDICON Arbol inicializado
+	 * @POSTCONDICON none
+	 * @DEVUELVE ConjuntoTDA
+	 * @COSTO Recursivo
+	 **/
+	public ConjuntoTDA ConjuntoElementosMayoresKABB(ABBTDA a, int x) {
+		ConjuntoTDA may = new ConjuntoLD();
+		may.InicializarConjunto();
+		if(!a.ArbolVacio()) {
+			if(a.Raiz()>x) {
+				may.AgregarConjunto(a.Raiz());
+			}
+			ConjuntoTDA mayder=UnionConjunto(may, ConjuntoElementosMayoresKABB(a.HijoDer(),x));
+			ConjuntoTDA mayizq= UnionConjunto(may, ConjuntoElementosMayoresKABB(a.HijoIzq(),x));
+			return UnionConjunto(mayder,mayizq);
+		}
+		else
+			return may;
+		
+	}
+	
+	//TP4 Punto 3D Iterativo
+	/**
+	 * @TAREA Encontrar el valor mínimo de un árbol de forma iterativa
+	 * @PARAMETRO ABBTDA
+	 * @PRECONDICON Arbol inicializado
+	 * @POSTCONDICON SE PIERDE EL ARBOL
+	 * @DEVUELVE Int
+	 * @COSTO Lineal
+	 **/
+	public int MinimoIterativo(ABBTDA a) {
+		ABBTDA izq = new ABB();
+		ABBTDA der = new ABB();
+		izq.InicializarArbol();
+		der.InicializarArbol();
+		izq = a.HijoIzq();
+		der = a.HijoDer();
+		int min = a.Raiz();
+		while(!a.ArbolVacio()) {
+			if (!izq.ArbolVacio()&&izq.Raiz() < a.Raiz()) {
+				a = izq;
+				izq = izq.HijoIzq();
+				der = der.HijoDer();
+				min = a.Raiz();
+			} else if (!der.ArbolVacio() && der.Raiz() < a.Raiz()) {
+				a = der;
+				izq = izq.HijoIzq();
+				der = der.HijoDer();
+				min = a.Raiz();
+			} else {
+				return min;
+			}
+		}
+		return min;
+	}
+	//TP4 Punto 3A ITERATIVO
+	/**
+	 * @TAREA Determinar si un elemento pertenece o no a un arbol
+	 * @PARAMETRO ABBTDA, integer
+	 * @PRECONDICON Arbol inicializado, valor
+	 * @POSTCONDICON SE PIERDE EL ARBOL
+	 * @DEVUELVE booleano
+	 * @COSTO Lineal
+	 **/
+	public boolean PerteneceABBIt(ABBTDA a,int x) {
+		ABBTDA izq = new ABB();
+		ABBTDA der = new ABB();
+		izq.InicializarArbol();
+		der.InicializarArbol();
+		boolean flag = true;
+		while(flag && !a.ArbolVacio()) {
+			izq = a.HijoIzq();
+			der = a.HijoDer();
+			if(x==a.Raiz())
+				flag=false;
+			else if(!der.ArbolVacio()&&x>a.Raiz()) {
+				a=der;
+			}
+			else if(!izq.ArbolVacio()&&x<a.Raiz()) {
+				a=izq;
+			}
+			else
+				flag=false;
+		}
+		if(x==a.Raiz()) 
+			return true;
+		else
+			return false;
+	
+	}
+	//TP4 Punto 3C iterativo
+	/**
+	 * @TAREA Determinar la profundidad de un elemento en un árbol
+	 * @PARAMETRO ABBTDA, integer
+	 * @PRECONDICON Arbol inicializado, valor existente
+	 * @POSTCONDICON SE PIERDE EL ARBOL
+	 * @DEVUELVE integer
+	 * @COSTO Lineal
+	 **/
+	public int ProfunidadIterativo(ABBTDA a, int elem) {
+		ABBTDA izq = new ABB();
+		ABBTDA der = new ABB();
+		izq.InicializarArbol();
+		der.InicializarArbol();
+		izq = a.HijoIzq();
+		der = a.HijoDer();
+		int profundidad = 0;
+		boolean flag=true;
+		if(a.ArbolVacio()) {
+			return 0;
+		} else {
+			while(!a.ArbolVacio()&&flag) {
+				if (a.Raiz() == elem) {
+					flag=false;
+				} else if (!der.ArbolVacio() && der.Raiz() <= elem) {
+					a = der;
+					izq = a.HijoIzq();
+					der = a.HijoDer();
+					profundidad++;
+				} else if (!izq.ArbolVacio() && izq.Raiz() >= elem) {
+					a = izq;
+					izq = a.HijoIzq();
+					der = a.HijoDer();
+					profundidad++;
+				} else {
+					flag=false;
+				}
+			}
+				return profundidad;
+		}
+	}
+	//Punto 4B Iterativo
+	/**
+	 * @TAREA Determinar si un elemento es una hoja de un arbol de forma iterativa
+	 * @PARAMETRO ABBTDA, valor
+	 * @PRECONDICON Arbol inicializado, valor perteneciente al arbol
+	 * @POSTCONDICON SE PIERDE EL ARBOL
+	 * @DEVUELVE Booleano
+	 * @COSTO Lineal
+	 **/
+	public boolean HojaIterativo(ABBTDA a, int elem) {
+		ABBTDA izq = new ABB();
+		ABBTDA der = new ABB();
+		izq.InicializarArbol();
+		der.InicializarArbol();
+		
+		boolean flag=true;
+		while(!a.ArbolVacio()&&flag) {
+			izq = a.HijoIzq();
+			der = a.HijoDer();
+			if (a.Raiz() == elem) {
+				flag=false;
+			} else if (!izq.ArbolVacio() && a.Raiz() > elem) {
+				a = izq;
+			} else if (!der.ArbolVacio() && a.Raiz() < elem) {
+				a = der;
+			} else {
+				flag = false;
+			}
+		}
+		
+		return (a.HijoDer().ArbolVacio()&&a.HijoIzq().ArbolVacio());
+	}
+	
 }
